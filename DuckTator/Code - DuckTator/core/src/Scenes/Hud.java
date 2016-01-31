@@ -100,6 +100,15 @@ public class Hud implements Disposable{
 		
 	}
 	
+	//Public method we can access outside of the Hud class to increase Morgan's health.
+	public static void increaseHealth(){
+		if (health_value<10){
+			health_value += 1;
+			healthLabel.setText(String.format("HEALTH: %d", health_value));
+		}
+		
+	}
+	
 	//Access outside the class to set health back to 10.
 	public static void regenerateHealth(){
 		health_value = 10;
