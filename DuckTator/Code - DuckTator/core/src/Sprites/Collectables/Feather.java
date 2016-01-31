@@ -1,0 +1,60 @@
+package Sprites.Collectables;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.badlogic.gdx.physics.box2d.FixtureDef;
+import com.badlogic.gdx.physics.box2d.PolygonShape;
+import com.badlogic.gdx.physics.box2d.World;
+import com.mygdx.game.DuckTator;
+
+import Scenes.Hud;
+
+public class Feather extends InteractiveTileObject{
+
+	public Feather(World world, TiledMap map, Rectangle bounds){
+		super(world,map,bounds);
+		//Creating our body and fixture definitions.		
+		BodyDef bdef = new BodyDef();
+		FixtureDef fdef = new FixtureDef();
+		
+		//Category bit identifies the object.
+		fdef.filter.categoryBits = DuckTator.FEATHER_BIT;
+		
+		//Creating the shape
+		PolygonShape shape = new PolygonShape();
+		
+		//Defining the bdef properties.				
+		bdef.type = BodyDef.BodyType.StaticBody;
+		bdef.position.set((bounds.getX()+bounds.getWidth()/2)/ DuckTator.PPM, (bounds.getY()+bounds.getHeight()/2)/ DuckTator.PPM);
+		body = world.createBody(bdef);
+		
+		//remember starts in center
+		shape.setAsBox(bounds.getWidth()/2/DuckTator.PPM, bounds.getHeight()/2/DuckTator.PPM);
+		fdef.shape = shape;
+		
+		//the fixture is a sensor so Morgan won't collide with it - but collisions are still deteted
+		fdef.isSensor = true;
+		fixture = body.createFixture(fdef);
+		
+		//In the WorldContactListener we will be able to retrieve the user data. This means we can 
+		//gain access to the Feather object and thus invoke methods from this class.
+		fixture.setUserData(this);
+	}
+	
+	@Override
+	public void onBodyHit() {
+		Gdx.gl.glClearColor(204, 172, 0, 5);
+		/*This will be called when Morgan's body collides with the feather.
+		* We get the cell and set it equal to null. This will remove the feather image from the
+		* map once Morgan has collided with it. */
+		getCell(20).setTile(null);
+		//Setting the category bilt to destroyed so Morgan can no longer collide with the box2D body.
+		setCategoryFilter(DuckTator.DESTROYED_BIT);
+		//Adding 100 points to the score.
+		Hud.addScore(100);
+		
+	}
+	
+}
