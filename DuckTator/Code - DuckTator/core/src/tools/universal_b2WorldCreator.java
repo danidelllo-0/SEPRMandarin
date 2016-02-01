@@ -1,5 +1,6 @@
 package tools;
 
+import java.io.Console;
 import java.util.Random;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
@@ -14,6 +15,7 @@ import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.DuckTator;
 
 import Sprites.Collectables.Feather;
+import Sprites.Collectables.Health;
 import Sprites.Enemy.BasketBomb;
 import Sprites.Enemy.Goose;
 
@@ -78,7 +80,17 @@ public class universal_b2WorldCreator {
 		}
 	}
 	
-
+	public void hearts_layer(int layer){
+		//For all the objects in the map layer that contains the feather objects(passed in) it gets each 
+		//rectangular object that was placed in Tiled2D.
+		for(MapObject object : map.getLayers().get(layer).getObjects().getByType(RectangleMapObject.class)){
+			//Getting the rectangle.
+			Rectangle rect = ((RectangleMapObject) object).getRectangle();
+			//Creating a new feather, passing in the rectangle because this is where we want to create a feather.
+			new Health (world, map, rect);
+	
+		}
+	}
 		
 	public void feather_layer(int layer){
 		//For all the objects in the map layer that contains the feather objects(passed in) it gets each 

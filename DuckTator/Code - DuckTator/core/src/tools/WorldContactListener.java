@@ -1,5 +1,7 @@
 package tools;
 
+import java.io.Console;
+
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.ContactListener;
@@ -10,9 +12,9 @@ import Scenes.Hud;
 import Screens.JamesCompleted;
 import Sprites.Morgan;
 import Sprites.Collectables.Feather;
+import Sprites.Collectables.Health;
 import Sprites.Enemy.BasketBomb;
 import Sprites.Enemy.Enemy;
-
 
 public class WorldContactListener implements ContactListener{
 	//A contact listener is what is CALLED when two fixtures COLLIDE with each other.
@@ -28,13 +30,23 @@ public class WorldContactListener implements ContactListener{
 		*A contact has a fixture A and a fixture B. We need to figure out which is which. */
 		Fixture fixA = contact.getFixtureA();
 		Fixture fixB = contact.getFixtureB();
+
 		
 		/*We logically OR the two fixtures together using their category bits. Therefore "orFix" will be
 		* unique to two fixtures colliding. */
 		int orFix = fixA.getFilterData().categoryBits | fixB.getFilterData().categoryBits;
 	
 		//switch statement using our orFix. Thus in the case the orFix is the same as two category bits we know they've collided
-		
+		/*
+		if (fixA.getFilterData().categoryBits==DuckTator.DUCK_BIT)
+		{
+			System.out.println(fixB.getFilterData().categoryBits);
+		}
+		if (fixB.getFilterData().categoryBits==DuckTator.DUCK_BIT)
+		{
+			System.out.println(fixA.getFilterData().categoryBits);
+		}
+		*/
 		switch (orFix){
 			
 		//TESTING IF THE DUCK COLLIDED WITH THE HEAD OF AN ENEMY
@@ -91,6 +103,18 @@ public class WorldContactListener implements ContactListener{
 					((Enemy) fixB.getUserData()).hitOnBody();
 				}
 				break;
+			
+				
+				//TESTING IF THE DUCK HIT A HEART
+			case DuckTator.DUCK_BIT | DuckTator.HEALTH_BIT:
+				if (fixA.getFilterData().categoryBits == DuckTator.HEALTH_BIT){
+					((Health) fixA.getUserData()).onBodyHit();
+				}				
+				else{
+					((Health) fixB.getUserData()).onBodyHit();
+				}
+				break;
+				
 				
 			//TESTING IF THE DUCK HIT A FEATHER
 			case DuckTator.DUCK_BIT | DuckTator.FEATHER_BIT:

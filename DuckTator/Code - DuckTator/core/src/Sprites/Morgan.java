@@ -198,7 +198,7 @@ public class Morgan extends Sprite{
 		//Category bit is the "WHAT IS THIS SHAPE"
 		fdef.filter.categoryBits = DuckTator.DUCK_BIT;
 		//What can duck collide with:
-		fdef.filter.maskBits = DuckTator.GROUND_BIT | DuckTator.WATER_BIT| DuckTator.BRICK_BIT | DuckTator.BOMB_BIT| DuckTator.CAGE_BIT| DuckTator.BOMB_BIT| DuckTator.GROUND_OBJECT| DuckTator.FEATHER_BIT | DuckTator.ENEMY_HEAD| DuckTator.SPIKE_BIT| DuckTator.ENEMY_BIT;
+		fdef.filter.maskBits = DuckTator.GROUND_BIT | DuckTator.WATER_BIT| DuckTator.BRICK_BIT | DuckTator.BOMB_BIT| DuckTator.CAGE_BIT| DuckTator.BOMB_BIT| DuckTator.GROUND_OBJECT| DuckTator.FEATHER_BIT| DuckTator.HEALTH_BIT | DuckTator.ENEMY_HEAD| DuckTator.SPIKE_BIT| DuckTator.ENEMY_BIT;
 		//Now we need to add the fixture we've just created (the circle) to our body.
 		duck_b2Body.createFixture(fdef).setUserData(this);;
 

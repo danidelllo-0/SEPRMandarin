@@ -1,5 +1,6 @@
 package Sprites.Collectables;
 
+import java.io.Console;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.Rectangle;
@@ -20,7 +21,7 @@ public class Health extends InteractiveTileObject{
 		FixtureDef fdef = new FixtureDef();
 		
 		//Category bit identifies the object.
-		fdef.filter.categoryBits = DuckTator.FEATHER_BIT;
+		fdef.filter.categoryBits = DuckTator.HEALTH_BIT;
 		
 		//Creating the shape
 		PolygonShape shape = new PolygonShape();
@@ -37,7 +38,7 @@ public class Health extends InteractiveTileObject{
 		//the fixture is a sensor so Morgan won't collide with it - but collisions are still deteted
 		fdef.isSensor = true;
 		fixture = body.createFixture(fdef);
-		
+
 		//In the WorldContactListener we will be able to retrieve the user data. This means we can 
 		//gain access to the Feather object and thus invoke methods from this class.
 		fixture.setUserData(this);
@@ -49,7 +50,7 @@ public class Health extends InteractiveTileObject{
 		/*This will be called when Morgan's body collides with the feather.
 		* We get the cell and set it equal to null. This will remove the feather image from the
 		* map once Morgan has collided with it. */
-		getCell(20).setTile(null);
+		getCell(21).setTile(null);
 		//Setting the category bilt to destroyed so Morgan can no longer collide with the box2D body.
 		setCategoryFilter(DuckTator.DESTROYED_BIT);
 		//Adding 100 points to the score.

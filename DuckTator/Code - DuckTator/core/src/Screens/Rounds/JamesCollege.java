@@ -16,15 +16,16 @@ import tools.WorldContactListener;
 public class JamesCollege extends Level implements Screen  {
 	
 	//Variables representing the layers in the Tiled2D map.
-	private static final int BLOCKS_LAYER = 21;
-	private static final int BOUNDARIES_LAYER = 22;
-	private static final int GROUND_LAYER = 23;
-	private static final int CAGE_LAYER = 24;
-	private static final int DEATH_LAYER = 25;
-	private static final int FEATHER_LAYER = 26;
-	private static final int BUILDINGS_LAYER = 27;
-	private static final int GEESE_LAYER = 28;
-	private static final int STOPPERS_LAYER = 29;
+	private static final int BLOCKS_LAYER = 22;
+	private static final int BOUNDARIES_LAYER = 23;
+	private static final int GROUND_LAYER = 24;
+	private static final int CAGE_LAYER = 25;
+	private static final int DEATH_LAYER = 26;
+	private static final int FEATHER_LAYER = 27;
+	private static final int BUILDINGS_LAYER = 28;
+	private static final int GEESE_LAYER = 29;
+	private static final int STOPPERS_LAYER = 30;
+	private static final int HEARTS = 32;
 	
 	//Variable for our game.
 	private DuckTator game;
@@ -72,6 +73,8 @@ public class JamesCollege extends Level implements Screen  {
 		*See the universal_b2WorldCreator for more detail.*/
 		//FEATHER LAYER
 		b2_world_creator.feather_layer(FEATHER_LAYER);
+		//HEARTS LAYER
+		b2_world_creator.hearts_layer(HEARTS);
 		//GOOSE LAYER
 		b2_world_creator.goose_layer(GEESE_LAYER);
 		//RANDOM BOMBS LAYER
