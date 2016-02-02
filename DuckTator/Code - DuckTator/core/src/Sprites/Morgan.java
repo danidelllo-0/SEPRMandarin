@@ -226,16 +226,19 @@ public class Morgan extends Sprite{
 			duck_b2Body.applyLinearImpulse(new Vector2(0,4f), duck_b2Body.getWorldCenter(), true);
 			//System.out.println("JUMPING");
 		}
-		
+		//Owen - Stops the smooth deceleration of running. Once running keys have stopped being pressed the character becomes stationary instantly
+		if ((getState() == Morgan.State.RUNNING) && (!((Gdx.input.isKeyPressed(Input.Keys.RIGHT)) | (Gdx.input.isKeyPressed(Input.Keys.D)) | (Gdx.input.isKeyPressed(Input.Keys.LEFT)) | (Gdx.input.isKeyPressed(Input.Keys.A))))) {
+			duck_b2Body.setLinearVelocity(0,0);
+		}
 		//To move to the right we apply a linear impulse in the positive x.
 		if(((Gdx.input.isKeyPressed(Input.Keys.RIGHT) | (Gdx.input.isKeyPressed(Input.Keys.D))) && (duck_b2Body.getLinearVelocity().x<=2))){
-			duck_b2Body.applyLinearImpulse(new Vector2(0.1f,0), duck_b2Body.getWorldCenter(), true);
+			duck_b2Body.applyLinearImpulse(new Vector2(0.3f,0), duck_b2Body.getWorldCenter(), true);
 			//System.out.println("MOVING RIGHT");
 		}
 		
 		//To move to the left we apply a linear impulse in the negative x.
 		if(((Gdx.input.isKeyPressed(Input.Keys.LEFT) | (Gdx.input.isKeyPressed(Input.Keys.A)))  && (duck_b2Body.getLinearVelocity().x>=-2))){
-			duck_b2Body.applyLinearImpulse(new Vector2(-0.1f,0), duck_b2Body.getWorldCenter(), true);
+			duck_b2Body.applyLinearImpulse(new Vector2(-0.3f,0), duck_b2Body.getWorldCenter(), true);
 			//System.out.println("MOVING LEFT");
 		}
 		
