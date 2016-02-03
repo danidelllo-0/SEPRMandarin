@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="700" height="30" tilewidth="16" tileheight="16" nextobjectid="34">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="700" height="30" tilewidth="16" tileheight="16" nextobjectid="39">
  <tileset firstgid="1" name="sky" tilewidth="16" tileheight="16" tilecount="2912" columns="91">
   <image source="Sky.png" width="1466" height="520"/>
  </tileset>
@@ -36,7 +36,7 @@
  </layer>
  <layer name="Objects" width="700" height="30">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <layer name="Feather" width="700" height="30">
@@ -60,27 +60,34 @@
   <object id="14" x="208" y="320" width="47" height="47"/>
   <object id="15" x="223" y="368" width="47" height="48"/>
   <object id="16" x="-1" y="-71" width="11200" height="68"/>
-  <object id="18" x="928" y="127" width="382" height="289"/>
+  <object id="18" x="928" y="126" width="382" height="289"/>
   <object id="19" x="1280" y="368" width="46" height="50"/>
   <object id="20" x="1216" y="80" width="46" height="47"/>
   <object id="21" x="1024" y="96" width="189" height="30"/>
   <object id="22" x="1520" y="368" width="95" height="49"/>
   <object id="23" x="1552" y="321" width="47" height="44"/>
+  <object id="38" x="560" y="192" width="46.6667" height="46.6667"/>
  </objectgroup>
  <objectgroup name="Feather">
   <object id="27" x="703" y="366" width="51" height="51"/>
   <object id="28" x="928" y="81" width="48" height="46"/>
   <object id="29" x="1072" y="49" width="47" height="46"/>
  </objectgroup>
- <objectgroup name="hearts">
-  <object id="25" x="449" y="368" width="46" height="48"/>
-  <object id="26" x="1344" y="367" width="47" height="49"/>
- </objectgroup>
  <objectgroup name="Stoppers">
   <object id="31" x="1904" y="349" width="2" height="65"/>
   <object id="32" x="2205" y="351" width="1" height="65"/>
  </objectgroup>
+ <objectgroup name="hearts">
+  <object id="25" x="449" y="368" width="46" height="48"/>
+  <object id="26" x="1344" y="367" width="47" height="49"/>
+ </objectgroup>
  <objectgroup name="Geese">
   <object id="33" x="2047" y="384" width="16" height="14"/>
+ </objectgroup>
+ <objectgroup name="Death">
+  <object id="34" x="3363" y="477" width="1292" height="4"/>
+ </objectgroup>
+ <objectgroup name="Boundaries">
+  <object id="36" x="11202" y="-2" width="52" height="481"/>
  </objectgroup>
 </map>

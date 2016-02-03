@@ -13,30 +13,27 @@ import Sprites.Enemy.Enemy;
 import Sprites.Enemy.Goose;
 import tools.WorldContactListener;
 
-public class JamesCollege extends Level implements Screen  {
-	
-	//Variables representing the layers in the Tiled2D map.
-	private static final int BLOCKS_LAYER = 22;
-	private static final int BOUNDARIES_LAYER = 23;
-	private static final int GROUND_LAYER = 24;
-	private static final int CAGE_LAYER = 25;
-	private static final int DEATH_LAYER = 26;
-	private static final int FEATHER_LAYER = 27;
-	private static final int BUILDINGS_LAYER = 28;
-	private static final int GEESE_LAYER = 29;
-	private static final int STOPPERS_LAYER = 30;
-	private static final int HEARTS = 32;
-	private static final int HEARTS_T = 21;
-	private static final int FEATHERS_T = 20;
+public class ConstantineCollege extends Level implements Screen{
+
+	//private static final int BLOCKS_LAYER = 22;
+	private static final int BOUNDARIES_LAYER = 11;
+	private static final int GROUND_LAYER = 5;
+	//private static final int CAGE_LAYER = 25;
+	private static final int DEATH_LAYER = 10;
+	private static final int FEATHER_LAYER = 6;
+	//private static final int BUILDINGS_LAYER = 28;
+	private static final int GEESE_LAYER = 9;
+	private static final int STOPPERS_LAYER = 7 ;
+	private static final int HEARTS = 8 ;
+	private static final int HEARTS_T = 4;
+	private static final int FEATHERS_T = 3;
 	
 	//Variable for our game.
 	private DuckTator game;
 	
 	//Variable for the file path that links to the map rendered by this round.
-	private static String mapString = "NewJames/JamesCollege/JamesCollege.tmx" ;
+	private static String mapString = "Constantine/Constantine.tmx" ;
 
-	//We'll be placing a 'boss' goose in this round. So we will be creating a Goose object.
-	private Goose boss;
 	
 	/*We're going to use a timer to know when to reset the hud to black.
 	 * When Morgan collides with a goose the hud will be coloured red. Then after 3 seconds has passed
@@ -45,13 +42,12 @@ public class JamesCollege extends Level implements Screen  {
 	 Timer gtimer = new Timer();
 	float timeState=0f; 
 	
-	
-	public JamesCollege(DuckTator game){
+	public ConstantineCollege(DuckTator game){
 		//Calling the LEVEL class constructor. Passing in the map!
-		super(game, mapString,1200,320);
-		
+		super(game, mapString,600,320);
+				
 		//This brings in our game class, particularly allowing for us to use the SetScreen method!
-		this.game = game;
+		this.game = game;	
 		
 		/*We pass in the layer on the tiled2Dmap that we want to draw in the box2D world. Also the
 		*category bit (what we use to identify something on that layer) is passed in.
@@ -63,13 +59,13 @@ public class JamesCollege extends Level implements Screen  {
 		//SPIKES LAYER
 		b2_world_creator.rectangle_layer(DEATH_LAYER, DuckTator.SPIKE_BIT);
 		//BRICKS LAYER
-		b2_world_creator.rectangle_layer(BLOCKS_LAYER, DuckTator.BRICK_BIT);
+		//b2_world_creator.rectangle_layer(BLOCKS_LAYER, DuckTator.BRICK_BIT);
 		//CAGE LAYER
-		b2_world_creator.rectangle_layer(CAGE_LAYER, DuckTator.CAGE_BIT);
+		//b2_world_creator.rectangle_layer(CAGE_LAYER, DuckTator.CAGE_BIT);
 		//BOUNDARIES LAYER - So Morgan can't fall off the map
 		b2_world_creator.rectangle_layer(BOUNDARIES_LAYER, DuckTator.GROUND_BIT);
 		//BUILDING LAYER
-		b2_world_creator.rectangle_layer(BUILDINGS_LAYER, DuckTator.BRICK_BIT);
+		//b2_world_creator.rectangle_layer(BUILDINGS_LAYER, DuckTator.BRICK_BIT);
 		
 		/*The following methods draw in the box2d representations, but they create a feather object, goose object and a brick object. 
 		*See the universal_b2WorldCreator for more detail.*/
@@ -82,7 +78,7 @@ public class JamesCollege extends Level implements Screen  {
 		//RANDOM BOMBS LAYER
 		b2_world_creator.random_bombs();
 		
-
+		
 		/* CONTACT LISTENER
 		* WorldContactListener is a custom class. When a collision is
 		* detected by box2D between two fixtures (e.g. Morgan and a goose)
@@ -91,58 +87,14 @@ public class JamesCollege extends Level implements Screen  {
 		* */
 		world.setContactListener(new WorldContactListener(game,player));
 		
-		//Calling the method to create the 'boss goose'
-		bossGoose();
-		player.lvl=8;
-			
-		
+		player.lvl=1;
 	}
-	
-	
+
 	public void handleInput(float delta){
 		/*This method is called via the update method which is called 60 times a second.
 		* The Morgan class contains the implementation of his controls.	
 		*/
 		player.handle_input(delta);
-	}
-	
-
-	
-	public void bossGoose(){
-		//Positioning the boss goose at the end of the level.
-		boss = new Goose(game, world, 10500/DuckTator.PPM, 100/DuckTator.PPM);
-		//Setting him larger than the standard goose.
-		boss.setBounds(boss.getX(), boss.getY(), 200/DuckTator.PPM, 200/DuckTator.PPM);
-		FixtureDef fdef = new FixtureDef();
-		CircleShape shape = new CircleShape();
-		//We have to set the radius larger.
-		shape.setRadius(55/DuckTator.PPM);
-		fdef.shape = shape;
-		fdef.filter.categoryBits = DuckTator.ENEMY_BIT;
-		fdef.filter.maskBits = DuckTator.GROUND_BIT | DuckTator.GROUND_OBJECT| DuckTator.BRICK_BIT| DuckTator.DUCK_BIT|DuckTator.STOPPER_BIT;
-		boss.b2Body.setActive(true);
-		boss.b2Body.createFixture(fdef).setUserData(boss);
-		//We need to create a sensor on the goose's head so we can know when Morgan jumps on it.
-		EdgeShape goose_head = new EdgeShape();
-		goose_head.set(new Vector2(-40/DuckTator.PPM, 65/DuckTator.PPM), new Vector2(40/DuckTator.PPM, 65/DuckTator.PPM));
-		fdef.shape = goose_head;
-		fdef.filter.categoryBits = DuckTator.ENEMY_HEAD;
-		//adds a little bounce when Morgan collides with the head fixture.
-		fdef.restitution = 1f;
-		fdef.isSensor = true;
-		boss.b2Body.createFixture(fdef).setUserData(boss);
-		
-/*TEST FOR BASKETBALL BOMB RANDOM LOCATIONS. SEE TESTS CLASS FOR INSTRUCTIONS ON HOW TO RUN
-		Array<BasketBomb> test = universal_b2WorldCreator.getBombs();
-		int number = 1;
-		for (Enemy enemy : test){
-			if((enemy.b2Body.getPosition().x < 161) && (enemy.b2Body.getPosition().x > 0)){
-				System.out.println(number);
-			}
-		number = number + 1;
-		
-		}
-		*/
 	}
 	
 	public void update (float delta){
@@ -160,7 +112,6 @@ public class JamesCollege extends Level implements Screen  {
 		
 		//Every time we update we need to update our player/boss goose to make sure the correct sprite is shown.
 		player.update(delta);
-		boss.update(delta);
 		
 		//In case the geese walk into the water, they only start moving when the duck is near. 
 		for (Enemy enemy :b2_world_creator.getGeese()){
@@ -196,9 +147,6 @@ public class JamesCollege extends Level implements Screen  {
 		
 	}
 	
-	
-	
-
 	
 	@Override
 	public void render(float delta) {
@@ -256,7 +204,6 @@ public class JamesCollege extends Level implements Screen  {
 		
 		//Calling the players draw method, passing in the spritebatch. This will render Morgan to the screen.
 		player.draw(game.batch);
-		boss.draw(game.batch);
 		
 		//Drawing the goose / bombs. Iterating through all the objects of enemy in their respective arrays.
 		//Then just drawing them
@@ -280,7 +227,5 @@ public class JamesCollege extends Level implements Screen  {
 		hud.dispose();
 		
 	}
-
 	
-
 }

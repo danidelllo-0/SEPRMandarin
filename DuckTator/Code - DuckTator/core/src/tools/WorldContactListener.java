@@ -15,13 +15,17 @@ import Sprites.Collectables.Feather;
 import Sprites.Collectables.Health;
 import Sprites.Enemy.BasketBomb;
 import Sprites.Enemy.Enemy;
+import Sprites.Morgan;
 
 public class WorldContactListener implements ContactListener{
 	//A contact listener is what is CALLED when two fixtures COLLIDE with each other.
 	DuckTator game;
+	Morgan player;
 	
-	public WorldContactListener(DuckTator game){
+	public WorldContactListener(DuckTator game,Morgan player){
 		this.game = game;
+		this.player=player;
+		
 	}
 	
 	@Override
@@ -129,10 +133,10 @@ public class WorldContactListener implements ContactListener{
 			//TESTING IF THE DUCK HIT THE SPIKES	
 			case DuckTator.DUCK_BIT | DuckTator.SPIKE_BIT:
 				if (fixA.getFilterData().categoryBits == DuckTator.DUCK_BIT){
-					((Morgan) fixA.getUserData()).dead_morgan();
+					((Morgan) fixA.getUserData()).dead_morgan(player.lvl);
 				}
 				else {					
-					((Morgan) fixB.getUserData()).dead_morgan();
+					((Morgan) fixB.getUserData()).dead_morgan(player.lvl);
 				}
 				break;
 				

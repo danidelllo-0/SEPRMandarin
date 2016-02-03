@@ -16,6 +16,7 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Timer;
 import com.mygdx.game.DuckTator;
 import Scenes.Hud;
+import Screens.Rounds.ConstantineCollege;
 import Screens.Rounds.JamesCollege;
 
 public class Morgan extends Sprite{
@@ -30,6 +31,9 @@ public class Morgan extends Sprite{
 	
 	//This keeps track of how long we're in a state, e.g. how long we're in a running state.
 	private float stateTimer;
+	
+	//Current level morgan is in
+	public int lvl;
 	
 	//Our box2D world
 	public World world;
@@ -49,7 +53,7 @@ public class Morgan extends Sprite{
 	Timer gtimer = new Timer();
 	float timeState=0f; 
 	
-	public Morgan(World world, DuckTator game, TextureAtlas atlas ){
+	public Morgan(World world, DuckTator game, TextureAtlas atlas,int x_pos,int y_pos ){
 		super(atlas.findRegion("ducky"));
 		
 		//Initialising variables
@@ -74,7 +78,7 @@ public class Morgan extends Sprite{
 		frames.clear();
 		
 		//Calling our box2D definition of Morgan.
-		defineMorgan();
+		defineMorgan(x_pos,y_pos);
 		
 		//New TextureRegion object - setting it equal to the area of the spritesheet representing Morgan just standing.
 		duckStand = new TextureRegion(getTexture(),0,0,70,66);
@@ -169,7 +173,7 @@ public class Morgan extends Sprite{
 			return State.STANDING;
 	}
 
-	private void defineMorgan() {
+	private void defineMorgan(int x_pos,int y_pos) {
 		/*Example:
 		* The body is the 'name' - CAR
 		* The fixtures that make up the card are the two circles for wheels and the square for the driver.
@@ -178,7 +182,7 @@ public class Morgan extends Sprite{
 		
 		BodyDef bdef = new BodyDef();
 		//Initial position of the duck's B2DBody
-		bdef.position.set(1200/DuckTator.PPM,320/DuckTator.PPM);
+		bdef.position.set(x_pos/DuckTator.PPM,y_pos /DuckTator.PPM);
 		//Ducks going to be a dynamic body meaning
 		bdef.type = BodyDef.BodyType.DynamicBody;		
 		//Creating the body within our world.
@@ -261,10 +265,13 @@ public class Morgan extends Sprite{
 		}
 	}
 	
-	public void dead_morgan()
+	public void dead_morgan(int level)
 	{	
 		//If Morgan is killed set the screen to the beginning of the level.
+		if(level==8)
 		game.setScreen(new JamesCollege(game));
+		if(level==1)
+			game.setScreen(new ConstantineCollege(game));
 	}
 	
 	public void unlock_regeneration(){

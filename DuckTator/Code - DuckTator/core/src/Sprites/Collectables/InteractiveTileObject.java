@@ -18,9 +18,12 @@ public abstract class InteractiveTileObject {
 	protected Body body;
 	protected Fixture fixture;
 	
+	protected int collectibleLayer;
 	
-	public InteractiveTileObject(World world, TiledMap map, Rectangle bounds){
+	
+	public InteractiveTileObject(World world, TiledMap map, Rectangle bounds, int collectibleLayer){
 		
+		this.collectibleLayer=collectibleLayer;
 		this.world = world;
 		this.map = map;
 		this.bounds = bounds;

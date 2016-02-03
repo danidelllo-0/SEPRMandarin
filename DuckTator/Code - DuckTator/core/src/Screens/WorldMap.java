@@ -14,6 +14,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.game.DuckTator;
 
 import Screens.Rounds.JamesCollege;
+import Screens.Rounds.ConstantineCollege;
 
 public class WorldMap implements Screen{
 	
@@ -120,7 +121,7 @@ public class WorldMap implements Screen{
 			@Override
 			public void clicked(InputEvent event, float x, float y)
 			{
-				System.out.println("York Sport Village");
+				game.setScreen(new ConstantineCollege(game));
 			}
 			
 				});

@@ -56,7 +56,7 @@ public abstract class Level {
 	protected Morgan player;
 	
 	
-	public Level(DuckTator game, String mapString){
+	public Level(DuckTator game, String mapString, int x_pos, int y_pos){
 		//****SETTING UP CAMERA*****
 		gamecam = new OrthographicCamera();
 		
@@ -100,7 +100,7 @@ public abstract class Level {
 
 		//****CREATING MORGAN****
 		duck_atlas = new TextureAtlas("NewDuck/duckyf.atlas");
-		player = new Morgan(world,game,duck_atlas);
+		player = new Morgan(world,game,duck_atlas,x_pos,y_pos);
 	}
 	
 	

@@ -14,8 +14,8 @@ import Scenes.Hud;
 
 public class Health extends InteractiveTileObject{
 
-	public Health(World world, TiledMap map, Rectangle bounds){
-		super(world,map,bounds);
+	public Health(World world, TiledMap map, Rectangle bounds,int collectibleLayer){
+		super(world,map,bounds,collectibleLayer);
 		//Creating our body and fixture definitions.		
 		BodyDef bdef = new BodyDef();
 		FixtureDef fdef = new FixtureDef();
@@ -50,7 +50,7 @@ public class Health extends InteractiveTileObject{
 		/*This will be called when Morgan's body collides with the feather.
 		* We get the cell and set it equal to null. This will remove the feather image from the
 		* map once Morgan has collided with it. */
-		getCell(21).setTile(null);
+		getCell(this.collectibleLayer).setTile(null);
 		//Setting the category bilt to destroyed so Morgan can no longer collide with the box2D body.
 		setCategoryFilter(DuckTator.DESTROYED_BIT);
 		//Adding 100 points to the score.
