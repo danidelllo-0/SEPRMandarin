@@ -22,16 +22,18 @@ import Screens.Rounds.JamesCollege;
 public class Morgan extends Sprite{
 	
 	//Enumeration for our ducks states.
-	public enum State {FALLING,JUMPING,STANDING,RUNNING};
+	public enum State {FALLING,JUMPING,STANDING,RUNNING,FLYING};
 	//Creating our variables
 	public State currentState;
 	public State previousState;
 	private Animation duckRun;
 	private boolean runningRight;
+	//Owen - Additional variables for the flying timer
+	public boolean allowedToFly = true;
+	public boolean hasBeenFlying = false;
 	
 	//This keeps track of how long we're in a state, e.g. how long we're in a running state.
 	private float stateTimer;
-	
 	//Current level morgan is in
 	public int lvl;
 	
@@ -51,7 +53,9 @@ public class Morgan extends Sprite{
 	private TextureRegion duckStand;
 	
 	Timer gtimer = new Timer();
-	float timeState=0f; 
+	float timeState=0f;
+	//Owen - Additional variable for the flying timer
+	float timeStateFlyingLock=0f;
 	
 	public Morgan(World world, DuckTator game, TextureAtlas atlas,int x_pos,int y_pos ){
 		super(atlas.findRegion("ducky"));
@@ -215,25 +219,38 @@ public class Morgan extends Sprite{
 		* to fly through the entire map.*/
 		
 		timeState+=Gdx.graphics.getDeltaTime();
+		timeStateFlyingLock+=Gdx.graphics.getDeltaTime();
 		
 		//Owen - Jumping. If the duck is on the ground and the space bar is pressed then apply linear impulse in y direction.
 		//Height of jump is varied in Vector2(0,0.7f)
 		if ((Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) && (duck_b2Body.getLinearVelocity().y==0)) {
-			duck_b2Body.applyLinearImpulse(new Vector2(0,0.7f), duck_b2Body.getWorldCenter(), true);
+			duck_b2Body.applyLinearImpulse(new Vector2(0,3.8f), duck_b2Body.getWorldCenter(), true);
 		}
 		
-		//Owen - Flying. If the duck is going up (just jumped) then if the space bar is pressed apply linear impulse in y direction (go up)
-		//Time state makes the duck gradually go up by only allowing the impulse in an interval (0.3f)
-		if (timeState >= 0.3f){
-			if ((Gdx.input.isKeyPressed(Input.Keys.SPACE)) && (duck_b2Body.getLinearVelocity().y>0)){
-				duck_b2Body.applyLinearImpulse(new Vector2(0,2.9f), duck_b2Body.getWorldCenter(), true);
+		//Owen - When the duck has been flying and touches the ground a timer is triggered that will prevent the duck from flying until that timer is up.
+		//allowedToFly and hasBeenFlying are flags to indicate when the timer should be triggered and when the duck is and isn't allowed to fly.
+		if ((hasBeenFlying == true) && (getState() == State.RUNNING || getState() == State.STANDING)){
+				allowedToFly = false;
+				hasBeenFlying = false;
+				timeStateFlyingLock = 0f;
+			}
+		if ((allowedToFly == false) && (timeStateFlyingLock >= 4f)){
+			allowedToFly = true;
+			}
+			
+		//Owen - Flying. If the duck is going up (just jumped) then if either up or w is pressed apply linear impulse in y direction (go up)
+		//Time state makes the duck gradually go up by only allowing the impulse in an interval (0.118f)
+		if ((timeState >= 0.118f) && (allowedToFly == true)){
+			if ((Gdx.input.isKeyPressed(Input.Keys.UP) || Gdx.input.isKeyPressed(Input.Keys.W)) && (duck_b2Body.getLinearVelocity().y>0)) {
+				duck_b2Body.applyLinearImpulse(new Vector2(0,1f), duck_b2Body.getWorldCenter(), true);
 				timeState = 0;
+				hasBeenFlying = true;
 				}
 		}
 		
-		//Owen - Hovering (Falling). If the duck is going down (falling) then apply small linear impulse to reduce duck;'s acceleration towards the ground
+		//Owen - Hovering (Falling). If the duck is going down (falling) and up or w is pressed, then apply small linear impulse to reduce duck's acceleration towards the ground
 		if (timeState >= 0.1f){
-			if ((Gdx.input.isKeyPressed(Input.Keys.SPACE)) && (duck_b2Body.getLinearVelocity().y<0)){
+			if ((Gdx.input.isKeyPressed(Input.Keys.UP) || Gdx.input.isKeyPressed(Input.Keys.W)) && (duck_b2Body.getLinearVelocity().y<0)){
 				duck_b2Body.applyLinearImpulse(new Vector2(0,0.8f), duck_b2Body.getWorldCenter(), true);
 				timeState = 0;
 				}
@@ -243,7 +260,7 @@ public class Morgan extends Sprite{
 		duck_b2Body.setLinearDamping(8.0f);
 		
 		//Owen - Removes linear damping if the duck is standing still (potentially about to fly) or is flying/jumping.
-		if ((duck_b2Body.getLinearVelocity().y!=0) | (duck_b2Body.getLinearVelocity().x==0) | (Gdx.input.isKeyPressed(Input.Keys.SPACE))){
+		if ((duck_b2Body.getLinearVelocity().y!=0) | (duck_b2Body.getLinearVelocity().x==0) | (Gdx.input.isKeyPressed(Input.Keys.SPACE)) | (Gdx.input.isKeyPressed(Input.Keys.UP)) | (Gdx.input.isKeyPressed(Input.Keys.W))){
 			duck_b2Body.setLinearDamping(0f);
 		}
 		
