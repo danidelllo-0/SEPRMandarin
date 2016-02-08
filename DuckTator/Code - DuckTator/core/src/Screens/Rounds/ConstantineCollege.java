@@ -32,7 +32,7 @@ public class ConstantineCollege extends Level implements Screen{
 	private DuckTator game;
 	
 	//Variable for the file path that links to the map rendered by this round.
-	private static String mapString = "Constantine/Constantine.tmx" ;
+	private static String mapString = "JamesCollege/Constantine.tmx" ;
 
 	
 	/*We're going to use a timer to know when to reset the hud to black.

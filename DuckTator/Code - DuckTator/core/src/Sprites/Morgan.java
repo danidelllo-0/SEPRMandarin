@@ -22,7 +22,7 @@ import Screens.Rounds.JamesCollege;
 public class Morgan extends Sprite{
 	
 	//Enumeration for our ducks states.
-	public enum State {FALLING,JUMPING,STANDING,RUNNING,FLYING};
+	public enum State {FALLING,JUMPING,STANDING,RUNNING};
 	//Creating our variables
 	public State currentState;
 	public State previousState;

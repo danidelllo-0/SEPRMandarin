@@ -33,7 +33,7 @@ public class JamesCollege extends Level implements Screen  {
 	private DuckTator game;
 	
 	//Variable for the file path that links to the map rendered by this round.
-	private static String mapString = "NewJames/JamesCollege/JamesCollege.tmx" ;
+	private static String mapString = "JamesCollege/JamesCollege.tmx" ;
 
 	//We'll be placing a 'boss' goose in this round. So we will be creating a Goose object.
 	private Goose boss;

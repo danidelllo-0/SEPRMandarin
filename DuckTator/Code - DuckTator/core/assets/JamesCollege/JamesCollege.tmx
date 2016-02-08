@@ -88,7 +88,7 @@
   <image source="Feather.png" width="74" height="75"/>
  </tileset>
  <tileset firstgid="20803" name="Health" tilewidth="64" tileheight="64" tilecount="20" columns="1">
-  <image source="../../Changes/heart.png" width="64" height="64"/>
+  <image source="../Changes/heart.png" width="64" height="64"/>
  </tileset>
  <layer name="Sky" width="700" height="30">
   <data encoding="base64" compression="zlib">
