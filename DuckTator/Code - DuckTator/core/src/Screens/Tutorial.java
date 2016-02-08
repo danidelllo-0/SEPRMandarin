@@ -25,7 +25,7 @@ public class Tutorial implements Screen {
 		this.game = game;
 		//Creating textures
 		background = new Texture("Menu/Tutorial/tutorial.png");
-		returnMenuTexture = new Texture("Menu/tutorial/return.png");
+		returnMenuTexture = new Texture("Menu/Tutorial/return.png");
 		
 		//Creating images to use on our stage
 		backgroundStage = new Image(background);
@@ -49,7 +49,7 @@ public class Tutorial implements Screen {
 		
 		//adding return button to the stage
 		stage.addActor(returnButton);
-		returnButton.setPosition(0, DuckTator.V_HEIGHT-100);
+		returnButton.setPosition(25, DuckTator.V_HEIGHT-145);
 		
 	}
 
