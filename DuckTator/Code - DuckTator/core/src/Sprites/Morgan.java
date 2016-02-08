@@ -21,8 +21,8 @@ import Screens.Rounds.JamesCollege;
 
 public class Morgan extends Sprite{
 	
-	//Enumeration for our ducks states.
-	public enum State {FALLING,JUMPING,STANDING,RUNNING};
+/////Enumeration for our ducks states.
+	public enum State {FALLING,JUMPING,STANDING,RUNNING,SWIMMING};
 	//Creating our variables
 	public State currentState;
 	public State previousState;
@@ -31,6 +31,8 @@ public class Morgan extends Sprite{
 	//Owen - Additional variables for the flying timer
 	public boolean allowedToFly = true;
 	public boolean hasBeenFlying = false;
+	//Frances
+	private boolean inwater = false;
 	
 	//This keeps track of how long we're in a state, e.g. how long we're in a running state.
 	private float stateTimer;
@@ -51,6 +53,9 @@ public class Morgan extends Sprite{
 	
 	//Morgan standing
 	private TextureRegion duckStand;
+	
+	//Frances - Morgan swimming
+	private TextureRegion duckSwim;
 	
 	Timer gtimer = new Timer();
 	float timeState=0f;
@@ -90,6 +95,11 @@ public class Morgan extends Sprite{
 		setBounds(0,0,32/DuckTator.PPM,32/DuckTator.PPM);
 		setRegion(duckStand);
 		
+		//Frances - New TextureRegion object - setting it equal to the area of the spritesheet representing Morgan swimming.
+		duckSwim = new TextureRegion(getTexture(),500,0,70,66);
+		//How big we should draw Morgan.
+		setBounds(0,0,32/DuckTator.PPM,32/DuckTator.PPM);
+		setRegion(duckSwim);
 	}
 	
 	public void update(float dt){
@@ -153,6 +163,18 @@ public class Morgan extends Sprite{
 			runningRight = true;
 		}
 		
+		//Frances - This is used to detect when the duck is in water, and so the swimming sprite can be introduced
+		//UNABLE TO DETECT IF DUCK IS IN WATER - NEEDS IMPLEMENTING
+		/*if (fdef.filter.maskBits == DuckTator.WATER_BIT)
+			inwater = true;
+		else
+			inwater= false;
+		*/
+		
+		//Frances
+		if (inwater==true)
+			region = duckSwim;
+		
 		/*Need to set the statetimer.
 		* Does our current state equal our previous state?
 		* If it does then our state timer + dt.
@@ -173,6 +195,9 @@ public class Morgan extends Sprite{
 			return State.FALLING;
 		else if (duck_b2Body.getLinearVelocity().x !=0)
 			return State.RUNNING;
+		//Frances - 	
+		else if (inwater == true)
+			return 	State.SWIMMING;
 		else
 			return State.STANDING;
 	}
@@ -208,8 +233,6 @@ public class Morgan extends Sprite{
 		fdef.filter.maskBits = DuckTator.GROUND_BIT | DuckTator.WATER_BIT| DuckTator.BRICK_BIT | DuckTator.BOMB_BIT| DuckTator.CAGE_BIT| DuckTator.BOMB_BIT| DuckTator.GROUND_OBJECT| DuckTator.FEATHER_BIT| DuckTator.HEALTH_BIT | DuckTator.ENEMY_HEAD| DuckTator.SPIKE_BIT| DuckTator.ENEMY_BIT;
 		//Now we need to add the fixture we've just created (the circle) to our body.
 		duck_b2Body.createFixture(fdef).setUserData(this);;
-
-
 	}
 	
 	public void handle_input(float dt){
