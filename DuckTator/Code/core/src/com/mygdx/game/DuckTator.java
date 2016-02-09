@@ -7,7 +7,7 @@ import Screens.MenuScreen;
 
 //*******************************************************************
 //DuckTator
-//
+//http://stackoverflow.com/questions/25635636/eclipse-exported-runnable-jar-not-showing-images
 //URL: https://moorhengames.wordpress.com/play-game/
 //*******************************************************************
 
