@@ -26,6 +26,7 @@ public class MenuScreen implements Screen {
 		//Creating our Textures
 		background = new Texture("Menu/background.png");
 		playTexture = new Texture("Menu/storyMode.png");
+		
 		tutorialTexture = new Texture("Menu/TutorialLogo.png");
 		menulogoTexture = new Texture("Menu/menulogo.png");
 		

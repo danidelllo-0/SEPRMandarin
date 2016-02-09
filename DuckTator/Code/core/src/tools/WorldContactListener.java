@@ -155,14 +155,14 @@ public class WorldContactListener implements ContactListener{
 			case DuckTator.DUCK_BIT | DuckTator.CAGE_BIT:
 				if (fixA.getFilterData().categoryBits == DuckTator.DUCK_BIT){
 					DuckTator.REGENERATION = true;
-					DuckTator.SPORTVILLAGE_UNLOCKED = true;
+					DuckTator.CONSTANTINE_UNLOCKED = true;
 					Hud.addScore(5000);
 					game.setScreen(new JamesCompleted(game));
 					
 					}
 				else {
 					DuckTator.REGENERATION = true;
-					DuckTator.SPORTVILLAGE_UNLOCKED = true;
+					DuckTator.CONSTANTINE_UNLOCKED = true;
 					game.setScreen(new JamesCompleted(game));
 					Hud.addScore(5000);
 					

@@ -19,11 +19,11 @@ import Screens.Rounds.ConstantineCollege;
 public class WorldMap implements Screen{
 	
 	private Texture background;
-	private Texture yorkSportTexture, libraryTexture, marketsquareTexture,roncookhubTexture, centralTexture, derwentTexture, halifaxTexture, jamesTexture;
+	private Texture alcuinTexture, constantineTexture, goodrickeTexture,langwithTexture, vanburghTexture, derwentTexture, halifaxTexture, jamesTexture;
 	
 	private Viewport viewport;
 	
-	private Image backgroundStage,yorkSportButton, libraryButton, marketButton, ronButton, centralButton, derwentButton, halifaxButton, jamesButton;
+	private Image backgroundStage,alcuinButton, constantineButton, goodrickeButton, langwithButton, vanburghButton, derwentButton, halifaxButton, jamesButton;
 	
 	public DuckTator game;
 	Stage stage;
@@ -35,27 +35,27 @@ public class WorldMap implements Screen{
 		viewport = new FitViewport(DuckTator.V_WIDTH, DuckTator.V_HEIGHT);
 		//Creating a texture for each of our rounds & the background.
 		background = new Texture("WorldMap/world_background.png");
-		yorkSportTexture = new Texture("WorldMap/York_Sport.png");
-		libraryTexture = new Texture("WorldMap/library.png");
-		marketsquareTexture = new Texture("WorldMap/Market_Square.png");
-		roncookhubTexture = new Texture("WorldMap/ronCook.png");
-		centralTexture = new Texture("WorldMap/Central_Hall.png");
+		alcuinTexture = new Texture("WorldMap/Alcuin.png");
+		constantineTexture = new Texture("WorldMap/Constantine.png");
+		goodrickeTexture = new Texture("WorldMap/Goodricke.png");
+		langwithTexture = new Texture("WorldMap/Langwith.png");
+		vanburghTexture = new Texture("WorldMap/Vanbrugh.png");
 		derwentTexture = new Texture("WorldMap/Derwent.png");
 		halifaxTexture = new Texture("WorldMap/Halifax.png");
 		jamesTexture = new Texture("WorldMap/James.png");
 		
 		//Creating images from our textures allowing us to place them on the stage.
 		backgroundStage = new Image(background);
-		yorkSportButton = new Image(yorkSportTexture);
-		libraryButton = new Image(libraryTexture);
-		marketButton = new Image(marketsquareTexture);
-		ronButton = new Image(roncookhubTexture);
-		centralButton = new Image(centralTexture);
+		alcuinButton = new Image(alcuinTexture);
+		constantineButton = new Image(constantineTexture);
+		goodrickeButton = new Image(goodrickeTexture);
+		langwithButton = new Image(langwithTexture);
+		vanburghButton = new Image(vanburghTexture);
 		derwentButton = new Image(derwentTexture);
 		halifaxButton = new Image(halifaxTexture);
 		jamesButton = new Image(jamesTexture);
 		
-		//Creating a stage to draw our backgroudn and buttons onto
+		//Creating a stage to draw our background and buttons onto
 		stage = new Stage(viewport);
 		
 		//Calling the method to draw our buttons to the screen.
@@ -78,38 +78,39 @@ public class WorldMap implements Screen{
 		
 		/*We add our button to the stage, initally it will be drawn into 0,0. We will have to re position it
 			to the correct place on the map. */
-		stage.addActor(ronButton);
+		stage.addActor(vanburghButton);
 		//re-positioning the button.
-		ronButton.setPosition(700, 250);
+		vanburghButton.setPosition(700, 250);
+		vanburghButton.setSize(116, 124);
 		
 		//The above method applies to the rest of the buttons. 
-		stage.addActor(yorkSportButton);
-		yorkSportButton.setPosition(800, 400);
-		yorkSportButton.setSize(120, 70);
+		stage.addActor(alcuinButton);
+		alcuinButton.setPosition(800, 400);
+		alcuinButton.setSize(106, 124);
 
-		stage.addActor(libraryButton);
-		libraryButton.setPosition(180, 400);
-		libraryButton.setSize(120, 85);
+		stage.addActor(constantineButton);
+		constantineButton.setPosition(180, 400);
+		constantineButton.setSize(90, 124);
 		
-		stage.addActor(marketButton);
-		marketButton.setPosition(90, 340);
-		marketButton.setSize(100, 75);
+		stage.addActor(goodrickeButton);
+		goodrickeButton.setPosition(90, 340);
+		goodrickeButton.setSize(115, 124);
 				
-		stage.addActor(centralButton);
-		centralButton.setPosition(90, 260);
-		centralButton.setSize(100, 75);
+		stage.addActor(langwithButton);
+		langwithButton.setPosition(90, 260);
+		langwithButton.setSize(124, 112);
 		
 		stage.addActor(jamesButton);
 		jamesButton.setPosition(60, 180);
-		jamesButton.setSize(100, 75);
+		jamesButton.setSize(98, 124);
 	
 		stage.addActor(halifaxButton);
 		halifaxButton.setPosition(290, 1);
-		halifaxButton.setSize(100, 75);
+		halifaxButton.setSize(124, 70);
 		
 		stage.addActor(derwentButton);
 		derwentButton.setPosition(200, 300);
-		derwentButton.setSize(150, 75);
+		derwentButton.setSize(97, 124);
 		
 	}
 	
@@ -117,7 +118,7 @@ public class WorldMap implements Screen{
 		
 	
 		
-		yorkSportButton.addListener(new ClickListener(){
+		constantineButton.addListener(new ClickListener(){
 			@Override
 			public void clicked(InputEvent event, float x, float y)
 			{
@@ -126,11 +127,11 @@ public class WorldMap implements Screen{
 			
 				});
 		
-		libraryButton.addListener(new ClickListener(){
+		alcuinButton.addListener(new ClickListener(){
 			@Override
 			public void clicked(InputEvent event, float x, float y)
 			{
-				System.out.println("library");
+				System.out.println("Alcuin");
 			}
 			
 				});
@@ -147,11 +148,11 @@ public class WorldMap implements Screen{
 				});
 		
 		
-		centralButton.addListener(new ClickListener(){
+		langwithButton.addListener(new ClickListener(){
 			@Override
 			public void clicked(InputEvent event, float x, float y)
 			{
-				System.out.println("Central Hall");
+				System.out.println("Langwith");
 			}
 			
 				});
@@ -166,11 +167,11 @@ public class WorldMap implements Screen{
 			
 				});
 		
-		marketButton.addListener(new ClickListener(){
+		vanburghButton.addListener(new ClickListener(){
 			@Override
 			public void clicked(InputEvent event, float x, float y)
 			{
-				System.out.println("Market");
+				System.out.println("Vanburgh");
 			}
 			
 				});
@@ -193,19 +194,19 @@ public class WorldMap implements Screen{
 	private void lockMap() {
 		/*Checks if the boolean for each round is false. If it does equal false then set the color
 			to black to show it's locked and clear the listener so it cannot be clicked on. */
-		if (DuckTator.SPORTVILLAGE_UNLOCKED == false){
-			yorkSportButton.setColor(Color.BLACK);
-			yorkSportButton.clearListeners();
+		if (DuckTator.ALCUIN_UNLOCKED == false){
+			alcuinButton.setColor(Color.BLACK);
+			alcuinButton.clearListeners();
 		}
 		
-		if(DuckTator.MARKET_UNLOCKED == false){
-			marketButton.setColor(Color.BLACK);
-			marketButton.clearListeners();
+		if(DuckTator.CONSTANTINE_UNLOCKED == false){
+			constantineButton.setColor(Color.BLACK);
+			constantineButton.clearListeners();
 		}
 		
-		if (DuckTator.CENTRAL_UNLOCKED == false){
-			centralButton.setColor(Color.BLACK);
-			centralButton.clearListeners();
+		if (DuckTator.GOODRICKE_UNLOCKED == false){
+			goodrickeButton.setColor(Color.BLACK);
+			goodrickeButton.clearListeners();
 		}
 		
 		if (DuckTator.DERWENT_UNLOCKED == false){
@@ -223,14 +224,14 @@ public class WorldMap implements Screen{
 			jamesButton.clearListeners();
 		}
 		
-		if (DuckTator.LIBRARY_UNLOCKED == false){
-			libraryButton.setColor(Color.BLACK);
-			libraryButton.clearListeners();
+		if (DuckTator.LANGWITH_UNLOCKED == false){
+			langwithButton.setColor(Color.BLACK);
+			langwithButton.clearListeners();
 		}
 		
-		if (DuckTator.RONCOOK_UNLOCKED == false){
-			ronButton.setColor(Color.BLACK);
-			ronButton.clearListeners();
+		if (DuckTator.VANBURGH_UNLOCKED == false){
+			vanburghButton.setColor(Color.BLACK);
+			vanburghButton.clearListeners();
 		}
 	}
 
@@ -280,11 +281,11 @@ public class WorldMap implements Screen{
 	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub
-		yorkSportTexture.dispose();
-		libraryTexture.dispose();
-		marketsquareTexture.dispose();
-		roncookhubTexture.dispose();
-		centralTexture.dispose();
+		alcuinTexture.dispose();
+		constantineTexture.dispose();
+		goodrickeTexture.dispose();
+		langwithTexture.dispose();
+		vanburghTexture.dispose();
 		derwentTexture.dispose();
 		halifaxTexture.dispose();
 		jamesTexture.dispose();

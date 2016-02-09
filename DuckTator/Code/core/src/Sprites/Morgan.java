@@ -257,7 +257,7 @@ public class Morgan extends Sprite{
 				hasBeenFlying = false;
 				timeStateFlyingLock = 0f;
 			}
-		if ((allowedToFly == false) && (timeStateFlyingLock >= 4f)){
+		if ((allowedToFly == false) && (timeStateFlyingLock >= 2f)){
 			allowedToFly = true;
 			}
 			

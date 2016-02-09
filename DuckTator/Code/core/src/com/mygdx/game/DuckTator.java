@@ -55,11 +55,11 @@ public class DuckTator extends Game {
 	
 	//These booleans determine what levels are going to be unlocked on the world map.
 	public static boolean JAMES_UNLOCKED = true;
-	public static boolean SPORTVILLAGE_UNLOCKED = true;
-	public static boolean LIBRARY_UNLOCKED = false;
-	public static boolean MARKET_UNLOCKED = false;
-	public static boolean RONCOOK_UNLOCKED = false;
-	public static boolean CENTRAL_UNLOCKED = false;
+	public static boolean CONSTANTINE_UNLOCKED = true;
+	public static boolean ALCUIN_UNLOCKED = false;
+	public static boolean GOODRICKE_UNLOCKED = false;
+	public static boolean LANGWITH_UNLOCKED = false;
+	public static boolean VANBURGH_UNLOCKED = false;
 	public static boolean DERWENT_UNLOCKED = false;
 	public static boolean HALIFAX_UNLOCKED = false;
 
