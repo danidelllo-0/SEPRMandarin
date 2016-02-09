@@ -18,7 +18,7 @@ public class ConstantineCollege extends Level implements Screen{
 	//private static final int BLOCKS_LAYER = 22;
 	private static final int BOUNDARIES_LAYER = 11;
 	private static final int GROUND_LAYER = 5;
-	//private static final int CAGE_LAYER = 25;
+	private static final int CAGE_LAYER = 12;
 	private static final int DEATH_LAYER = 10;
 	private static final int FEATHER_LAYER = 6;
 	//private static final int BUILDINGS_LAYER = 28;
@@ -61,7 +61,7 @@ public class ConstantineCollege extends Level implements Screen{
 		//BRICKS LAYER
 		//b2_world_creator.rectangle_layer(BLOCKS_LAYER, DuckTator.BRICK_BIT);
 		//CAGE LAYER
-		//b2_world_creator.rectangle_layer(CAGE_LAYER, DuckTator.CAGE_BIT);
+		b2_world_creator.rectangle_layer(CAGE_LAYER, DuckTator.CAGE_BIT);
 		//BOUNDARIES LAYER - So Morgan can't fall off the map
 		b2_world_creator.rectangle_layer(BOUNDARIES_LAYER, DuckTator.GROUND_BIT);
 		//BUILDING LAYER

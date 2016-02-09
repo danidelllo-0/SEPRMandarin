@@ -1,8 +1,8 @@
 package com.mygdx.game;
 
-import static org.junit.Assert.*;
+//import static org.junit.Assert.*;
 
-import org.junit.Test;
+//import org.junit.Test;
 
 import Scenes.Hud;
 
