@@ -10,6 +10,7 @@ import com.badlogic.gdx.physics.box2d.Manifold;
 import com.mygdx.game.DuckTator;
 import Scenes.Hud;
 import Screens.JamesCompleted;
+import Screens.WorldMap;
 import Sprites.Morgan;
 import Sprites.Collectables.Feather;
 import Sprites.Collectables.Health;
@@ -153,20 +154,24 @@ public class WorldContactListener implements ContactListener{
 				
 			//TESTING IF THE DUCK COLLIDED WITH THE CAGE	
 			case DuckTator.DUCK_BIT | DuckTator.CAGE_BIT:
-				if (fixA.getFilterData().categoryBits == DuckTator.DUCK_BIT){
-					DuckTator.REGENERATION = true;
-					DuckTator.CONSTANTINE_UNLOCKED = true;
-					Hud.addScore(5000);
-					game.setScreen(new JamesCompleted(game));
-					
+				if (fixA.getFilterData().categoryBits == DuckTator.DUCK_BIT){				
 					}
-				else {
-					DuckTator.REGENERATION = true;
-					DuckTator.CONSTANTINE_UNLOCKED = true;
-					game.setScreen(new JamesCompleted(game));
-					Hud.addScore(5000);
-					
+				else {	
 				}
+				
+				if (player.lvl==1) DuckTator.LANGWITH_UNLOCKED=true;
+				if (player.lvl==2) DuckTator.GOODRICKE_UNLOCKED=true;
+				if (player.lvl==3) DuckTator.HALIFAX_UNLOCKED=true;
+				if (player.lvl==4) DuckTator.DERWENT_UNLOCKED=true;
+				if (player.lvl==5) DuckTator.ALCUIN_UNLOCKED=true;
+				if (player.lvl==6) DuckTator.VANBURGH_UNLOCKED=true;
+				if (player.lvl==7) DuckTator.JAMES_UNLOCKED=true;
+				//if (player.lvl==8) win!
+				
+				Hud.addScore(5000);
+				game.score=Hud.getScore();
+				game.health=Hud.getHealth();
+				game.setScreen(new WorldMap(game));//new JamesCompleted(game));
 				break;				
 		}			
 	}
