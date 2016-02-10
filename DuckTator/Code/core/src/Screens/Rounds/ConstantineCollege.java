@@ -88,6 +88,8 @@ public class ConstantineCollege extends Level implements Screen{
 		world.setContactListener(new WorldContactListener(game,player));
 		
 		player.lvl=1;
+		
+		hud.setScoreHealth(game.score, game.health);
 	}
 
 	public void handleInput(float delta){

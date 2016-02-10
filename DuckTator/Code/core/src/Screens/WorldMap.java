@@ -80,24 +80,24 @@ public class WorldMap implements Screen{
 			to the correct place on the map. */
 		stage.addActor(vanburghButton);
 		//re-positioning the button.
-		vanburghButton.setPosition(700, 250);
+		vanburghButton.setPosition(50, 350);
 		vanburghButton.setSize(116, 124);
 		
 		//The above method applies to the rest of the buttons. 
 		stage.addActor(alcuinButton);
-		alcuinButton.setPosition(800, 400);
+		alcuinButton.setPosition(200,400);
 		alcuinButton.setSize(106, 124);
 
 		stage.addActor(constantineButton);
-		constantineButton.setPosition(180, 400);
+		constantineButton.setPosition(940, 400);
 		constantineButton.setSize(90, 124);
 		
 		stage.addActor(goodrickeButton);
-		goodrickeButton.setPosition(90, 340);
+		goodrickeButton.setPosition(650, 300);
 		goodrickeButton.setSize(115, 124);
 				
 		stage.addActor(langwithButton);
-		langwithButton.setPosition(90, 260);
+		langwithButton.setPosition(860, 300);
 		langwithButton.setSize(124, 112);
 		
 		stage.addActor(jamesButton);
@@ -105,11 +105,11 @@ public class WorldMap implements Screen{
 		jamesButton.setSize(98, 124);
 	
 		stage.addActor(halifaxButton);
-		halifaxButton.setPosition(290, 1);
+		halifaxButton.setPosition(220, 70);
 		halifaxButton.setSize(124, 70);
 		
 		stage.addActor(derwentButton);
-		derwentButton.setPosition(200, 300);
+		derwentButton.setPosition(200, 200);
 		derwentButton.setSize(97, 124);
 		
 	}

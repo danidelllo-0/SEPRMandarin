@@ -93,9 +93,11 @@ public class JamesCollege extends Level implements Screen  {
 		
 		//Calling the method to create the 'boss goose'
 		bossGoose();
+		
+		
 		player.lvl=8;
 			
-		
+		hud.setScoreHealth(game.score, game.health);
 	}
 	
 	

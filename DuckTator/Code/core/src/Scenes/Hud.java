@@ -119,10 +119,28 @@ public class Hud implements Disposable{
 	//Access outside the class to increase the score by the value passed in.	
 	public static void addScore(int value){
 		score += value;
+	
 		scoreLabel.setText(String.format("SCORE: %06d", score));
 	}
 	
+	public void setScoreHealth(int Svalue,int Hvalue)
+	{
+		score = Svalue;
+		health_value = Hvalue;
+		healthLabel.setText(String.format("HEALTH: %d", health_value));
+		scoreLabel.setText(String.format("SCORE: %06d", score));
+	}
+	
+	public static int getScore()
+	{
+		return score;
+	}
 
+	public static int getHealth()
+	{
+		return health_value;
+	}
+	
 	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub

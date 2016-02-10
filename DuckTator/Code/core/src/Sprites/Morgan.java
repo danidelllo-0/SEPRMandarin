@@ -309,7 +309,7 @@ public class Morgan extends Sprite{
 	{	
 		//If Morgan is killed set the screen to the beginning of the level.
 		if(level==8)
-		game.setScreen(new JamesCollege(game));
+			game.setScreen(new JamesCollege(game));
 		if(level==1)
 			game.setScreen(new ConstantineCollege(game));
 	}

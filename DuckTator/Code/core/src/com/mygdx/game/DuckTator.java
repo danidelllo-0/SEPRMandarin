@@ -27,7 +27,8 @@ public class DuckTator extends Game {
 	//object of size 5, this would be 5m in the physics world. We scale everything so 1 meter is 100 pixels.
 	public static final float PPM = 100;
 	
-	
+	public int score = 0;
+	public int health = 10;
 	
 	
 	//*****FILTER BITS*****
@@ -54,7 +55,7 @@ public class DuckTator extends Game {
 	public static boolean REGENERATION = false;
 	
 	//These booleans determine what levels are going to be unlocked on the world map.
-	public static boolean JAMES_UNLOCKED = true;
+	public static boolean JAMES_UNLOCKED = false;
 	public static boolean CONSTANTINE_UNLOCKED = true;
 	public static boolean ALCUIN_UNLOCKED = false;
 	public static boolean GOODRICKE_UNLOCKED = false;
