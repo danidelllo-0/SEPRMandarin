@@ -281,8 +281,7 @@ public class Morgan extends Sprite{
 		//Hovering. If the duck is going down (falling) and up or w is pressed, then reduce the strength of gravity.
 		if (getState() == State.HOVERING)
 			duck_b2Body.setGravityScale(0.2f);
-		
-		if (getState() != State.HOVERING)
+		else
 			duck_b2Body.setGravityScale(1f);
 		
 		//Removes linear damping if the duck is running to reduce smooth deceleration.
