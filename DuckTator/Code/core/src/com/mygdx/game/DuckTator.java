@@ -50,10 +50,6 @@ public class DuckTator extends Game {
 	public static final short STOPPER_BIT = 4096;
 	public static final short WATER_BIT = 8192;
 	
-	//Our super powers. Initially regeneration is false, once James college is completed this boolean can be set to 
-	//true allowing for the key press of r to regenerate health.
-	public static boolean REGENERATION = false;
-	
 	//These booleans determine what levels are going to be unlocked on the world map.
 	public static boolean JAMES_UNLOCKED = false;
 	public static boolean CONSTANTINE_UNLOCKED = true;
