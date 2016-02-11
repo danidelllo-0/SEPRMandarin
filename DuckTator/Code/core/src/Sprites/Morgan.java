@@ -21,19 +21,18 @@ import Screens.Rounds.JamesCollege;
 
 public class Morgan extends Sprite{
 	
-/////Enumeration for our ducks states.
+	//Enumeration for our ducks states.
 	public enum State {FALLING,JUMPING,STANDING,RUNNING,FLYING,HOVERING,SWIMMING};
 	//Creating our variables
 	public State currentState;
 	public State previousState;
 	private Animation duckRun;
 	private boolean runningRight;
-	//Owen - Additional variables for the flying timer
+	//Additional variables for the flying timer
 	public boolean allowedToFly = true;
 	public boolean hasBeenFlying = false;
 	public boolean hovering = false;
 	public float xPositionBeforeJump = 0;
-	//Frances
 	private boolean inwater = false;
 	
 	//This keeps track of how long we're in a state, e.g. how long we're in a running state.
@@ -56,12 +55,12 @@ public class Morgan extends Sprite{
 	//Morgan standing
 	private TextureRegion duckStand;
 	
-	//Frances - Morgan swimming
+	//Morgan swimming
 	private TextureRegion duckSwim;
 	
 	Timer gtimer = new Timer();
 	float timeState=0f;
-	//Owen - Additional variable for the flying timer
+	//Additional variable for the flying timer
 	float timeStateFlyingLock=0f;
 	
 	public Morgan(World world, DuckTator game, TextureAtlas atlas,int x_pos,int y_pos ){
@@ -97,7 +96,7 @@ public class Morgan extends Sprite{
 		setBounds(0,0,32/DuckTator.PPM,32/DuckTator.PPM);
 		setRegion(duckStand);
 		
-		//Frances - New TextureRegion object - setting it equal to the area of the spritesheet representing Morgan swimming.
+		//New TextureRegion object - setting it equal to the area of the spritesheet representing Morgan swimming.
 		duckSwim = new TextureRegion(getTexture(),500,0,70,66);
 		//How big we should draw Morgan.
 		setBounds(0,0,32/DuckTator.PPM,32/DuckTator.PPM);
@@ -165,15 +164,6 @@ public class Morgan extends Sprite{
 			runningRight = true;
 		}
 		
-		//Frances - This is used to detect when the duck is in water, and so the swimming sprite can be introduced
-		//UNABLE TO DETECT IF DUCK IS IN WATER - NEEDS IMPLEMENTING
-		/*if (fdef.filter.maskBits == DuckTator.WATER_BIT)
-			inwater = true;
-		else
-			inwater= false;
-		*/
-		
-		//Frances
 		if (inwater==true)
 			region = duckSwim;
 		
@@ -271,7 +261,7 @@ public class Morgan extends Sprite{
 			}
 			
 		//Flying. If the duck is jumping or flying then if either up or w is pressed apply linear impulse in y direction (go up)
-		//The duck can only fly up to a certian height, at a certain velocity and for a limited x distance.
+		//The duck can only fly up to a certain height, at a certain velocity and for a limited x distance.
 		if ((Gdx.input.isKeyPressed(Input.Keys.UP) || Gdx.input.isKeyPressed(Input.Keys.W)) && (getState() == State.JUMPING | getState() == State.FLYING) && (allowedToFly == true) && (duck_b2Body.getLinearVelocity().y<=2) && (duck_b2Body.getPosition().y<4) && (((duck_b2Body.getPosition().x) - xPositionBeforeJump) < 1.3)) {
 			duck_b2Body.applyLinearImpulse(new Vector2(0,1f), duck_b2Body.getWorldCenter(), true);
 			timeState = 0;
@@ -310,11 +300,6 @@ public class Morgan extends Sprite{
 			game.setScreen(new JamesCollege(game));
 		if(level==1)
 			game.setScreen(new ConstantineCollege(game));
-	}
-	
-	public void unlock_regeneration(){
-		//Updates the boolean so regeneration can be used.
-		DuckTator.REGENERATION = true;
 	}
 
 
