@@ -18,6 +18,7 @@ import com.mygdx.game.DuckTator;
 import Scenes.Hud;
 import Screens.Rounds.ConstantineCollege;
 import Screens.Rounds.JamesCollege;
+import Screens.Rounds.LangwithCollege;
 
 public class Morgan extends Sprite{
 	
@@ -300,6 +301,8 @@ public class Morgan extends Sprite{
 			game.setScreen(new JamesCollege(game));
 		if(level==1)
 			game.setScreen(new ConstantineCollege(game));
+		if(level==2)
+			game.setScreen(new LangwithCollege(game));
 	}
 
 
