@@ -87,7 +87,7 @@
  <tileset firstgid="20802" name="Feather" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="Feather.png" width="74" height="75"/>
  </tileset>
- <tileset firstgid="20803" name="Health" tilewidth="64" tileheight="64" tilecount="20" columns="1">
+ <tileset firstgid="20803" name="Health" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="../Changes/heart.png" width="64" height="64"/>
  </tileset>
  <layer name="Sky" width="700" height="30">
@@ -327,7 +327,7 @@
   <object id="947" x="11104" y="336" width="48" height="48"/>
  </objectgroup>
  <objectgroup name="Cage">
-  <object id="786" x="10944" y="288" width="80" height="64"/>
+  <object id="786" x="10928" y="208" width="116" height="224"/>
  </objectgroup>
  <objectgroup name="Death">
   <object id="787" x="1744" y="480" width="144"/>
@@ -436,7 +436,6 @@
   <object id="992" x="8958" y="318" width="1" height="67"/>
   <object id="995" x="9058" y="318" height="66"/>
   <object id="997" x="9163" y="320" height="62"/>
-  <object id="998" x="11109" y="681"/>
   <object id="1020" x="5824" y="384" height="48"/>
  </objectgroup>
  <objectgroup name="water">
