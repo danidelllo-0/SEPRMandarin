@@ -33,7 +33,7 @@ public class Morgan extends Sprite{
 	private Animation duckRun;
 	private boolean runningRight;
 	//Additional variables for the flying timer
-	public boolean allowedToFly = true;
+	public static boolean allowedToFly = true;
 	public boolean hasBeenFlying = false;
 	public boolean hovering = false;
 	public float xPositionBeforeJump = 0;
@@ -65,7 +65,7 @@ public class Morgan extends Sprite{
 	Timer gtimer = new Timer();
 	float timeState=0f;
 	//Additional variable for the flying timer
-	float timeStateFlyingLock=0f;
+	public static float timeStateFlyingLock=0f;
 	
 	public Morgan(World world, DuckTator game, TextureAtlas atlas,int x_pos,int y_pos ){
 		super(atlas.findRegion("ducky"));
@@ -242,7 +242,7 @@ public class Morgan extends Sprite{
 		
 		timeState+=Gdx.graphics.getDeltaTime();
 		timeStateFlyingLock+=Gdx.graphics.getDeltaTime();
-	
+		
 		//Jumping. If the duck is on the ground and the space bar is pressed then apply linear impulse in y direction.
 		//Record the xPosition of the duck when it jumps - this is used for flying
 		//Height of jump is varied in Vector2(0,3.8f)
@@ -296,7 +296,7 @@ public class Morgan extends Sprite{
 			//System.out.println("MOVING LEFT");
 		}
 	}
-	
+
 	public void dead_morgan(int level)
 	{	
 		//If Morgan is killed set the screen to the beginning of the level.

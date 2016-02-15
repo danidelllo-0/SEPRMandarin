@@ -13,6 +13,8 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.game.DuckTator;
 
+import Sprites.Morgan;
+
 
 public class Hud implements Disposable{
 	/*The hud is where the score, health, level and all the key information is kept.
@@ -33,6 +35,8 @@ public class Hud implements Disposable{
 	private float timeCount;
 	//
 	private String task_string = " ";
+	private float flyingTimer;
+	//private float flyingUpdateTimeInterval=0.1f;
 	
 	//The wigits we will be placing onto our stage are 'Label's. So we need one for each of our key pieces
 	//of information.
@@ -42,6 +46,7 @@ public class Hud implements Disposable{
 	static Label healthLabel;
 	static Label scoreLabel;
 	static Label task;
+	static Label flyingLabel;
 	
 	public Hud(SpriteBatch sb){
 		//Initialising variables setting timer/score/health
@@ -49,6 +54,7 @@ public class Hud implements Disposable{
 		timeCount = 0;
 		score = 0;
 		health_value = 10;
+		flyingTimer = 0.1f;
 		
 		//Setting our viewport.
 		viewport = new FitViewport(DuckTator.V_WIDTH, DuckTator.V_HEIGHT, new OrthographicCamera());
@@ -66,7 +72,8 @@ public class Hud implements Disposable{
 		countdownLabel = new Label(String.format("TIME: %d", worldTimer),new Label.LabelStyle(new BitmapFont(),Color.WHITE));
 		scoreLabel = new Label(String.format("SCORE: %06d", score),new Label.LabelStyle(new BitmapFont(),Color.WHITE));
 		healthLabel = new Label(String.format("HEALTH: %d", health_value),new Label.LabelStyle(new BitmapFont(),Color.WHITE));
-		task = new Label(String.format("TASK: %s",task_string),new Label.LabelStyle(new BitmapFont(),Color.WHITE) );
+		task = new Label(String.format("OBJECTIVE: %s",task_string),new Label.LabelStyle(new BitmapFont(),Color.WHITE) );
+		flyingLabel = new Label(String.format("Flying Timer: %s",flyingTimer),new Label.LabelStyle(new BitmapFont(),Color.WHITE) );
 	
 		//Adding the labels to our table
 		//if we have multiple things that "expandX" they all have equal space. We just pad down from the top 5 pixels.
@@ -74,6 +81,7 @@ public class Hud implements Disposable{
 		table.add(healthLabel).expandX().pad(2);
 		table.add(countdownLabel).expandX().pad(2);
 		table.add(task).expandX().pad(2);
+		table.add(flyingLabel).expandX().pad(2);
 		
 		//add the table to our stage!
 		stage.addActor(table);
@@ -82,7 +90,7 @@ public class Hud implements Disposable{
 	
 	public void update(float dt){
 		//the update method is going to be called 60 times a second by the render method.
-		//dt is just approximately 1/60. So summing dt up we can compute when a second has passed. 
+		//dt is just approximately 1/60. So summing it up we can compute when a second has passed. 
 		timeCount += dt;
 		
 		//If the timeCount is equal/greater than 1 then 1 second has passed.
@@ -94,6 +102,16 @@ public class Hud implements Disposable{
 			//Setting the timeCoutn back to 0 so we can wait for another second to pass
 			timeCount = 0;
 			
+		}
+		if (!Morgan.allowedToFly){
+			if (Morgan.timeStateFlyingLock >= flyingTimer){
+				flyingLabel.setText(String.format("Flying Timer: %s", String.format("%.1f", 2 - Morgan.timeStateFlyingLock)));
+				flyingTimer += 0.1f;
+			}
+		}
+		else{
+			flyingTimer = 0.1f;
+			flyingLabel.setText(String.format("Flying Timer: %s", 0));
 		}
 	}
 	
@@ -116,7 +134,7 @@ public class Hud implements Disposable{
 	//sets new task
 	public void setTask(String task_str)
 	{
-		task.setText(String.format("TASK: %s",task_str));
+		task.setText(String.format("OBJECTIVE: %s",task_str));
 	}
 	
 	//Access outside the class to set health back to 10.
