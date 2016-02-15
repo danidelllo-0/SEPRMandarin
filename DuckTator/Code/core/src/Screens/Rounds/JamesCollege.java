@@ -98,6 +98,7 @@ public class JamesCollege extends Level implements Screen  {
 		player.lvl=8;
 			
 		hud.setScoreHealth(game.score, game.health);
+		hud.setTask("Liberate James!");
 	}
 	
 	

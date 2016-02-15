@@ -90,6 +90,7 @@ public class HalifaxCollege extends Level implements Screen{
 		player.lvl=4;
 		
 		hud.setScoreHealth(game.score, game.health);
+		hud.setTask("Liberate Halifax!");
 	}
 
 	public void handleInput(float delta){

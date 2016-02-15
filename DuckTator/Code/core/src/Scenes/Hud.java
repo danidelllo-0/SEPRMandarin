@@ -31,7 +31,8 @@ public class Hud implements Disposable{
 	private static int score;
 	//Will count to a second - used for colouring the hud.
 	private float timeCount;
-	
+	//
+	private String task_string = " ";
 	
 	//The wigits we will be placing onto our stage are 'Label's. So we need one for each of our key pieces
 	//of information.
@@ -40,6 +41,7 @@ public class Hud implements Disposable{
 	public Label worldLabel;
 	static Label healthLabel;
 	static Label scoreLabel;
+	static Label task;
 	
 	public Hud(SpriteBatch sb){
 		//Initialising variables setting timer/score/health
@@ -64,12 +66,14 @@ public class Hud implements Disposable{
 		countdownLabel = new Label(String.format("TIME: %d", worldTimer),new Label.LabelStyle(new BitmapFont(),Color.WHITE));
 		scoreLabel = new Label(String.format("SCORE: %06d", score),new Label.LabelStyle(new BitmapFont(),Color.WHITE));
 		healthLabel = new Label(String.format("HEALTH: %d", health_value),new Label.LabelStyle(new BitmapFont(),Color.WHITE));
+		task = new Label(String.format("TASK: %s",task_string),new Label.LabelStyle(new BitmapFont(),Color.WHITE) );
 	
 		//Adding the labels to our table
 		//if we have multiple things that "expandX" they all have equal space. We just pad down from the top 5 pixels.
 		table.add(scoreLabel).expandX().pad(2);
 		table.add(healthLabel).expandX().pad(2);
 		table.add(countdownLabel).expandX().pad(2);
+		table.add(task).expandX().pad(2);
 		
 		//add the table to our stage!
 		stage.addActor(table);
@@ -107,6 +111,12 @@ public class Hud implements Disposable{
 			healthLabel.setText(String.format("HEALTH: %d", health_value));
 		}
 		
+	}
+	
+	//sets new task
+	public void setTask(String task_str)
+	{
+		task.setText(String.format("TASK: %s",task_str));
 	}
 	
 	//Access outside the class to set health back to 10.
