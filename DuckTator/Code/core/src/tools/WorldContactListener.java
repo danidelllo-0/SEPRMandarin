@@ -17,6 +17,7 @@ import Sprites.Collectables.Health;
 import Sprites.Enemy.BasketBomb;
 import Sprites.Enemy.Enemy;
 import Sprites.Morgan;
+import Screens.LevelCompleted;
 
 public class WorldContactListener implements ContactListener{
 	//A contact listener is what is CALLED when two fixtures COLLIDE with each other.
@@ -102,10 +103,10 @@ public class WorldContactListener implements ContactListener{
 			case DuckTator.ENEMY_BIT | DuckTator.DUCK_BIT:
 				if (fixA.getFilterData().categoryBits == DuckTator.ENEMY_BIT){
 					((Enemy) fixA.getUserData()).reverseVelocity(true, false);
-					((Enemy) fixA.getUserData()).hitOnBody();
+					((Enemy) fixA.getUserData()).hitOnBody(player);
 				}else{
 					((Enemy) fixB.getUserData()).reverseVelocity(true, false);
-					((Enemy) fixB.getUserData()).hitOnBody();
+					((Enemy) fixB.getUserData()).hitOnBody(player);
 				}
 				break;
 			
@@ -144,11 +145,11 @@ public class WorldContactListener implements ContactListener{
 			//TESTING IF THE DUCK HIT A BOMB	
 			case DuckTator.DUCK_BIT | DuckTator.BOMB_BIT:
 				if (fixA.getFilterData().categoryBits == DuckTator.BOMB_BIT){
-					((BasketBomb) fixA.getUserData()).hitOnBody();
+					((BasketBomb) fixA.getUserData()).hitOnBody(player);
 				}
 				else {
 					
-					((BasketBomb) fixB.getUserData()).hitOnBody();
+					((BasketBomb) fixB.getUserData()).hitOnBody(player);
 				}
 				break;
 				
@@ -159,19 +160,35 @@ public class WorldContactListener implements ContactListener{
 				else {	
 				}
 				
-				if (player.lvl==1) DuckTator.LANGWITH_UNLOCKED=true;
-				if (player.lvl==2) DuckTator.GOODRICKE_UNLOCKED=true;
-				if (player.lvl==3) DuckTator.HALIFAX_UNLOCKED=true;
-				if (player.lvl==4) DuckTator.DERWENT_UNLOCKED=true;
-				if (player.lvl==5) DuckTator.ALCUIN_UNLOCKED=true;
-				if (player.lvl==6) DuckTator.VANBURGH_UNLOCKED=true;
-				if (player.lvl==7) DuckTator.JAMES_UNLOCKED=true;
+				if (player.lvl==1){
+					DuckTator.LANGWITH_UNLOCKED=true;
+				}
+				if (player.lvl==2){
+					DuckTator.GOODRICKE_UNLOCKED=true;
+				}
+				if (player.lvl==3){
+					DuckTator.HALIFAX_UNLOCKED=true;
+				}
+				if (player.lvl==4){
+					DuckTator.DERWENT_UNLOCKED=true;
+				}
+				if (player.lvl==5) {
+					DuckTator.ALCUIN_UNLOCKED=true;
+				}
+				if (player.lvl==6){
+					DuckTator.VANBURGH_UNLOCKED=true;
+				}
+				if (player.lvl==7){
+					DuckTator.JAMES_UNLOCKED=true;
+				}
 				//if (player.lvl==8) win!
+				
+				
 				
 				Hud.addScore(5000);
 				game.score=Hud.getScore();
 				game.health=Hud.getHealth();
-				game.setScreen(new WorldMap(game));//new JamesCompleted(game));
+				game.setScreen(new LevelCompleted(game,player.lvl));//new JamesCompleted(game));
 				break;				
 		}			
 	}

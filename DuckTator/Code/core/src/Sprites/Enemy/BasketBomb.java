@@ -12,6 +12,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.DuckTator;
 import Scenes.Hud;
+import Sprites.Morgan;
 
 public class BasketBomb extends Enemy {
 
@@ -87,7 +88,7 @@ public class BasketBomb extends Enemy {
 	}
 
 	@Override
-	public void hitOnBody() {
+	public void hitOnBody(Morgan player) {
 		Gdx.gl.glClearColor(255f, 0, 0, 0);
 		//Set the boolean because we want to destroy the bomb.
 		setToDestroy = true;
@@ -97,7 +98,7 @@ public class BasketBomb extends Enemy {
 			
 		//If his health is 0 and the bomb hits Morgan, we want to kill Korgan.
 		}else if (Hud.health_value == 0 )
-			killed_morgan();
+			killed_morgan(player);
 		
 		
 	}

@@ -87,7 +87,7 @@ public class LangwithCollege extends Level implements Screen{
 		* */
 		world.setContactListener(new WorldContactListener(game,player));
 		
-		player.lvl=1;
+		player.lvl=2;
 		
 		hud.setScoreHealth(game.score, game.health);
 	}

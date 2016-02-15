@@ -44,7 +44,7 @@ public class ConstantineCollege extends Level implements Screen{
 	
 	public ConstantineCollege(DuckTator game){
 		//Calling the LEVEL class constructor. Passing in the map!
-		super(game, mapString,670,320);
+		super(game, mapString,200,320);
 				
 		//This brings in our game class, particularly allowing for us to use the SetScreen method!
 		this.game = game;	

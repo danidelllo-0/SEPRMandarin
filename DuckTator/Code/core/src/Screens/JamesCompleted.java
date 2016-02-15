@@ -21,8 +21,10 @@ public class JamesCompleted implements Screen{
 	private DuckTator game;
 	private Stage stage;
 	
-	public JamesCompleted(DuckTator game){
+	public JamesCompleted(DuckTator game,int lvl_completed){
 		this.game = game;
+		
+		
 		//Creating the textures.
 		background = new Texture("RoundCompleted/JamesCompleted.png");
 		returnWorldMapTexture = new Texture ("RoundCompleted/returnworldmap.png");

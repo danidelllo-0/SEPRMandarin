@@ -7,6 +7,7 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.World;
 import com.mygdx.game.DuckTator;
 import Screens.GameOver;
+import Sprites.Morgan;
 
 public abstract class Enemy extends Sprite{
 	
@@ -29,11 +30,11 @@ public abstract class Enemy extends Sprite{
 	//Forcing every class that extends from enemy to implement these methods.
 	protected abstract void defineEnemy(float x, float y);
 	public abstract void hitOnHead();
-	public abstract void hitOnBody();
+	public abstract void hitOnBody(Morgan player);
 	public abstract void reverseVelocity(boolean x, boolean y);
 	public abstract void update(float dt);
-	public void killed_morgan(){
-		game.setScreen(new GameOver(game));
+	public void killed_morgan(Morgan player){
+		game.setScreen(new GameOver(game,player));
 	}
 
 }

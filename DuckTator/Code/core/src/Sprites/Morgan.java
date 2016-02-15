@@ -17,8 +17,11 @@ import com.badlogic.gdx.utils.Timer;
 import com.mygdx.game.DuckTator;
 import Scenes.Hud;
 import Screens.Rounds.ConstantineCollege;
+import Screens.Rounds.GoodrickeCollege;
+import Screens.Rounds.HalifaxCollege;
 import Screens.Rounds.JamesCollege;
 import Screens.Rounds.LangwithCollege;
+import Screens.Rounds.VanburghCollege;
 
 public class Morgan extends Sprite{
 	
@@ -297,12 +300,23 @@ public class Morgan extends Sprite{
 	public void dead_morgan(int level)
 	{	
 		//If Morgan is killed set the screen to the beginning of the level.
-		if(level==8)
-			game.setScreen(new JamesCollege(game));
+
 		if(level==1)
 			game.setScreen(new ConstantineCollege(game));
 		if(level==2)
 			game.setScreen(new LangwithCollege(game));
+		if(level==3)
+			game.setScreen(new GoodrickeCollege(game));
+		if(level==4)
+			game.setScreen(new HalifaxCollege(game));
+		if(level==5)
+			//game.setScreen(new DerwentCollege(game));
+		if(level==6)
+			//game.setScreen(new AlcuinCollege(game));
+		if(level==7)
+			game.setScreen(new VanburghCollege(game));
+		if(level==8)
+			game.setScreen(new JamesCollege(game));
 	}
 
 

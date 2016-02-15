@@ -12,6 +12,8 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.game.DuckTator;
 
+import Sprites.Morgan;
+
 public class GameOver implements Screen {
 	
 	//Setting variables
@@ -21,10 +23,13 @@ public class GameOver implements Screen {
 	private Image retryButton,backgroundStage;
 	private DuckTator game;
 	private Stage stage;
+	private Morgan player;
 	
-	public GameOver(DuckTator game){
+	public GameOver(DuckTator game,Morgan player1){
 		//Setting the 'game' to the 'game' that is passed in.
 		this.game = game;
+		//Setting the 'player' to the 'player' that is passed in.
+		this.player = player1;
 		//Creating textures for our game
 		background = new Texture("GameOver/gameover.png");
 		retryTexture = new Texture("GameOver/retry.png");
@@ -63,7 +68,8 @@ public class GameOver implements Screen {
 			@Override
 			public void clicked(InputEvent event, float x, float y)
 			{
-				game.setScreen(new MenuScreen(game));
+				player.dead_morgan(player.lvl);
+				//game.setScreen(new MenuScreen(game));
 				dispose();
 			}
 			

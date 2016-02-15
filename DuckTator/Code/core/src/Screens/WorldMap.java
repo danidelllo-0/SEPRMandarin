@@ -15,8 +15,10 @@ import com.mygdx.game.DuckTator;
 
 import Screens.Rounds.JamesCollege;
 import Screens.Rounds.LangwithCollege;
+import Screens.Rounds.VanburghCollege;
 import Screens.Rounds.ConstantineCollege;
 import Screens.Rounds.GoodrickeCollege;
+import Screens.Rounds.HalifaxCollege;
 
 public class WorldMap implements Screen{
 	
@@ -164,7 +166,7 @@ public class WorldMap implements Screen{
 			@Override
 			public void clicked(InputEvent event, float x, float y)
 			{
-				System.out.println("Halifax");
+				game.setScreen(new HalifaxCollege(game));
 			}
 			
 				});
@@ -173,7 +175,7 @@ public class WorldMap implements Screen{
 			@Override
 			public void clicked(InputEvent event, float x, float y)
 			{
-				System.out.println("Vanburgh");
+				game.setScreen(new VanburghCollege(game));
 			}
 			
 				});

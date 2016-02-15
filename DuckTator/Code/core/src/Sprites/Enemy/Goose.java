@@ -14,6 +14,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.DuckTator;
 import Scenes.Hud;
+import Sprites.Morgan;
 
 
 public class Goose extends Enemy{
@@ -141,14 +142,14 @@ public class Goose extends Enemy{
 	}
 
 	@Override
-	public void hitOnBody() {
+	public void hitOnBody(Morgan player) {
 		Gdx.gl.glClearColor(255f, 0, 0, 0);
 		
 		if (Hud.health_value > 0){
 			Hud.decreaseHealth();
 			
 		}else if (Hud.health_value == 0)
-			killed_morgan();
+			killed_morgan(player);
 		}
 	}
 	
