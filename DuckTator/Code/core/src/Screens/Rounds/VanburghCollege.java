@@ -90,6 +90,7 @@ public class VanburghCollege extends Level implements Screen{
 		player.lvl=7;
 		
 		hud.setScoreHealth(game.score, game.health);
+		hud.setTask("Liberate Vanburgh!");
 	}
 
 	public void handleInput(float delta){

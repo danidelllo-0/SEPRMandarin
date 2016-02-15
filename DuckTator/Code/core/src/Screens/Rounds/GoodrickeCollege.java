@@ -90,6 +90,7 @@ public class GoodrickeCollege extends Level implements Screen{
 		player.lvl=3;
 		
 		hud.setScoreHealth(game.score, game.health);
+		hud.setTask("Liberate Goodricke!");
 	}
 
 	public void handleInput(float delta){
