@@ -406,16 +406,13 @@
   <object id="949" x="7056" y="432"/>
   <object id="950" x="8864" y="368"/>
   <object id="952" x="9120" y="352"/>
-  <object id="954" x="1520" y="272"/>
   <object id="968" x="5920" y="416"/>
   <object id="969" x="6736" y="432"/>
   <object id="970" x="6912" y="432"/>
   <object id="972" x="7536" y="352"/>
   <object id="973" x="7728" y="160"/>
   <object id="983" x="2768" y="224"/>
-  <object id="1160" x="1076" y="166"/>
-  <object id="1166" x="1591" y="271"/>
-  <object id="1167" x="1566" y="274"/>
+  <object id="1167" x="1552" y="265"/>
  </objectgroup>
  <objectgroup name="Stoppers">
   <object id="864" x="3248" y="320" height="112"/>
@@ -440,10 +437,6 @@
   <object id="995" x="9058" y="318" height="66"/>
   <object id="997" x="9163" y="320" height="62"/>
   <object id="1020" x="5824" y="384" height="48"/>
-  <object id="1161" x="1034" y="198" width="79"/>
-  <object id="1163" x="1120" y="131" height="67"/>
-  <object id="1164" x="1039" y="130" height="66"/>
-  <object id="1165" x="1154" y="223" height="1"/>
  </objectgroup>
  <objectgroup name="water">
   <object id="1005" x="4864" y="464" width="608"/>
