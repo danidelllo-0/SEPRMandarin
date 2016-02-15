@@ -1,21 +1,21 @@
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="400" height="30" tilewidth="16" tileheight="16" nextobjectid="119">
 <tileset firstgid="1" name="Lightning Bolt" tilewidth="16" tileheight="16" tilecount="204" columns="12">
-<image source="../../../../../../../SEPRMandarin-master/SEPRMandarin-master/DuckTator/Code/core/assets/JamesCollege/Lightning Bolt.png" width="200" height="273"/>
+<image source="Lightning Bolt.png" width="200" height="273"/>
 </tileset>
 <tileset firstgid="205" name="Sky transition" tilewidth="16" tileheight="16" tilecount="4832" columns="151">
-<image source="../../../../../../../SEPRMandarin-master/SEPRMandarin-master/DuckTator/Code/core/assets/JamesCollege/Sky transition.png" width="2420" height="520"/>
+<image source="Sky transition.png" width="2420" height="520"/>
 </tileset>
 <tileset firstgid="5037" name="tile2map64" tilewidth="16" tileheight="16" tilecount="21120" columns="16">
-<image source="../../../../../../../SEPRMandarin-master/SEPRMandarin-master/DuckTator/Code/core/assets/JamesCollege/.picasaoriginals/tile2map64.png" width="256" height="21120"/>
+<image source=".picasaoriginals/tile2map64.png" width="256" height="21120"/>
 </tileset>
 <tileset firstgid="26157" name="spikes" tilewidth="16" tileheight="16" tilecount="1881" columns="99">
-<image source="../../../../../../../SEPRMandarin-master/SEPRMandarin-master/DuckTator/Code/core/assets/JamesCollege/spikes.png" width="1584" height="316"/>
+<image source="spikes.png" width="1584" height="316"/>
 </tileset>
 <tileset firstgid="28038" name="hea" tilewidth="16" tileheight="16" tilecount="16" columns="4">
-<image source="../../../../../../../SEPRMandarin-master/SEPRMandarin-master/DuckTator/Code/core/assets/JamesCollege/Feather.png" width="74" height="75"/>
+<image source="Feather.png" width="74" height="75"/>
 </tileset>
 <tileset firstgid="28054" name="heart" tilewidth="16" tileheight="16" tilecount="16" columns="4">
-<image source="../../../../../../../SEPRMandarin-master/SEPRMandarin-master/DuckTator/Code/core/assets/Changes/heart.png" width="64" height="64"/>
+<image source="../Changes/heart.png" width="64" height="64"/>
 </tileset>
 <layer name="Sky" width="400" height="30">
 <data encoding="base64" compression="zlib">
