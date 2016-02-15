@@ -16,6 +16,7 @@ import com.mygdx.game.DuckTator;
 import Screens.Rounds.JamesCollege;
 import Screens.Rounds.LangwithCollege;
 import Screens.Rounds.ConstantineCollege;
+import Screens.Rounds.GoodrickeCollege;
 
 public class WorldMap implements Screen{
 	
@@ -182,6 +183,14 @@ public class WorldMap implements Screen{
 			public void clicked(InputEvent event, float x, float y)
 			{
 				System.out.println("Derwent");
+			}
+			
+				});
+		goodrickeButton.addListener(new ClickListener(){
+			@Override
+			public void clicked(InputEvent event, float x, float y)
+			{
+				game.setScreen(new GoodrickeCollege(game));
 			}
 			
 				});
