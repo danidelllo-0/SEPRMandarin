@@ -84,11 +84,8 @@ public class Hud implements Disposable{
 		task = new Label(String.format("OBJECTIVE: %s",task_string),new Label.LabelStyle(new BitmapFont(),Color.WHITE) );
 		flyingLabel = new Label(String.format("FLYING LOCK: %s",flyingTimer),new Label.LabelStyle(new BitmapFont(),Color.WHITE) );
 		protectionLabel = new Label(String.format("INVINCIBILITY: %s",protection/1000),new Label.LabelStyle(new BitmapFont(),Color.WHITE) );
-<<<<<<< HEAD
-=======
+		
 		//--------------------/CHANGE------------------------------
-	
->>>>>>> 0889ab1bcd69e24cf1d2769fe8a72994a262eed5
 		//Adding the labels to our table
 		//if we have multiple things that "expandX" they all have equal space. We just pad down from the top 5 pixels.
 		table.add(scoreLabel).expandX().pad(2);
@@ -175,15 +172,6 @@ public class Hud implements Disposable{
 		healthLabel.setText(String.format("HEALTH: %d", health_value));
 		
 	}
-	
-	//updates health to 10 and score to passed value (used in initialising new level)
-		public void setScoreHealth(int Svalue)
-		{
-			score = Svalue;
-			health_value = 10;
-			healthLabel.setText(String.format("HEALTH: %d", health_value));
-			scoreLabel.setText(String.format("SCORE: %06d", score));
-		}
 		
 	//--------------------/CHANGE------------------------------
 	
@@ -197,7 +185,7 @@ public class Hud implements Disposable{
 			}
 		}
 	}
-<<<<<<< HEAD
+	
 	//updates health to 10 and score to passed value (used in initialising new level)
 	public void setScoreHealth(int Svalue)
 	{
@@ -207,9 +195,6 @@ public class Hud implements Disposable{
 		healthLabel.setText(String.format("HEALTH: %d", health_value));
 		scoreLabel.setText(String.format("SCORE: %06d", score));
 	}
-=======
-	
->>>>>>> 0889ab1bcd69e24cf1d2769fe8a72994a262eed5
 	
 	//getter for score
 	public static int getScore()
