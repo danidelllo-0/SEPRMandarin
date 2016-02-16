@@ -28,6 +28,7 @@ public class JamesCollege extends Level implements Screen  {
 	private static final int HEARTS = 32;
 	private static final int HEARTS_T = 21;
 	private static final int FEATHERS_T = 20;
+	private static final int WATER_LAYER = 31;
 	
 	//Variable for our game.
 	private DuckTator game;
@@ -66,6 +67,8 @@ public class JamesCollege extends Level implements Screen  {
 		b2_world_creator.rectangle_layer(BLOCKS_LAYER, DuckTator.BRICK_BIT);
 		//CAGE LAYER
 		b2_world_creator.rectangle_layer(CAGE_LAYER, DuckTator.CAGE_BIT);
+		//WATER_LAYER
+		b2_world_creator.rectangle_layer(WATER_LAYER, DuckTator.WATER_BIT);
 		//BOUNDARIES LAYER - So Morgan can't fall off the map
 		b2_world_creator.rectangle_layer(BOUNDARIES_LAYER, DuckTator.GROUND_BIT);
 		//BUILDING LAYER

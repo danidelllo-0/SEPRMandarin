@@ -64,7 +64,7 @@ public class LevelCompleted implements Screen{
 		
 		//Then we add our return IMAGE. We reposition it to the middle - as it's also drawn at 0,0
 		stage.addActor(returnWorldMapButton);
-		returnWorldMapButton.setPosition(DuckTator.V_WIDTH/2 - 250, DuckTator.V_HEIGHT/2 -120);	
+		returnWorldMapButton.setPosition(DuckTator.V_WIDTH/2 - 220, DuckTator.V_HEIGHT/2 -120);	
 	}
 
 	private void initialiseButtons() {
