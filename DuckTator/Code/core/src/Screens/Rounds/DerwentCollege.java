@@ -92,7 +92,7 @@ public class DerwentCollege extends Level implements Screen{
 		world.setContactListener(new WorldContactListener(game,player));
 		
 		hud.setScoreHealth(game.score);
-		hud.setTask("Liberate Goodricke!");
+		hud.setTask("Liberate Derwent!");
 	}
 
 	public void handleInput(float delta){
