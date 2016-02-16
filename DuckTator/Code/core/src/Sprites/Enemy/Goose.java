@@ -155,7 +155,9 @@ public class Goose extends Enemy{
 
 	@Override
 	public void hitOnBody(Morgan player) {
-		Gdx.gl.glClearColor(255f, 0, 0, 0);
+		if (Hud.protection == 0f){
+			Gdx.gl.glClearColor(255f, 0, 0, 0);
+		}
 		
 		if (Hud.health_value > 0){
 			Hud.decreaseHealth();

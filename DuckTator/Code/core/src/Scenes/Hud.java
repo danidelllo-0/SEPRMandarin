@@ -30,7 +30,7 @@ public class Hud implements Disposable{
 	//To keep track of the score
 	private static int score;
 	//protection timer
-	private static float protection;
+	public static float protection;
 	//Will count to a second - used for colouring the hud.
 	private float timeCount;
 	//
