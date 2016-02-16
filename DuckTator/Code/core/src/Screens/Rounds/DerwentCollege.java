@@ -32,7 +32,7 @@ public class DerwentCollege extends Level implements Screen{
 	private DuckTator game;
 	
 	//Variable for the file path that links to the map rendered by this round.
-	private static String mapString = "JamesCollege/Goodricke.tmx" ;
+	private static String mapString = "JamesCollege/Derwent.tmx" ;
 
 	
 	/*We're going to use a timer to know when to reset the hud to black.
@@ -44,7 +44,7 @@ public class DerwentCollege extends Level implements Screen{
 	
 	public DerwentCollege(DuckTator game){
 		//Calling the LEVEL class constructor. Passing in the map!
-		super(game, mapString,670,320,4);
+		super(game, mapString,670,320,5);
 				
 		//This brings in our game class, particularly allowing for us to use the SetScreen method!
 		this.game = game;	
