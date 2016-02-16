@@ -36,21 +36,21 @@ public class Goose extends Enemy{
 		
 		//pick correct texture for a goose
 		String tex_name = "";
-		if (lvl_num==1) tex_name="constantine";
-		if (lvl_num==2) tex_name="langwith";
-		if (lvl_num==3) tex_name="goodricke";
+		if (lvl_num==1) tex_name="constgeese_f";
+		if (lvl_num==2) tex_name="langwithgoose_f";
+		if (lvl_num==3) tex_name="goodrickegoose_f";
 		if (lvl_num==4) tex_name="halifax";
-		if (lvl_num==5) tex_name="derwent";
-		if (lvl_num==6) tex_name="alcuin";
-		if (lvl_num==7) tex_name="vanbrugh";
-		if (lvl_num==8) tex_name="james";
+		if (lvl_num==5) tex_name="derwentgoose_f";
+		if (lvl_num==6) tex_name="alcuingoose_f";
+		if (lvl_num==7) tex_name="vanburghgoose_f";
+		if (lvl_num==8) tex_name="goose_f";
 		
 		
 		//****See the Goose class/Morgan. The Goose's animation works in exactly the same way ****
 		
 		frames = new Array<TextureRegion>();
-		System.out.println("NewGoose/"+tex_name+"goose_f.pack");
-		atlas = new TextureAtlas("NewGoose/"+tex_name+"goose_f.pack");		
+		System.out.println("NewGoose/"+tex_name+".pack");
+		atlas = new TextureAtlas("NewGoose/"+tex_name+".pack");		
 		for (int i = 0; i<4; i++){
 			frames.add(new TextureRegion(atlas.findRegion("goosef"),i*157,0,130,104));
 		}

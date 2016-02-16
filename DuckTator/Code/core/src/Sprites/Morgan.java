@@ -16,6 +16,7 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Timer;
 import com.mygdx.game.DuckTator;
 import Scenes.Hud;
+import Screens.Rounds.AlcuinCollege;
 import Screens.Rounds.ConstantineCollege;
 import Screens.Rounds.GoodrickeCollege;
 import Screens.Rounds.HalifaxCollege;
@@ -311,7 +312,7 @@ public class Morgan extends Sprite{
 		if(level==5)
 			//game.setScreen(new DerwentCollege(game));
 		if(level==6)
-			//game.setScreen(new AlcuinCollege(game));
+			game.setScreen(new AlcuinCollege(game));
 		if(level==7)
 			game.setScreen(new VanburghCollege(game));
 		if(level==8)

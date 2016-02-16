@@ -17,6 +17,7 @@ import Scenes.Hud;
 import Screens.Rounds.JamesCollege;
 import Screens.Rounds.LangwithCollege;
 import Screens.Rounds.VanburghCollege;
+import Screens.Rounds.AlcuinCollege;
 import Screens.Rounds.ConstantineCollege;
 import Screens.Rounds.GoodrickeCollege;
 import Screens.Rounds.HalifaxCollege;
@@ -137,7 +138,7 @@ public class WorldMap implements Screen{
 			@Override
 			public void clicked(InputEvent event, float x, float y)
 			{
-				System.out.println("Alcuin");
+				game.setScreen(new AlcuinCollege(game));
 			}
 			
 				});
