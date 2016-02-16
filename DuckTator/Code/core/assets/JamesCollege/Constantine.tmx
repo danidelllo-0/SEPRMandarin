@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="400" height="30" tilewidth="16" tileheight="16" nextobjectid="44">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="400" height="30" tilewidth="16" tileheight="16" nextobjectid="45">
  <tileset firstgid="1" name="sky" tilewidth="16" tileheight="16" tilecount="2912" columns="91">
   <image source="Sky_const.png" width="1466" height="520"/>
  </tileset>
@@ -94,11 +94,11 @@
   <object id="5" x="6374.67" y="361.333" width="28" height="56"/>
  </objectgroup>
  <objectgroup name="Shield">
-  <object id="43" x="161" y="371" width="44" height="46"/>
+  <object id="44" x="2432" y="368" width="48" height="48"/>
  </objectgroup>
  <layer name="shield" width="400" height="30">
   <data encoding="base64" compression="zlib">
-   eJztzjEBAAAIA6AFsJ39uyyGHpCABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAICd6wEAAAAAAAAAAMAfBZZyAGA=
+   eJztzkENAAAIBKALYDv7d7GDm/MDCUgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgI2u7wEAAAAAAAAAANwYw5sAYA==
   </data>
  </layer>
 </map>

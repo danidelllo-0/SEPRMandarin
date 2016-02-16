@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="267" height="30" tilewidth="16" tileheight="16" nextobjectid="91">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="267" height="30" tilewidth="16" tileheight="16" nextobjectid="92">
  <tileset firstgid="1" name="Seamless desert sand 00" tilewidth="16" tileheight="16" tilecount="10000" columns="100">
   <image source="Seamless desert sand 00.jpg" width="1600" height="1600"/>
  </tileset>
@@ -17,6 +17,9 @@
  </tileset>
  <tileset firstgid="15127" name="Castle" tilewidth="16" tileheight="16" tilecount="494" columns="19">
   <image source="Castle.png" width="312" height="426"/>
+ </tileset>
+ <tileset firstgid="15621" name="Shield" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+  <image source="../Changes/shield1.png" width="64" height="64"/>
  </tileset>
  <layer name="Sky" width="267" height="30">
   <data encoding="base64" compression="zlib">
@@ -107,4 +110,12 @@
  <objectgroup name="Cage">
   <object id="88" x="4055.15" y="162.049" width="134.605" height="266.597"/>
  </objectgroup>
+ <objectgroup name="Shield">
+  <object id="91" x="2896" y="192" width="48" height="48"/>
+ </objectgroup>
+ <layer name="Shield" width="267" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztziEBAAAIA7AbYtG/FpYGILYESwAAAAAAAAAAAAAAAAAA/qu+HgAAAAAAAAAAAAAAAAAAAAAA2wALIQBD
+  </data>
+ </layer>
 </map>
