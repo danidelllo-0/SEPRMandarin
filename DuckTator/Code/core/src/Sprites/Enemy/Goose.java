@@ -28,16 +28,29 @@ public class Goose extends Enemy{
 	private boolean runningRight;
 
 
-	public Goose(DuckTator game,World world, float x, float y) {
+	public Goose(DuckTator game,World world, float x, float y,int lvl_num) {
 		//The goose class works in much the same way as the BaskeBomb class which is documented more, so
 		//review that!
 		super(game,world, x, y);
 		this.game = game;
 		
+		//pick correct texture for a goose
+		String tex_name = "";
+		if (lvl_num==1) tex_name="constantine";
+		if (lvl_num==2) tex_name="langwith";
+		if (lvl_num==3) tex_name="goodricke";
+		if (lvl_num==4) tex_name="halifax";
+		if (lvl_num==5) tex_name="derwent";
+		if (lvl_num==6) tex_name="alcuin";
+		if (lvl_num==7) tex_name="vanbrugh";
+		if (lvl_num==8) tex_name="james";
+		
+		
 		//****See the Goose class/Morgan. The Goose's animation works in exactly the same way ****
 		
 		frames = new Array<TextureRegion>();
-		atlas = new TextureAtlas("NewGoose/goose_f.pack");		
+		System.out.println("NewGoose/"+tex_name+"goose_f.pack");
+		atlas = new TextureAtlas("NewGoose/"+tex_name+"goose_f.pack");		
 		for (int i = 0; i<4; i++){
 			frames.add(new TextureRegion(atlas.findRegion("goosef"),i*157,0,130,104));
 		}

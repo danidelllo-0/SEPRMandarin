@@ -56,7 +56,7 @@ public abstract class Level {
 	protected Morgan player;
 	
 	
-	public Level(DuckTator game, String mapString, int x_pos, int y_pos){
+	public Level(DuckTator game, String mapString, int x_pos, int y_pos,int lvl_num){
 		//****SETTING UP CAMERA*****
 		gamecam = new OrthographicCamera();
 		
@@ -94,13 +94,15 @@ public abstract class Level {
 		//Creating an object of Box2DDebugRenderer so we can access its methods.
 		b2dr = new Box2DDebugRenderer();
 		
-		//Making an object from our universal_b2WorldCreator.
-		//This class allows us the draw the box2d representation of the tiled map.
-		b2_world_creator = new universal_b2WorldCreator(game,world,map);
-
 		//****CREATING MORGAN****
 		duck_atlas = new TextureAtlas("NewDuck/duckyf.atlas");
 		player = new Morgan(world,game,duck_atlas,x_pos,y_pos);
+		player.lvl=lvl_num;
+		
+		//Making an object from our universal_b2WorldCreator.
+		//This class allows us the draw the box2d representation of the tiled map.
+		b2_world_creator = new universal_b2WorldCreator(game,world,map,player.lvl);
+
 	}
 	
 	

@@ -48,7 +48,7 @@ public class JamesCollege extends Level implements Screen  {
 	
 	public JamesCollege(DuckTator game){
 		//Calling the LEVEL class constructor. Passing in the map!
-		super(game, mapString,1200,320);
+		super(game, mapString,1200,320,8);
 		
 		//This brings in our game class, particularly allowing for us to use the SetScreen method!
 		this.game = game;
@@ -94,9 +94,6 @@ public class JamesCollege extends Level implements Screen  {
 		//Calling the method to create the 'boss goose'
 		bossGoose();
 		
-		
-		player.lvl=8;
-			
 		hud.setScoreHealth(game.score);
 		hud.setTask("Liberate James!");
 	}
@@ -113,7 +110,7 @@ public class JamesCollege extends Level implements Screen  {
 	
 	public void bossGoose(){
 		//Positioning the boss goose at the end of the level.
-		boss = new Goose(game, world, 10500/DuckTator.PPM, 100/DuckTator.PPM);
+		boss = new Goose(game, world, 10500/DuckTator.PPM, 100/DuckTator.PPM,player.lvl);
 		//Setting him larger than the standard goose.
 		boss.setBounds(boss.getX(), boss.getY(), 200/DuckTator.PPM, 200/DuckTator.PPM);
 		FixtureDef fdef = new FixtureDef();

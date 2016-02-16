@@ -23,6 +23,7 @@ import Sprites.Enemy.Goose;
 public class universal_b2WorldCreator {
 	private Array<Goose> geese;
 	private Array<BasketBomb> bombs;
+	private int lvl;
 	protected World world;
 	protected TiledMap map;
 	protected BodyDef bdef;
@@ -31,11 +32,13 @@ public class universal_b2WorldCreator {
 	protected Body body;
 	protected DuckTator game;
 	protected Random rand;
-	public universal_b2WorldCreator(DuckTator game, World world, TiledMap map){
+	public universal_b2WorldCreator(DuckTator game, World world, TiledMap map,int lvl_num){
+
 		//Setting our world,map and game variables.
 		this.world = world;
 		this.map = map;
 		this.game = game;
+		this.lvl=lvl_num;
 		
 		//Creating our body definition
 		bdef = new BodyDef();		
@@ -114,7 +117,7 @@ public class universal_b2WorldCreator {
 			Rectangle rect = ((RectangleMapObject) object).getRectangle();
 			//Creating a goose using the coordinates provided by the rectangle. Thus a goose object will be
 			//created where the rectangles are in the tiled2D map. 
-			geese.add(new Goose(game, world, rect.getX()/DuckTator.PPM, rect.getY()/DuckTator.PPM));
+			geese.add(new Goose(game, world, rect.getX()/DuckTator.PPM, rect.getY()/DuckTator.PPM,lvl));
 		}
 		
 	}

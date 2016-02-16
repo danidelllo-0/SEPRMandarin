@@ -44,8 +44,7 @@ public class ConstantineCollege extends Level implements Screen{
 	
 	public ConstantineCollege(DuckTator game){
 		//Calling the LEVEL class constructor. Passing in the map!
-		super(game, mapString,200,320);
-				
+		super(game, mapString,200,320,1);
 		//This brings in our game class, particularly allowing for us to use the SetScreen method!
 		this.game = game;	
 		
@@ -86,8 +85,7 @@ public class ConstantineCollege extends Level implements Screen{
 		* increase in points/health
 		* */
 		world.setContactListener(new WorldContactListener(game,player));
-		
-		player.lvl=1;
+
 		
 		hud.setScoreHealth(game.score);
 		hud.setTask("Liberate Constantine!");

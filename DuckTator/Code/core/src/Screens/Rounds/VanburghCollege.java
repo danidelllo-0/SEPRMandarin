@@ -44,7 +44,7 @@ public class VanburghCollege extends Level implements Screen{
 	
 	public VanburghCollege(DuckTator game){
 		//Calling the LEVEL class constructor. Passing in the map!
-		super(game, mapString,670,320);
+		super(game, mapString,670,320,7);
 				
 		//This brings in our game class, particularly allowing for us to use the SetScreen method!
 		this.game = game;	
@@ -87,8 +87,7 @@ public class VanburghCollege extends Level implements Screen{
 		* */
 		world.setContactListener(new WorldContactListener(game,player));
 		
-		player.lvl=7;
-		
+	
 		hud.setScoreHealth(game.score);
 		hud.setTask("Liberate Vanburgh!");
 	}
