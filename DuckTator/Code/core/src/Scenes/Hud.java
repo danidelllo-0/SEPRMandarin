@@ -73,7 +73,7 @@ public class Hud implements Disposable{
 		scoreLabel = new Label(String.format("SCORE: %06d", score),new Label.LabelStyle(new BitmapFont(),Color.WHITE));
 		healthLabel = new Label(String.format("HEALTH: %d", health_value),new Label.LabelStyle(new BitmapFont(),Color.WHITE));
 		task = new Label(String.format("OBJECTIVE: %s",task_string),new Label.LabelStyle(new BitmapFont(),Color.WHITE) );
-		flyingLabel = new Label(String.format("Flying Timer: %s",flyingTimer),new Label.LabelStyle(new BitmapFont(),Color.WHITE) );
+		flyingLabel = new Label(String.format("FLYING LOCK: %s",flyingTimer),new Label.LabelStyle(new BitmapFont(),Color.WHITE) );
 	
 		//Adding the labels to our table
 		//if we have multiple things that "expandX" they all have equal space. We just pad down from the top 5 pixels.
@@ -105,13 +105,15 @@ public class Hud implements Disposable{
 		}
 		if (!Morgan.allowedToFly){
 			if (Morgan.timeStateFlyingLock >= flyingTimer){
-				flyingLabel.setText(String.format("Flying Timer: %s", String.format("%.1f", 2 - Morgan.timeStateFlyingLock)));
+				flyingLabel.setText(String.format("FLYING LOCK: %s", String.format("%.1f", 2 - Morgan.timeStateFlyingLock)));
+				flyingLabel.setColor(Color.RED);
 				flyingTimer += 0.1f;
 			}
 		}
 		else{
 			flyingTimer = 0.1f;
-			flyingLabel.setText(String.format("Flying Timer: %s", 0));
+			flyingLabel.setText(String.format("FLYING LOCK: %s", "Disabled"));
+			flyingLabel.setColor(Color.GREEN);
 		}
 	}
 	
