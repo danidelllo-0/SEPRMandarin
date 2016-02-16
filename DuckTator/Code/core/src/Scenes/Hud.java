@@ -106,7 +106,6 @@ public class Hud implements Disposable{
 		}
 		
 		//The countdown timer for protection in intervals of 0.1 seconds
-		System.out.println(protection);
 		if (protection != 0){
 			if (timeCount >= 0.1){
 				protection -= 100;

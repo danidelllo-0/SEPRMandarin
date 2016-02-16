@@ -49,7 +49,6 @@ public class Goose extends Enemy{
 		//****See the Goose class/Morgan. The Goose's animation works in exactly the same way ****
 		
 		frames = new Array<TextureRegion>();
-		System.out.println("NewGoose/"+tex_name+".pack");
 		atlas = new TextureAtlas("NewGoose/"+tex_name+".pack");		
 		for (int i = 0; i<4; i++){
 			frames.add(new TextureRegion(atlas.findRegion("goosef"),i*157,0,130,104));
