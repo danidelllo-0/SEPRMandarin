@@ -81,7 +81,7 @@ public class WorldMap implements Screen{
 		//Initally we draw the background onto the stage. This will be drawn starting at 0,0
 		stage.addActor(backgroundStage);
 		
-		/*We add our button to the stage, initally it will be drawn into 0,0. We will have to re position it
+		/*We add our button to the stage, initially it will be drawn into 0,0. We will have to re position it
 			to the correct place on the map. */
 		stage.addActor(vanbrughButton);
 		//re-positioning the button.
@@ -90,19 +90,19 @@ public class WorldMap implements Screen{
 		
 		//The above method applies to the rest of the buttons. 
 		stage.addActor(alcuinButton);
-		alcuinButton.setPosition(200,400);
+		alcuinButton.setPosition(200,380);
 		alcuinButton.setSize(106, 124);
 
 		stage.addActor(constantineButton);
-		constantineButton.setPosition(940, 400);
+		constantineButton.setPosition(930, 380);
 		constantineButton.setSize(90, 124);
 		
 		stage.addActor(goodrickeButton);
-		goodrickeButton.setPosition(650, 300);
+		goodrickeButton.setPosition(690, 280);
 		goodrickeButton.setSize(115, 124);
 				
 		stage.addActor(langwithButton);
-		langwithButton.setPosition(860, 300);
+		langwithButton.setPosition(865, 280);
 		langwithButton.setSize(124, 112);
 		
 		stage.addActor(jamesButton);
