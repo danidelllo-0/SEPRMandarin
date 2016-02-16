@@ -207,42 +207,58 @@ public class WorldMap implements Screen{
 		/*Checks if the boolean for each round is false. If it does equal false then set the color
 			to black to show it's locked and clear the listener so it cannot be clicked on. */
 		if (DuckTator.ALCUIN_UNLOCKED == false){
-			alcuinButton.setColor(Color.BLACK);
+			alcuinTexture = new Texture("WorldMap/AlcuinGray.png");
+			alcuinButton = new Image(alcuinTexture);
+			drawButton();
 			alcuinButton.clearListeners();
 		}
 		
 		if(DuckTator.CONSTANTINE_UNLOCKED == false){
-			constantineButton.setColor(Color.BLACK);
+			constantineTexture = new Texture("WorldMap/ConstantineGray.png");
+			constantineButton = new Image(constantineTexture);
+			drawButton();
 			constantineButton.clearListeners();
 		}
 		
 		if (DuckTator.GOODRICKE_UNLOCKED == false){
-			goodrickeButton.setColor(Color.BLACK);
+			goodrickeTexture = new Texture("WorldMap/GoodrickeGray.png");
+			goodrickeButton = new Image(goodrickeTexture);
+			drawButton();
 			goodrickeButton.clearListeners();
 		}
 		
 		if (DuckTator.DERWENT_UNLOCKED == false){
-			derwentButton.setColor(Color.BLACK);
+			derwentTexture = new Texture("WorldMap/DerwentGray.png");
+			derwentButton = new Image(derwentTexture);
+			drawButton();
 			derwentButton.clearListeners();
 		}
 		
 		if (DuckTator.HALIFAX_UNLOCKED == false){
-			halifaxButton.setColor(Color.BLACK);
+			halifaxTexture = new Texture("WorldMap/HalifaxGray.png");
+			halifaxButton = new Image(halifaxTexture);
+			drawButton();
 			halifaxButton.clearListeners();
 		}
 		
 		if (DuckTator.JAMES_UNLOCKED == false){
-			jamesButton.setColor(Color.BLACK);
+			jamesTexture = new Texture("WorldMap/JamesGray.png");
+			jamesButton = new Image(jamesTexture);
+			drawButton();
 			jamesButton.clearListeners();
 		}
 		
 		if (DuckTator.LANGWITH_UNLOCKED == false){
-			langwithButton.setColor(Color.BLACK);
+			langwithTexture = new Texture("WorldMap/LangwithGray.png");
+			langwithButton = new Image(langwithTexture);
+			drawButton();
 			langwithButton.clearListeners();
 		}
 		
 		if (DuckTator.VANBURGH_UNLOCKED == false){
-			vanburghButton.setColor(Color.BLACK);
+			vanburghTexture = new Texture("WorldMap/VanburghGray.png");
+			vanburghButton = new Image(vanburghTexture);
+			drawButton();
 			vanburghButton.clearListeners();
 		}
 	}
