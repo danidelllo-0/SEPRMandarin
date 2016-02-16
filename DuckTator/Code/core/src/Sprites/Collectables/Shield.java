@@ -45,7 +45,7 @@ public class Shield extends InteractiveTileObject{
 	
 	@Override
 	public void onBodyHit() {
-		Gdx.gl.glClearColor(139, 69, 19, 5);
+		Gdx.gl.glClearColor(0.545f, 0.271f, 0.07f, 1);
 		/*This will be called when Morgan's body collides with the feather.
 		* We get the cell and set it equal to null. This will remove the feather image from the
 		* map once Morgan has collided with it. */
