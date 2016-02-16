@@ -230,7 +230,10 @@ public class Morgan extends Sprite{
 		//Category bit is the "WHAT IS THIS SHAPE"
 		fdef.filter.categoryBits = DuckTator.DUCK_BIT;
 		//What can duck collide with:
+		//--------------------CHANGE------------------------------
+		//added some new bits
 		fdef.filter.maskBits = DuckTator.GROUND_BIT | DuckTator.WATER_BIT|DuckTator.SHIELD_BIT| DuckTator.BRICK_BIT | DuckTator.BOMB_BIT| DuckTator.CAGE_BIT| DuckTator.BOMB_BIT| DuckTator.GROUND_OBJECT| DuckTator.FEATHER_BIT| DuckTator.HEALTH_BIT | DuckTator.ENEMY_HEAD| DuckTator.SPIKE_BIT| DuckTator.ENEMY_BIT;
+		//--------------------/CHANGE------------------------------
 		//Now we need to add the fixture we've just created (the circle) to our body.
 		duck_b2Body.createFixture(fdef).setUserData(this);;
 	}
@@ -302,7 +305,9 @@ public class Morgan extends Sprite{
 	public void dead_morgan(int level)
 	{	
 		//If Morgan is killed set the screen to the beginning of the same level.
-
+		//--------------------CHANGE------------------------------
+		//changed so that each level restarts at itself rather than default level
+		
 		if(level==1)
 			game.setScreen(new ConstantineCollege(game));
 		if(level==2)
@@ -319,6 +324,7 @@ public class Morgan extends Sprite{
 			game.setScreen(new VanburghCollege(game));
 		if(level==8)
 			game.setScreen(new JamesCollege(game));
+		//--------------------CHANGE------------------------------
 	}
 
 

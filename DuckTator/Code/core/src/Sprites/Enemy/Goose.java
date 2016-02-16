@@ -33,6 +33,8 @@ public class Goose extends Enemy{
 		//review that!
 		super(game,world, x, y);
 		this.game = game;
+		//--------------------CHANGE------------------------------
+		//ichanged so that sprite would match the college
 		
 		//pick correct texture for a goose depending on college
 		String tex_name = "";
@@ -44,6 +46,7 @@ public class Goose extends Enemy{
 		if (lvl_num==6) tex_name="alcuingoose_f";
 		if (lvl_num==7) tex_name="vanbrughgeese_f";
 		if (lvl_num==8) tex_name="goose_f";
+		//--------------------CHANGE------------------------------
 		
 		
 		//****See the Goose class/Morgan. The Goose's animation works in exactly the same way ****
