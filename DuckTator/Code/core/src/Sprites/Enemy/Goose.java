@@ -39,10 +39,10 @@ public class Goose extends Enemy{
 		if (lvl_num==1) tex_name="constgeese_f";
 		if (lvl_num==2) tex_name="langwithgoose_f";
 		if (lvl_num==3) tex_name="goodrickegoose_f";
-		if (lvl_num==4) tex_name="halifax";
+		if (lvl_num==4) tex_name="haligeese_f";
 		if (lvl_num==5) tex_name="derwentgoose_f";
 		if (lvl_num==6) tex_name="alcuingoose_f";
-		if (lvl_num==7) tex_name="vanbrughgoose_f";
+		if (lvl_num==7) tex_name="vanbrughgeese_f";
 		if (lvl_num==8) tex_name="goose_f";
 		
 		
