@@ -56,8 +56,8 @@ public class Goose extends Enemy{
 		}
 		walkAnimation = new Animation(0.35f, frames);
 		stateTimer = 0;
-		setBounds(getX(),getY(),64/DuckTator.PPM,64/DuckTator.PPM);
 		setToDestroy = false;
+		setBounds(getX(),getY(),64/DuckTator.PPM,64/DuckTator.PPM);
 		destroyed = false;
 		runningRight = true;
 		
