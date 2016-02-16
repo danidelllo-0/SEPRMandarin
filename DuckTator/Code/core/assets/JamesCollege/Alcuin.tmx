@@ -50,8 +50,8 @@
   </data>
  </layer>
  <objectgroup name="Ground">
-  <object id="38" x="3651" y="173" width="139" height="12"/>
-  <object id="39" x="3795" y="238" width="45" height="34"/>
+  <object id="38" x="3647" y="176" width="143" height="49"/>
+  <object id="39" x="3791" y="224" width="49" height="48"/>
   <object id="40" x="3842" y="274" width="47" height="45"/>
   <object id="41" x="3890" y="319" width="46" height="49"/>
   <object id="42" x="3746" y="273" width="45" height="47"/>
