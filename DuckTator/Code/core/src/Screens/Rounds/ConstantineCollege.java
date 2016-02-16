@@ -15,6 +15,7 @@ import tools.WorldContactListener;
 
 public class ConstantineCollege extends Level implements Screen{
 
+	private static final int SHIELD_LAYER = 13;
 	//private static final int BLOCKS_LAYER = 22;
 	private static final int BOUNDARIES_LAYER = 11;
 	private static final int GROUND_LAYER = 5;

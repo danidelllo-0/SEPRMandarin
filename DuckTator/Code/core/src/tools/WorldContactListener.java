@@ -14,6 +14,7 @@ import Screens.WorldMap;
 import Sprites.Morgan;
 import Sprites.Collectables.Feather;
 import Sprites.Collectables.Health;
+import Sprites.Collectables.Shield;
 import Sprites.Enemy.BasketBomb;
 import Sprites.Enemy.Enemy;
 import Sprites.Morgan;
@@ -118,6 +119,16 @@ public class WorldContactListener implements ContactListener{
 				}				
 				else{
 					((Health) fixB.getUserData()).onBodyHit();
+				}
+				break;
+				
+				//TESTING IF THE DUCK HIT A shield
+			case DuckTator.DUCK_BIT | DuckTator.SHIELD_BIT:
+				if (fixA.getFilterData().categoryBits == DuckTator.SHIELD_BIT){
+					((Shield) fixA.getUserData()).onBodyHit();
+				}				
+				else{
+					((Shield) fixB.getUserData()).onBodyHit();
 				}
 				break;
 				

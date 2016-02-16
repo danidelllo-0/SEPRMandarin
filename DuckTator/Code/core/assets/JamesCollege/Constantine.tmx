@@ -90,4 +90,5 @@
  <objectgroup name="Cage">
   <object id="5" x="6374.67" y="361.333" width="28" height="56"/>
  </objectgroup>
+ <objectgroup name="Shield"/>
 </map>

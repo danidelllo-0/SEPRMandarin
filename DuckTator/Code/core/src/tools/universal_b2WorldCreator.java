@@ -16,6 +16,7 @@ import com.mygdx.game.DuckTator;
 
 import Sprites.Collectables.Feather;
 import Sprites.Collectables.Health;
+import Sprites.Collectables.Shield;
 import Sprites.Enemy.BasketBomb;
 import Sprites.Enemy.Goose;
 
@@ -80,6 +81,18 @@ public class universal_b2WorldCreator {
 			fdef.filter.categoryBits = categoryBit;
 			body.createFixture(fdef);
 			
+		}
+	}
+	
+	public void shield_layer(int layer, int tiled_layer){
+		//For all the objects in the map layer that contains the feather objects(passed in) it gets each 
+		//rectangular object that was placed in Tiled2D.
+		for(MapObject object : map.getLayers().get(layer).getObjects().getByType(RectangleMapObject.class)){
+			//Getting the rectangle.
+			Rectangle rect = ((RectangleMapObject) object).getRectangle();
+			//Creating a new feather, passing in the rectangle because this is where we want to create a feather.
+			new Shield (world, map, rect,tiled_layer);
+	
 		}
 	}
 	

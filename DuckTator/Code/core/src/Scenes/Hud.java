@@ -31,6 +31,8 @@ public class Hud implements Disposable{
 	public static int health_value;
 	//To keep track of the score
 	private static int score;
+	//protection timer
+	private static int protection;
 	//Will count to a second - used for colouring the hud.
 	private float timeCount;
 	//
@@ -55,6 +57,7 @@ public class Hud implements Disposable{
 		score = 0;
 		health_value = 10;
 		flyingTimer = 0.1f;
+		protection = 0;
 		
 		//Setting our viewport.
 		viewport = new FitViewport(DuckTator.V_WIDTH, DuckTator.V_HEIGHT, new OrthographicCamera());
@@ -169,6 +172,11 @@ public class Hud implements Disposable{
 	public static int getHealth()
 	{
 		return health_value;
+	}
+	
+	public static void addProtection(int n)
+	{
+		protection +=n;
 	}
 	
 	@Override
