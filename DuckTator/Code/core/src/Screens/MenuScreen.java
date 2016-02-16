@@ -67,7 +67,7 @@ public class MenuScreen implements Screen {
 		
 		stage.addActor(menuLogoStage);
 		menuLogoStage.setSize(150, 150);
-		menuLogoStage.setPosition(DuckTator.V_WIDTH/2 - 80, 350);
+		menuLogoStage.setPosition(DuckTator.V_WIDTH/2 - 80, 340);
 		
 	}
 
