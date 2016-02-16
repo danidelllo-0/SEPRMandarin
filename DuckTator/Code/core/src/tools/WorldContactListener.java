@@ -142,6 +142,14 @@ public class WorldContactListener implements ContactListener{
 				}
 				break;
 				
+			case DuckTator.DUCK_BIT | DuckTator.WATER_BIT:
+				if (fixA.getFilterData().categoryBits == DuckTator.DUCK_BIT){
+					((Morgan) fixA.getUserData()).inwater = true;
+				}
+				else {
+					((Morgan) fixB.getUserData()).inwater = true;
+				}
+				break;
 			//TESTING IF THE DUCK HIT A BOMB	
 			case DuckTator.DUCK_BIT | DuckTator.BOMB_BIT:
 				if (fixA.getFilterData().categoryBits == DuckTator.BOMB_BIT){

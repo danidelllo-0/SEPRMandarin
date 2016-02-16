@@ -37,7 +37,7 @@ public class Morgan extends Sprite{
 	public boolean hasBeenFlying = false;
 	public boolean hovering = false;
 	public float xPositionBeforeJump = 0;
-	private boolean inwater = false;
+	public boolean inwater = false;
 	
 	//This keeps track of how long we're in a state, e.g. how long we're in a running state.
 	private float stateTimer;
@@ -167,8 +167,7 @@ public class Morgan extends Sprite{
 			//Updating our boolean.
 			runningRight = true;
 		}
-		
-		if (inwater==true)
+		if (inwater == true)
 			region = duckSwim;
 		
 		/*Need to set the statetimer.
