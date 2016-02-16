@@ -89,7 +89,7 @@ public class LangwithCollege extends Level implements Screen{
 		
 		player.lvl=2;
 		
-		hud.setScoreHealth(game.score, game.health);
+		hud.setScoreHealth(game.score);
 		hud.setTask("Liberate Langwith!");
 	}
 

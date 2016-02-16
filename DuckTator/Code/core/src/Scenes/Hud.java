@@ -153,10 +153,10 @@ public class Hud implements Disposable{
 		scoreLabel.setText(String.format("SCORE: %06d", score));
 	}
 	
-	public void setScoreHealth(int Svalue,int Hvalue)
+	public void setScoreHealth(int Svalue)
 	{
 		score = Svalue;
-		health_value = Hvalue;
+		health_value = 10;
 		healthLabel.setText(String.format("HEALTH: %d", health_value));
 		scoreLabel.setText(String.format("SCORE: %06d", score));
 	}

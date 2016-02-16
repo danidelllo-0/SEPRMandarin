@@ -89,7 +89,7 @@ public class HalifaxCollege extends Level implements Screen{
 		
 		player.lvl=4;
 		
-		hud.setScoreHealth(game.score, game.health);
+		hud.setScoreHealth(game.score);
 		hud.setTask("Liberate Halifax!");
 	}
 

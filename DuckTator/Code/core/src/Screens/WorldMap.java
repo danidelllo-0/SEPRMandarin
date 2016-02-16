@@ -13,6 +13,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.game.DuckTator;
 
+import Scenes.Hud;
 import Screens.Rounds.JamesCollege;
 import Screens.Rounds.LangwithCollege;
 import Screens.Rounds.VanburghCollege;
@@ -127,6 +128,7 @@ public class WorldMap implements Screen{
 			public void clicked(InputEvent event, float x, float y)
 			{
 				game.setScreen(new ConstantineCollege(game));
+				Hud.health_value = 10;
 			}
 			
 				});
@@ -157,6 +159,7 @@ public class WorldMap implements Screen{
 			public void clicked(InputEvent event, float x, float y)
 			{
 				game.setScreen(new LangwithCollege(game));
+				Hud.health_value = 10;
 			}
 			
 				});
