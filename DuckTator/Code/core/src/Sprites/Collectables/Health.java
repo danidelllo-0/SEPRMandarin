@@ -11,7 +11,9 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.mygdx.game.DuckTator;
 
 import Scenes.Hud;
-
+//--------------------CHANGE------------------------------
+//implemented health powerup
+//--------------------CHANGE------------------------------
 public class Health extends InteractiveTileObject{
 
 	public Health(World world, TiledMap map, Rectangle bounds,int collectibleLayer){

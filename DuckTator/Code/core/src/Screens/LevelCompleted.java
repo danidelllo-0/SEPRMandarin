@@ -1,3 +1,8 @@
+//--------------------CHANGE------------------------------
+
+//added implementation of level completion for any college (all of this file)
+
+
 package Screens;
 
 import com.badlogic.gdx.Gdx;
@@ -129,3 +134,4 @@ public class LevelCompleted implements Screen{
 	}
 	
 }
+//--------------------/CHANGE------------------------------

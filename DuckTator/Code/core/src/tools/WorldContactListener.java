@@ -111,6 +111,8 @@ public class WorldContactListener implements ContactListener{
 				}
 				break;
 			
+				//--------------------CHANGE------------------------------
+				//added added handling of health and shield powerups
 				
 				//TESTING IF THE DUCK HIT A HEART
 			case DuckTator.DUCK_BIT | DuckTator.HEALTH_BIT:
@@ -132,7 +134,7 @@ public class WorldContactListener implements ContactListener{
 				}
 				break;
 				
-				
+				//--------------------CHANGE------------------------------
 			//TESTING IF THE DUCK HIT A FEATHER
 			case DuckTator.DUCK_BIT | DuckTator.FEATHER_BIT:
 				if (fixA.getFilterData().categoryBits == DuckTator.FEATHER_BIT){
@@ -179,6 +181,9 @@ public class WorldContactListener implements ContactListener{
 					}
 				else {	
 				}
+				//--------------------CHANGE------------------------------
+				//added new behavior
+				
 			    //level is completed, unlock next college in order
 				if (player.lvl==1){
 					DuckTator.LANGWITH_UNLOCKED=true;
@@ -209,6 +214,7 @@ public class WorldContactListener implements ContactListener{
 				game.score=Hud.getScore();
 				game.health=Hud.getHealth();
 				game.setScreen(new LevelCompleted(game,player.lvl));//new JamesCompleted(game));
+				//--------------------CHANGE------------------------------
 				break;				
 		}			
 	}

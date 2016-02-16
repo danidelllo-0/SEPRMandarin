@@ -39,9 +39,12 @@ public class DuckTator extends Game {
 	public static final short GROUND_BIT = 1;
 	public static final short DUCK_BIT = 2;
 	public static final short BRICK_BIT = 4;
+	//--------------------CHANGE------------------------------
+	//added certain new bits
 	public static final short HEALTH_BIT = 8;
 	public static final short FEATHER_BIT = 16;
 	public static final short SHIELD_BIT = 32;
+	//--------------------/CHANGE------------------------------
 	public static final short DESTROYED_BIT = 64;
 	public static final short ENEMY_BIT = 128;
 	public static final short ENEMY_HEAD = 256;

@@ -20,7 +20,6 @@ public class Hud implements Disposable{
 	/*The hud is where the score, health, level and all the key information is kept.
 	* We are using scene 2d - it's a way to manage wigits. We can place text onto our stage and udpate them when 
 	* our key information changes. */
-
 	//Our stage, what we're going to add too
 	public Stage stage;
 	//When the game world moves we want the HUD to stay in the same position. Thus we need a new camera&viewport.
@@ -29,8 +28,10 @@ public class Hud implements Disposable{
 	public static int health_value;
 	//To keep track of the score
 	private static int score;
+	//--------------------CHANGE------------------------------
 	//protection timer
 	public static float protection;
+	//--------------------/CHANGE------------------------------
 	//Will count to a second - used for colouring the hud.
 	private float timeCount;
 	//string used in setting a new task to the GUI
@@ -41,13 +42,16 @@ public class Hud implements Disposable{
 	public static boolean vanbrughFlag;
 	//The wigits we will be placing onto our stage are 'Label's. So we need one for each of our key pieces
 	//of information.
+	//--------------------CHANGE------------------------------
 	public Label timeLabel; //time passed of game
+	static Label protectionLabel; //if the user has temporary protection
 	public Label worldLabel;
-	static Label healthLabel; //current health 
-	static Label scoreLabel;  //current score
 	static Label task; //current objective
 	static Label flyingLabel; //time until can fly again
-	static Label protectionLabel; //if the user has temporary protection
+	//--------------------/CHANGE------------------------------
+	static Label healthLabel; //current health 
+	static Label scoreLabel;  //current score
+
 	
 	
 	public Hud(SpriteBatch sb){
@@ -55,8 +59,10 @@ public class Hud implements Disposable{
 		timeCount = 0;
 		score = 0;
 		health_value = 10;
+		//--------------------CHANGE------------------------------
 		flyingTimer = 0.1f;
 		protection = 0;
+		//--------------------/CHANGE------------------------------
 		
 		//Setting our viewport.
 		viewport = new FitViewport(DuckTator.V_WIDTH, DuckTator.V_HEIGHT, new OrthographicCamera());
@@ -73,16 +79,26 @@ public class Hud implements Disposable{
 		//Now we provide the text to be displayed in our table.
 		scoreLabel = new Label(String.format("SCORE: %06d", score),new Label.LabelStyle(new BitmapFont(),Color.WHITE));
 		healthLabel = new Label(String.format("HEALTH: %d", health_value),new Label.LabelStyle(new BitmapFont(),Color.WHITE));
+		//--------------------CHANGE------------------------------
+		//added new labels
 		task = new Label(String.format("OBJECTIVE: %s",task_string),new Label.LabelStyle(new BitmapFont(),Color.WHITE) );
 		flyingLabel = new Label(String.format("FLYING LOCK: %s",flyingTimer),new Label.LabelStyle(new BitmapFont(),Color.WHITE) );
 		protectionLabel = new Label(String.format("INVINCIBILITY: %s",protection/1000),new Label.LabelStyle(new BitmapFont(),Color.WHITE) );
+<<<<<<< HEAD
+=======
+		//--------------------/CHANGE------------------------------
+	
+>>>>>>> 0889ab1bcd69e24cf1d2769fe8a72994a262eed5
 		//Adding the labels to our table
 		//if we have multiple things that "expandX" they all have equal space. We just pad down from the top 5 pixels.
 		table.add(scoreLabel).expandX().pad(2);
 		table.add(healthLabel).expandX().pad(2);
 		table.add(task).expandX().pad(2);
+		//--------------------CHANGE------------------------------
+		//added new labels
 		table.add(flyingLabel).expandX().pad(2);
 		table.add(protectionLabel).expandX().pad(2);
+		//--------------------/CHANGE------------------------------
 		
 		//add the table to our stage!
 		stage.addActor(table);
@@ -131,6 +147,10 @@ public class Hud implements Disposable{
 		}
 		
 	}
+	//--------------------CHANGE------------------------------
+	//added new functions accessible from outside to modify some variables
+	
+	
 	
 	//Public method we can access outside of the Hud class to increase Morgan's health.
 	public static void increaseHealth(){
@@ -140,6 +160,7 @@ public class Hud implements Disposable{
 		}
 		
 	}
+	
 	
 	//sets new task by passed string
 	public void setTask(String task_str){
@@ -155,6 +176,17 @@ public class Hud implements Disposable{
 		
 	}
 	
+	//updates health to 10 and score to passed value (used in initialising new level)
+		public void setScoreHealth(int Svalue)
+		{
+			score = Svalue;
+			health_value = 10;
+			healthLabel.setText(String.format("HEALTH: %d", health_value));
+			scoreLabel.setText(String.format("SCORE: %06d", score));
+		}
+		
+	//--------------------/CHANGE------------------------------
+	
 	//Access outside the class to increase the score by the value passed in.	
 	public static void addScore(int value){
 		score += value;
@@ -165,6 +197,7 @@ public class Hud implements Disposable{
 			}
 		}
 	}
+<<<<<<< HEAD
 	//updates health to 10 and score to passed value (used in initialising new level)
 	public void setScoreHealth(int Svalue)
 	{
@@ -174,6 +207,9 @@ public class Hud implements Disposable{
 		healthLabel.setText(String.format("HEALTH: %d", health_value));
 		scoreLabel.setText(String.format("SCORE: %06d", score));
 	}
+=======
+	
+>>>>>>> 0889ab1bcd69e24cf1d2769fe8a72994a262eed5
 	
 	//getter for score
 	public static int getScore()

@@ -83,7 +83,8 @@ public class universal_b2WorldCreator {
 			
 		}
 	}
-	
+	//--------------------CHANGE------------------------------
+	// handling newly made health and shield powerups
 	public void shield_layer(int layer, int tiled_layer){
 		//For all the objects in the map layer that contains the feather objects(passed in) it gets each 
 		//rectangular object that was placed in Tiled2D.
@@ -107,7 +108,7 @@ public class universal_b2WorldCreator {
 	
 		}
 	}
-		
+	//--------------------/CHANGE------------------------------
 	public void feather_layer(int layer,int tiled_layer){
 		//For all the objects in the map layer that contains the feather objects(passed in) it gets each 
 		//rectangular object that was placed in Tiled2D.

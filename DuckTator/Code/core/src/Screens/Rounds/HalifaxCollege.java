@@ -12,7 +12,10 @@ import com.mygdx.game.DuckTator;
 import Sprites.Enemy.Enemy;
 import Sprites.Enemy.Goose;
 import tools.WorldContactListener;
+//--------------------CHANGE------------------------------
+//implemented this level
 
+//--------------------CHANGE------------------------------
 public class HalifaxCollege extends Level implements Screen{
 
 	//private static final int BLOCKS_LAYER = 22;

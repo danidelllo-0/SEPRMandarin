@@ -124,7 +124,9 @@ public class WorldMap implements Screen{
 	private void initaliseButtons() {
 		//adds behaviors to buttons, mostly to launch a corresponding level
 	
-		
+		//--------------------CHANGE------------------------------
+		//added links to actual college levels
+
 		constantineButton.addListener(new ClickListener(){
 			@Override
 			public void clicked(InputEvent event, float x, float y)
@@ -201,12 +203,12 @@ public class WorldMap implements Screen{
 			}
 			
 				});
-		
+		//--------------------CHANGE------------------------------
 		
 		
 	}
-	
-	
+	//--------------------CHANGE------------------------------
+	// added grayed out college signs
 
 	private void lockMap() {
 		/*Checks if the boolean for each round is false. If it does equal false then set the color
@@ -267,6 +269,7 @@ public class WorldMap implements Screen{
 			vanbrughButton.clearListeners();
 		}
 	}
+	//--------------------CHANGE------------------------------
 
 	@Override
 	public void show() {

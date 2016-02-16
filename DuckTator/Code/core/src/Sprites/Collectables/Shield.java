@@ -10,7 +10,9 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.mygdx.game.DuckTator;
 
 import Scenes.Hud;
-
+//--------------------CHANGE------------------------------
+//implemented shield powerup
+//--------------------CHANGE------------------------------
 public class Shield extends InteractiveTileObject{
 
 	public Shield(World world, TiledMap map, Rectangle bounds,int collectibleLayer){
