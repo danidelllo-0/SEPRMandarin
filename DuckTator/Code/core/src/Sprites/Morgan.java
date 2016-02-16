@@ -142,7 +142,7 @@ public class Morgan extends Sprite{
 				break;
 			default:
 				region = duckStand;
-				break;													
+				break;
 		}
 		
 		/* If he's running in a positive x direction we need to draw him to the right.
@@ -247,9 +247,10 @@ public class Morgan extends Sprite{
 		//Jumping. If the duck is on the ground and the space bar is pressed then apply linear impulse in y direction.
 		//Record the xPosition of the duck when it jumps - this is used for flying
 		//Height of jump is varied in Vector2(0,3.8f)
-		if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE) && (getState() == State.RUNNING | getState()== State.STANDING)) {
+		if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE) && (getState() == State.RUNNING | getState()== State.STANDING | getState() == State.SWIMMING)) {
 			xPositionBeforeJump = duck_b2Body.getPosition().x;
 			duck_b2Body.applyLinearImpulse(new Vector2(0,3.8f), duck_b2Body.getWorldCenter(), true);
+			inwater = false;
 		}
 		
 		//When the duck has been flying and touches the ground a timer is triggered that will prevent the duck from flying until that timer is up.

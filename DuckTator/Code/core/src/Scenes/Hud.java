@@ -30,7 +30,7 @@ public class Hud implements Disposable{
 	//To keep track of the score
 	private static int score;
 	//protection timer
-	private static float protection;
+	public static float protection;
 	//Will count to a second - used for colouring the hud.
 	private float timeCount;
 	//string used in setting a new task to the GUI
@@ -73,7 +73,7 @@ public class Hud implements Disposable{
 		healthLabel = new Label(String.format("HEALTH: %d", health_value),new Label.LabelStyle(new BitmapFont(),Color.WHITE));
 		task = new Label(String.format("OBJECTIVE: %s",task_string),new Label.LabelStyle(new BitmapFont(),Color.WHITE) );
 		flyingLabel = new Label(String.format("FLYING LOCK: %s",flyingTimer),new Label.LabelStyle(new BitmapFont(),Color.WHITE) );
-		protectionLabel = new Label(String.format("IMMUNITY: %s",protection/1000),new Label.LabelStyle(new BitmapFont(),Color.WHITE) );
+		protectionLabel = new Label(String.format("INVINCIBILITY: %s",protection/1000),new Label.LabelStyle(new BitmapFont(),Color.WHITE) );
 	
 		//Adding the labels to our table
 		//if we have multiple things that "expandX" they all have equal space. We just pad down from the top 5 pixels.
@@ -110,13 +110,14 @@ public class Hud implements Disposable{
 		if (protection != 0){
 			if (timeCount >= 0.1){
 				protection -= 100;
-				protectionLabel.setText(String.format("IMMUNITY: %s", protection/1000));
+				protectionLabel.setText(String.format("INVINCIBILITY: %s", protection/1000));
 				timeCount = 0;
 			}
 		}
-		else
-			protectionLabel.setText(String.format("IMMUNITY: %s", 0));
+		else if (protection == 0f){
+			protectionLabel.setText(String.format("INVINCIBILITY: %s", 0));
 			protectionLabel.setColor(Color.RED);
+		}
 	}
 	
 	//Public method we can access outside of the Hud class to decrease Morgan's health.
@@ -182,7 +183,7 @@ public class Hud implements Disposable{
 	public static void addProtection(float n)
 	{
 		protection +=n;
-		protectionLabel.setText(String.format("IMMUNITY: %s", protection/1000));
+		protectionLabel.setText(String.format("INVINCIBILITY: %s", protection/1000));
 		protectionLabel.setColor(Color.GREEN);
 	}
 	

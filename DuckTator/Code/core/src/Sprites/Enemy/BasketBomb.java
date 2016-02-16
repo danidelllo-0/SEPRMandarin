@@ -89,7 +89,9 @@ public class BasketBomb extends Enemy {
 
 	@Override
 	public void hitOnBody(Morgan player) {
-		Gdx.gl.glClearColor(255f, 0, 0, 0);
+		if (Hud.protection == 0f){
+			Gdx.gl.glClearColor(255f, 0, 0, 0);
+		}
 		//Set the boolean because we want to destroy the bomb.
 		setToDestroy = true;
 		//If his health is greater than 0 we want to decrement it.

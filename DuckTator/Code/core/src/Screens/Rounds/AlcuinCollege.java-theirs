@@ -13,7 +13,7 @@ import Sprites.Enemy.Enemy;
 import Sprites.Enemy.Goose;
 import tools.WorldContactListener;
 
-public class VanburghCollege extends Level implements Screen{
+public class AlcuinCollege extends Level implements Screen{
 
 	//private static final int BLOCKS_LAYER = 22;
 	private static final int SHIELD_T = 14;
@@ -34,7 +34,7 @@ public class VanburghCollege extends Level implements Screen{
 	private DuckTator game;
 	
 	//Variable for the file path that links to the map rendered by this round.
-	private static String mapString = "JamesCollege/Vanburgh.tmx" ;
+	private static String mapString = "JamesCollege/Alcuin.tmx" ;
 
 	
 	/*We're going to use a timer to know when to reset the hud to black.
@@ -44,10 +44,9 @@ public class VanburghCollege extends Level implements Screen{
 	 Timer gtimer = new Timer();
 	float timeState=0f; 
 	
-	public VanburghCollege(DuckTator game){
+	public AlcuinCollege(DuckTator game){
 		//Calling the LEVEL class constructor. Passing in the map!
-		super(game, mapString,670,320,7);
-				
+		super(game, mapString,200,320,6);
 		//This brings in our game class, particularly allowing for us to use the SetScreen method!
 		this.game = game;	
 		
@@ -90,10 +89,10 @@ public class VanburghCollege extends Level implements Screen{
 		* increase in points/health
 		* */
 		world.setContactListener(new WorldContactListener(game,player));
+
 		
-	
 		hud.setScoreHealth(game.score);
-		hud.setTask("Liberate Vanburgh!");
+		hud.setTask("Liberate Alcuin!");
 	}
 
 	public void handleInput(float delta){
