@@ -106,12 +106,14 @@ public class Hud implements Disposable{
 		if (!Morgan.allowedToFly){
 			if (Morgan.timeStateFlyingLock >= flyingTimer){
 				flyingLabel.setText(String.format("FLYING LOCK: %s", String.format("%.1f", 2 - Morgan.timeStateFlyingLock)));
+				flyingLabel.setColor(Color.RED);
 				flyingTimer += 0.1f;
 			}
 		}
 		else{
 			flyingTimer = 0.1f;
 			flyingLabel.setText(String.format("FLYING LOCK: %s", "Disabled"));
+			flyingLabel.setColor(Color.GREEN);
 		}
 	}
 	
