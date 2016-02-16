@@ -23,11 +23,11 @@ import Screens.Rounds.HalifaxCollege;
 public class WorldMap implements Screen{
 	
 	private Texture background;
-	private Texture alcuinTexture, constantineTexture, goodrickeTexture,langwithTexture, vanburghTexture, derwentTexture, halifaxTexture, jamesTexture;
+	private Texture alcuinTexture, constantineTexture, goodrickeTexture,langwithTexture, vanbrughTexture, derwentTexture, halifaxTexture, jamesTexture;
 	
 	private Viewport viewport;
 	
-	private Image backgroundStage,alcuinButton, constantineButton, goodrickeButton, langwithButton, vanburghButton, derwentButton, halifaxButton, jamesButton;
+	private Image backgroundStage,alcuinButton, constantineButton, goodrickeButton, langwithButton, vanbrughButton, derwentButton, halifaxButton, jamesButton;
 	
 	public DuckTator game;
 	Stage stage;
@@ -43,7 +43,7 @@ public class WorldMap implements Screen{
 		constantineTexture = new Texture("WorldMap/Constantine.png");
 		goodrickeTexture = new Texture("WorldMap/Goodricke.png");
 		langwithTexture = new Texture("WorldMap/Langwith.png");
-		vanburghTexture = new Texture("WorldMap/Vanbrugh.png");
+		vanbrughTexture = new Texture("WorldMap/Vanbrugh.png");
 		derwentTexture = new Texture("WorldMap/Derwent.png");
 		halifaxTexture = new Texture("WorldMap/Halifax.png");
 		jamesTexture = new Texture("WorldMap/James.png");
@@ -54,7 +54,7 @@ public class WorldMap implements Screen{
 		constantineButton = new Image(constantineTexture);
 		goodrickeButton = new Image(goodrickeTexture);
 		langwithButton = new Image(langwithTexture);
-		vanburghButton = new Image(vanburghTexture);
+		vanbrughButton = new Image(vanbrughTexture);
 		derwentButton = new Image(derwentTexture);
 		halifaxButton = new Image(halifaxTexture);
 		jamesButton = new Image(jamesTexture);
@@ -82,10 +82,10 @@ public class WorldMap implements Screen{
 		
 		/*We add our button to the stage, initally it will be drawn into 0,0. We will have to re position it
 			to the correct place on the map. */
-		stage.addActor(vanburghButton);
+		stage.addActor(vanbrughButton);
 		//re-positioning the button.
-		vanburghButton.setPosition(50, 350);
-		vanburghButton.setSize(116, 124);
+		vanbrughButton.setPosition(50, 350);
+		vanbrughButton.setSize(116, 124);
 		
 		//The above method applies to the rest of the buttons. 
 		stage.addActor(alcuinButton);
@@ -171,7 +171,7 @@ public class WorldMap implements Screen{
 			
 				});
 		
-		vanburghButton.addListener(new ClickListener(){
+		vanbrughButton.addListener(new ClickListener(){
 			@Override
 			public void clicked(InputEvent event, float x, float y)
 			{
@@ -256,10 +256,10 @@ public class WorldMap implements Screen{
 		}
 		
 		if (DuckTator.VANBURGH_UNLOCKED == false){
-			vanburghTexture = new Texture("WorldMap/VanburghGray.png");
-			vanburghButton = new Image(vanburghTexture);
+			vanbrughTexture = new Texture("WorldMap/VanbrughGray.png");
+			vanbrughButton = new Image(vanbrughTexture);
 			drawButton();
-			vanburghButton.clearListeners();
+			vanbrughButton.clearListeners();
 		}
 	}
 
@@ -313,7 +313,7 @@ public class WorldMap implements Screen{
 		constantineTexture.dispose();
 		goodrickeTexture.dispose();
 		langwithTexture.dispose();
-		vanburghTexture.dispose();
+		vanbrughTexture.dispose();
 		derwentTexture.dispose();
 		halifaxTexture.dispose();
 		jamesTexture.dispose();

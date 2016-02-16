@@ -56,7 +56,7 @@ public class DuckTator extends Game {
 	public static boolean ALCUIN_UNLOCKED = false;
 	public static boolean GOODRICKE_UNLOCKED = false;
 	public static boolean LANGWITH_UNLOCKED = false;
-	public static boolean VANBURGH_UNLOCKED = true;
+	public static boolean VANBURGH_UNLOCKED = false;
 	public static boolean DERWENT_UNLOCKED = false;
 	public static boolean HALIFAX_UNLOCKED = false;
 
