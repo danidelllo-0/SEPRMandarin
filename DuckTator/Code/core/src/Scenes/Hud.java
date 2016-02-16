@@ -25,34 +25,30 @@ public class Hud implements Disposable{
 	public Stage stage;
 	//When the game world moves we want the HUD to stay in the same position. Thus we need a new camera&viewport.
 	private Viewport viewport;
-	//To keep track of the time
-	private Integer worldTimer;
 	//To keep track of Morgan's health
 	public static int health_value;
 	//To keep track of the score
 	private static int score;
 	//protection timer
-	private static int protection;
+	private static float protection;
 	//Will count to a second - used for colouring the hud.
 	private float timeCount;
 	//
 	private String task_string = " ";
 	private float flyingTimer;
-	//private float flyingUpdateTimeInterval=0.1f;
 	
 	//The wigits we will be placing onto our stage are 'Label's. So we need one for each of our key pieces
 	//of information.
-	public Label countdownLabel;
 	public Label timeLabel;
 	public Label worldLabel;
 	static Label healthLabel;
 	static Label scoreLabel;
 	static Label task;
 	static Label flyingLabel;
+	static Label protectionLabel;
 	
 	public Hud(SpriteBatch sb){
 		//Initialising variables setting timer/score/health
-		worldTimer = 0;
 		timeCount = 0;
 		score = 0;
 		health_value = 10;
@@ -72,19 +68,19 @@ public class Hud implements Disposable{
 		table.setFillParent(true);
 		
 		//Now we provide the text to be displayed in our table.
-		countdownLabel = new Label(String.format("TIME: %d", worldTimer),new Label.LabelStyle(new BitmapFont(),Color.WHITE));
 		scoreLabel = new Label(String.format("SCORE: %06d", score),new Label.LabelStyle(new BitmapFont(),Color.WHITE));
 		healthLabel = new Label(String.format("HEALTH: %d", health_value),new Label.LabelStyle(new BitmapFont(),Color.WHITE));
 		task = new Label(String.format("OBJECTIVE: %s",task_string),new Label.LabelStyle(new BitmapFont(),Color.WHITE) );
 		flyingLabel = new Label(String.format("FLYING LOCK: %s",flyingTimer),new Label.LabelStyle(new BitmapFont(),Color.WHITE) );
+		protectionLabel = new Label(String.format("IMMUNITY: %s",protection/1000),new Label.LabelStyle(new BitmapFont(),Color.WHITE) );
 	
 		//Adding the labels to our table
 		//if we have multiple things that "expandX" they all have equal space. We just pad down from the top 5 pixels.
 		table.add(scoreLabel).expandX().pad(2);
 		table.add(healthLabel).expandX().pad(2);
-		table.add(countdownLabel).expandX().pad(2);
 		table.add(task).expandX().pad(2);
 		table.add(flyingLabel).expandX().pad(2);
+		table.add(protectionLabel).expandX().pad(2);
 		
 		//add the table to our stage!
 		stage.addActor(table);
@@ -96,16 +92,6 @@ public class Hud implements Disposable{
 		//dt is just approximately 1/60. So summing it up we can compute when a second has passed. 
 		timeCount += dt;
 		
-		//If the timeCount is equal/greater than 1 then 1 second has passed.
-		//Therefore we want to increment the world Timer.		
-		if(timeCount >= 1){
-			worldTimer ++;
-			//We then update our label to the new time
-			countdownLabel.setText(String.format("TIME: %d", worldTimer));
-			//Setting the timeCoutn back to 0 so we can wait for another second to pass
-			timeCount = 0;
-			
-		}
 		if (!Morgan.allowedToFly){
 			if (Morgan.timeStateFlyingLock >= flyingTimer){
 				flyingLabel.setText(String.format("FLYING LOCK: %s", String.format("%.1f", 2 - Morgan.timeStateFlyingLock)));
@@ -118,6 +104,18 @@ public class Hud implements Disposable{
 			flyingLabel.setText(String.format("FLYING LOCK: %s", "Disabled"));
 			flyingLabel.setColor(Color.GREEN);
 		}
+		
+		//The countdown timer for protection in intervals of 0.1 seconds
+		if (protection != 0){
+			if (timeCount >= 0.1){
+				protection -= 100;
+				protectionLabel.setText(String.format("IMMUNITY: %s", protection/1000));
+				timeCount = 0;
+			}
+		}
+		else
+			protectionLabel.setText(String.format("IMMUNITY: %s", 0));
+			protectionLabel.setColor(Color.RED);
 	}
 	
 	//Public method we can access outside of the Hud class to decrease Morgan's health.
@@ -177,10 +175,11 @@ public class Hud implements Disposable{
 		return health_value;
 	}
 	
-	public static void addProtection(int n)
+	public static void addProtection(float n)
 	{
 		protection +=n;
-		System.out.println("hello!");
+		protectionLabel.setText(String.format("IMMUNITY: %s", protection/1000));
+		protectionLabel.setColor(Color.GREEN);
 	}
 	
 	@Override
