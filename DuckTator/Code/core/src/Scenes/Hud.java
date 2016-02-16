@@ -37,7 +37,8 @@ public class Hud implements Disposable{
 	private String task_string = " ";
 	//timer used to tell user when they can fly again
 	private float flyingTimer;
-	
+	private static int vanbrughInitialScore;
+	public static boolean vanbrughFlag;
 	//The wigits we will be placing onto our stage are 'Label's. So we need one for each of our key pieces
 	//of information.
 	public Label timeLabel; //time passed of game
@@ -47,6 +48,7 @@ public class Hud implements Disposable{
 	static Label task; //current objective
 	static Label flyingLabel; //time until can fly again
 	static Label protectionLabel; //if the user has temporary protection
+	
 	
 	public Hud(SpriteBatch sb){
 		//Initialising variables setting timer/score/health
@@ -74,7 +76,6 @@ public class Hud implements Disposable{
 		task = new Label(String.format("OBJECTIVE: %s",task_string),new Label.LabelStyle(new BitmapFont(),Color.WHITE) );
 		flyingLabel = new Label(String.format("FLYING LOCK: %s",flyingTimer),new Label.LabelStyle(new BitmapFont(),Color.WHITE) );
 		protectionLabel = new Label(String.format("INVINCIBILITY: %s",protection/1000),new Label.LabelStyle(new BitmapFont(),Color.WHITE) );
-	
 		//Adding the labels to our table
 		//if we have multiple things that "expandX" they all have equal space. We just pad down from the top 5 pixels.
 		table.add(scoreLabel).expandX().pad(2);
@@ -118,6 +119,7 @@ public class Hud implements Disposable{
 			protectionLabel.setText(String.format("INVINCIBILITY: %s", 0));
 			protectionLabel.setColor(Color.RED);
 		}
+		
 	}
 	
 	//Public method we can access outside of the Hud class to decrease Morgan's health.
@@ -140,9 +142,10 @@ public class Hud implements Disposable{
 	}
 	
 	//sets new task by passed string
-	public void setTask(String task_str)
-	{
+	public void setTask(String task_str){
 		task.setText(String.format("OBJECTIVE: %s",task_str));
+		if (vanbrughFlag == true)
+			task.setColor(Color.RED);
 	}
 	
 	//Access outside the class to set health back to 10.
@@ -155,13 +158,17 @@ public class Hud implements Disposable{
 	//Access outside the class to increase the score by the value passed in.	
 	public static void addScore(int value){
 		score += value;
-	
 		scoreLabel.setText(String.format("SCORE: %06d", score));
+		if (vanbrughFlag == true){
+			if ((getScore() - vanbrughInitialScore) >= 5000){
+				task.setColor(Color.GREEN);
+			}
+		}
 	}
-	
 	//updates health to 10 and score to passed value (used in initialising new level)
 	public void setScoreHealth(int Svalue)
 	{
+		vanbrughInitialScore = Svalue;
 		score = Svalue;
 		health_value = 10;
 		healthLabel.setText(String.format("HEALTH: %d", health_value));

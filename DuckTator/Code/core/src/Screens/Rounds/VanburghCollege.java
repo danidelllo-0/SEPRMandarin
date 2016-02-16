@@ -9,6 +9,8 @@ import com.badlogic.gdx.physics.box2d.EdgeShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.utils.Timer;
 import com.mygdx.game.DuckTator;
+
+import Scenes.Hud;
 import Sprites.Enemy.Enemy;
 import Sprites.Enemy.Goose;
 import tools.WorldContactListener;
@@ -41,7 +43,7 @@ public class VanburghCollege extends Level implements Screen{
 	 * When Morgan collides with a goose the hud will be coloured red. Then after 3 seconds has passed
 	 * the render method here will reset it to black.
 	 */
-	 Timer gtimer = new Timer();
+	Timer gtimer = new Timer();
 	float timeState=0f; 
 	
 	public VanburghCollege(DuckTator game){
@@ -90,10 +92,9 @@ public class VanburghCollege extends Level implements Screen{
 		* increase in points/health
 		* */
 		world.setContactListener(new WorldContactListener(game,player));
-		
-	
+		Hud.vanbrughFlag = true;
 		hud.setScoreHealth(game.score);
-		hud.setTask("Liberate Vanburgh!");
+		hud.setTask("Aquire 5000 Points");
 	}
 
 	public void handleInput(float delta){
