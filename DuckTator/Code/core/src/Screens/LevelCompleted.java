@@ -38,7 +38,7 @@ public class LevelCompleted implements Screen{
 		if (lvl_completed==5) name = "Derwent";
 		if (lvl_completed==6) name = "Alcuin";
 		if (lvl_completed==7) name = "Vanburgh";
-		if (lvl_completed==8) name = "James";
+		if (lvl_completed==8) name = "JamesCompleted";
 		
 		
 		//Creating the textures.
