@@ -40,16 +40,16 @@ public class DuckTator extends Game {
 	public static final short BRICK_BIT = 4;
 	public static final short HEALTH_BIT = 8;
 	public static final short FEATHER_BIT = 16;
-	public static final short DESTROYED_BIT = 32;
-	public static final short ENEMY_BIT = 64;
-	public static final short ENEMY_HEAD = 128;
-	public static final short GROUND_OBJECT = 256;
-	public static final short SPIKE_BIT = 512;
-	public static final short BOMB_BIT = 1024;
-	public static final short CAGE_BIT = 2048;
-	public static final short STOPPER_BIT = 4096;
-	public static final short WATER_BIT = 8192;
-	public static final short SHIELD_BIT = 16384;
+	public static final short SHIELD_BIT = 32;
+	public static final short DESTROYED_BIT = 64;
+	public static final short ENEMY_BIT = 128;
+	public static final short ENEMY_HEAD = 256;
+	public static final short GROUND_OBJECT = 512;
+	public static final short SPIKE_BIT = 1024;
+	public static final short BOMB_BIT = 2048;
+	public static final short CAGE_BIT = 4096;
+	public static final short STOPPER_BIT = 8192;
+	public static final short WATER_BIT = 16384;
 	
 	//These booleans determine what levels are going to be unlocked on the world map.
 	public static boolean JAMES_UNLOCKED = true;

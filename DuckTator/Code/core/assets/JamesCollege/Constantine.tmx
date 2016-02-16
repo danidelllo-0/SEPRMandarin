@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="400" height="30" tilewidth="16" tileheight="16" nextobjectid="43">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="400" height="30" tilewidth="16" tileheight="16" nextobjectid="44">
  <tileset firstgid="1" name="sky" tilewidth="16" tileheight="16" tilecount="2912" columns="91">
   <image source="Sky_const.png" width="1466" height="520"/>
  </tileset>
@@ -11,6 +11,9 @@
  </tileset>
  <tileset firstgid="3154" name="heart" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="../Changes/heart.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="3155" name="shield" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+  <image source="../Changes/shield1.png" width="64" height="64"/>
  </tileset>
  <layer name="Sky" width="400" height="30">
   <data encoding="base64" compression="zlib">
@@ -90,5 +93,12 @@
  <objectgroup name="Cage">
   <object id="5" x="6374.67" y="361.333" width="28" height="56"/>
  </objectgroup>
- <objectgroup name="Shield"/>
+ <objectgroup name="Shield">
+  <object id="43" x="161" y="371" width="44" height="46"/>
+ </objectgroup>
+ <layer name="shield" width="400" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztzjEBAAAIA6AFsJ39uyyGHpCABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAICd6wEAAAAAAAAAAMAfBZZyAGA=
+  </data>
+ </layer>
 </map>

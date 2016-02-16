@@ -177,6 +177,7 @@ public class Hud implements Disposable{
 	public static void addProtection(int n)
 	{
 		protection +=n;
+		System.out.println("hello!");
 	}
 	
 	@Override

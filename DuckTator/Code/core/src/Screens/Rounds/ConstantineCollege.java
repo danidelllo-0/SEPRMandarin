@@ -15,6 +15,7 @@ import tools.WorldContactListener;
 
 public class ConstantineCollege extends Level implements Screen{
 
+	private static final int SHIELD_T = 14;
 	private static final int SHIELD_LAYER = 13;
 	//private static final int BLOCKS_LAYER = 22;
 	private static final int BOUNDARIES_LAYER = 11;
@@ -73,6 +74,8 @@ public class ConstantineCollege extends Level implements Screen{
 		b2_world_creator.feather_layer(FEATHER_LAYER,FEATHERS_T);
 		//HEARTS LAYER
 		b2_world_creator.hearts_layer(HEARTS,HEARTS_T);
+		//SHIELD LAYER
+		b2_world_creator.shield_layer(SHIELD_LAYER,SHIELD_T);
 		//GOOSE LAYER
 		b2_world_creator.goose_layer(GEESE_LAYER);
 		//RANDOM BOMBS LAYER
