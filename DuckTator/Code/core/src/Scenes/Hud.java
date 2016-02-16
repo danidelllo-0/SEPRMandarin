@@ -122,8 +122,11 @@ public class Hud implements Disposable{
 	
 	//Public method we can access outside of the Hud class to decrease Morgan's health.
 	public static void decreaseHealth(){
-		health_value -= 1;
-		healthLabel.setText(String.format("HEALTH: %d", health_value));
+		if (protection==0)
+		{
+			health_value -= 1;
+			healthLabel.setText(String.format("HEALTH: %d", health_value));
+		}
 		
 	}
 	
