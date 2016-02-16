@@ -27,6 +27,7 @@ public class DuckTator extends Game {
 	//object of size 5, this would be 5m in the physics world. We scale everything so 1 meter is 100 pixels.
 	public static final float PPM = 100;
 	
+	//Some public variables (health,score) that we need in order to pass them from level to level
 	public int score = 0;
 	public int health = 10;
 	

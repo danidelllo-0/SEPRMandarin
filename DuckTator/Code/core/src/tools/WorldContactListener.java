@@ -153,6 +153,7 @@ public class WorldContactListener implements ContactListener{
 				}
 				break;
 				
+			//if duck hit water
 			case DuckTator.DUCK_BIT | DuckTator.WATER_BIT:
 				if (fixA.getFilterData().categoryBits == DuckTator.DUCK_BIT){
 					((Morgan) fixA.getUserData()).inwater = true;
@@ -178,7 +179,7 @@ public class WorldContactListener implements ContactListener{
 					}
 				else {	
 				}
-				
+			    //level is completed, unlock next college in order
 				if (player.lvl==1){
 					DuckTator.LANGWITH_UNLOCKED=true;
 				}

@@ -34,7 +34,7 @@ public class Goose extends Enemy{
 		super(game,world, x, y);
 		this.game = game;
 		
-		//pick correct texture for a goose
+		//pick correct texture for a goose depending on college
 		String tex_name = "";
 		if (lvl_num==1) tex_name="constgeese_f";
 		if (lvl_num==2) tex_name="langwithgoose_f";

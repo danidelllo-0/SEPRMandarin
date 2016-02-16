@@ -300,7 +300,7 @@ public class Morgan extends Sprite{
 
 	public void dead_morgan(int level)
 	{	
-		//If Morgan is killed set the screen to the beginning of the level.
+		//If Morgan is killed set the screen to the beginning of the same level.
 
 		if(level==1)
 			game.setScreen(new ConstantineCollege(game));

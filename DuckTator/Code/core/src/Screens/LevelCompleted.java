@@ -24,6 +24,7 @@ public class LevelCompleted implements Screen{
 	public LevelCompleted(DuckTator game,int lvl_completed){
 		this.game = game;
 		
+		//if statements to pick a desired screen completion image to output based in parameter
 		String name = "";
 		if (lvl_completed==1) name = "Constantine";
 		if (lvl_completed==2) name = "Langwith";

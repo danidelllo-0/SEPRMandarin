@@ -122,7 +122,7 @@ public class WorldMap implements Screen{
 	}
 	
 	private void initaliseButtons() {
-		
+		//adds behaviors to buttons, mostly to launch a corresponding level
 	
 		
 		constantineButton.addListener(new ClickListener(){
@@ -210,7 +210,7 @@ public class WorldMap implements Screen{
 
 	private void lockMap() {
 		/*Checks if the boolean for each round is false. If it does equal false then set the color
-			to black to show it's locked and clear the listener so it cannot be clicked on. */
+			to grayed out version to show it's locked and clear the listener so it cannot be clicked on. */
 		if (DuckTator.ALCUIN_UNLOCKED == false){
 			alcuinTexture = new Texture("WorldMap/AlcuinGray.png");
 			alcuinButton = new Image(alcuinTexture);

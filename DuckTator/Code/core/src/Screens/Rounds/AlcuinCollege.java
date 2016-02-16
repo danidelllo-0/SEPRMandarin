@@ -15,13 +15,11 @@ import tools.WorldContactListener;
 
 public class AlcuinCollege extends Level implements Screen{
 
-	//private static final int BLOCKS_LAYER = 22;
 	private static final int BOUNDARIES_LAYER = 11;
 	private static final int GROUND_LAYER = 5;
 	private static final int CAGE_LAYER = 12;
 	private static final int DEATH_LAYER = 10;
 	private static final int FEATHER_LAYER = 6;
-	//private static final int BUILDINGS_LAYER = 28;
 	private static final int GEESE_LAYER = 9;
 	private static final int STOPPERS_LAYER = 7 ;
 	private static final int HEARTS = 8 ;

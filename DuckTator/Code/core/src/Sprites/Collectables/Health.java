@@ -46,6 +46,7 @@ public class Health extends InteractiveTileObject{
 	
 	@Override
 	public void onBodyHit() {
+		//choosing desired color
 		Gdx.gl.glClearColor(0, 255, 0, 5);
 		/*This will be called when Morgan's body collides with the feather.
 		* We get the cell and set it equal to null. This will remove the feather image from the
@@ -53,7 +54,7 @@ public class Health extends InteractiveTileObject{
 		getCell(this.collectibleLayer).setTile(null);
 		//Setting the category bilt to destroyed so Morgan can no longer collide with the box2D body.
 		setCategoryFilter(DuckTator.DESTROYED_BIT);
-		//Adding 100 points to the score.
+		//Adding 1 to health.
 		Hud.increaseHealth();
 		
 	}

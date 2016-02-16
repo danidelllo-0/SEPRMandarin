@@ -33,19 +33,20 @@ public class Hud implements Disposable{
 	private static float protection;
 	//Will count to a second - used for colouring the hud.
 	private float timeCount;
-	//
+	//string used in setting a new task to the GUI
 	private String task_string = " ";
+	//timer used to tell user when they can fly again
 	private float flyingTimer;
 	
 	//The wigits we will be placing onto our stage are 'Label's. So we need one for each of our key pieces
 	//of information.
-	public Label timeLabel;
+	public Label timeLabel; //time passed of game
 	public Label worldLabel;
-	static Label healthLabel;
-	static Label scoreLabel;
-	static Label task;
-	static Label flyingLabel;
-	static Label protectionLabel;
+	static Label healthLabel; //current health 
+	static Label scoreLabel;  //current score
+	static Label task; //current objective
+	static Label flyingLabel; //time until can fly again
+	static Label protectionLabel; //if the user has temporary protection
 	
 	public Hud(SpriteBatch sb){
 		//Initialising variables setting timer/score/health
@@ -137,7 +138,7 @@ public class Hud implements Disposable{
 		
 	}
 	
-	//sets new task
+	//sets new task by passed string
 	public void setTask(String task_str)
 	{
 		task.setText(String.format("OBJECTIVE: %s",task_str));
@@ -157,6 +158,7 @@ public class Hud implements Disposable{
 		scoreLabel.setText(String.format("SCORE: %06d", score));
 	}
 	
+	//updates health to 10 and score to passed value (used in initialising new level)
 	public void setScoreHealth(int Svalue)
 	{
 		score = Svalue;
@@ -165,16 +167,18 @@ public class Hud implements Disposable{
 		scoreLabel.setText(String.format("SCORE: %06d", score));
 	}
 	
+	//getter for score
 	public static int getScore()
 	{
 		return score;
 	}
-
+	//getter for health
 	public static int getHealth()
 	{
 		return health_value;
 	}
 	
+	//adds passed amount of time to the protection timer
 	public static void addProtection(float n)
 	{
 		protection +=n;

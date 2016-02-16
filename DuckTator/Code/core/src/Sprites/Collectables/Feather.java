@@ -45,6 +45,7 @@ public class Feather extends InteractiveTileObject{
 	
 	@Override
 	public void onBodyHit() {
+		//choosing desired color
 		Gdx.gl.glClearColor(204, 172, 0, 5);
 		/*This will be called when Morgan's body collides with the feather.
 		* We get the cell and set it equal to null. This will remove the feather image from the
