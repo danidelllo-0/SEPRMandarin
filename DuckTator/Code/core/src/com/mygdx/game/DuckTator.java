@@ -56,14 +56,14 @@ public class DuckTator extends Game {
 	public static final short WATER_BIT = 16384;
 	
 	//These booleans determine what levels are going to be unlocked on the world map.
-	public static boolean JAMES_UNLOCKED = false;
+	public static boolean JAMES_UNLOCKED = true;
 	public static boolean CONSTANTINE_UNLOCKED = true;
-	public static boolean ALCUIN_UNLOCKED = false;
-	public static boolean GOODRICKE_UNLOCKED = false;
-	public static boolean LANGWITH_UNLOCKED = false;
-	public static boolean VANBURGH_UNLOCKED = false;
-	public static boolean DERWENT_UNLOCKED = false;
-	public static boolean HALIFAX_UNLOCKED = false;
+	public static boolean ALCUIN_UNLOCKED = true;
+	public static boolean GOODRICKE_UNLOCKED = true;
+	public static boolean LANGWITH_UNLOCKED = true;
+	public static boolean VANBURGH_UNLOCKED = true;
+	public static boolean DERWENT_UNLOCKED = true;
+	public static boolean HALIFAX_UNLOCKED = true;
 
 	
 	@Override
