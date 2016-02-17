@@ -1,6 +1,5 @@
 package Sprites.Collectables;
 
-import java.io.Console;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.Rectangle;
@@ -11,9 +10,11 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.mygdx.game.DuckTator;
 
 import Scenes.Hud;
+
 //--------------------CHANGE------------------------------
-//implemented health powerup
-//--------------------CHANGE------------------------------
+//Implemented health power-up
+//--------------------/CHANGE------------------------------
+
 public class Health extends InteractiveTileObject{
 
 	public Health(World world, TiledMap map, Rectangle bounds,int collectibleLayer){

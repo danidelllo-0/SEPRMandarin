@@ -17,6 +17,8 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.game.DuckTator;
 
+import Scenes.Hud;
+
 public class LevelCompleted implements Screen{
 
 	private Texture background;
@@ -29,7 +31,9 @@ public class LevelCompleted implements Screen{
 	public LevelCompleted(DuckTator game,int lvl_completed){
 		this.game = game;
 		
-		//if statements to pick a desired screen completion image to output based in parameter
+		//--------------------CHANGE------------------------------
+		//Change because new levels were added and they each need a completion screen
+		//if statements to pick a desired screen completion image to output based on current level
 		String name = "";
 		if (lvl_completed==1) name = "Constantine";
 		if (lvl_completed==2) name = "Langwith";
@@ -44,8 +48,9 @@ public class LevelCompleted implements Screen{
 		//Creating the textures.
 		background = new Texture("RoundCompleted/"+name+".png");
 		returnWorldMapTexture = new Texture ("RoundCompleted/returnworldmap.png");
-		//Creating images to use on our stage.
+		//--------------------/CHANGE------------------------------
 		
+		//Creating images to use on our stage.
 		backgroundStage = new Image(background);
 		returnWorldMapButton = new Image(returnWorldMapTexture);
 		
@@ -60,6 +65,12 @@ public class LevelCompleted implements Screen{
 		
 		//Initalising buttons (defining what happens when they are pressed)
 		initialiseButtons();
+		
+		//--------------------CHANGE------------------------------
+		//Change due to new type of objective in Vanbrugh
+		//Resets the Vanbrugh flag at the completion screen so that only the Vanbrugh level has the Vanbrugh flag set
+		Hud.vanbrughFlag = false;
+		//--------------------/CHANGE------------------------------
 	}
 
 	private void drawButtons() {
@@ -80,6 +91,7 @@ public class LevelCompleted implements Screen{
 			public void clicked(InputEvent event, float x, float y)
 			{
 				game.setScreen(new WorldMap(game));
+				
 			}
 				});
 	}
@@ -132,6 +144,5 @@ public class LevelCompleted implements Screen{
 		stage.dispose();
 		
 	}
-	
 }
 //--------------------/CHANGE------------------------------

@@ -1,7 +1,5 @@
 package tools;
 
-import java.io.Console;
-
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.ContactListener;
@@ -9,15 +7,12 @@ import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.Manifold;
 import com.mygdx.game.DuckTator;
 import Scenes.Hud;
-import Screens.JamesCompleted;
-import Screens.WorldMap;
 import Sprites.Morgan;
 import Sprites.Collectables.Feather;
 import Sprites.Collectables.Health;
 import Sprites.Collectables.Shield;
 import Sprites.Enemy.BasketBomb;
 import Sprites.Enemy.Enemy;
-import Sprites.Morgan;
 import Screens.LevelCompleted;
 
 public class WorldContactListener implements ContactListener{
@@ -112,7 +107,7 @@ public class WorldContactListener implements ContactListener{
 				break;
 			
 				//--------------------CHANGE------------------------------
-				//added added handling of health and shield powerups
+				//Added handling of health and shield power-ups and swimming feature
 				
 				//TESTING IF THE DUCK HIT A HEART
 			case DuckTator.DUCK_BIT | DuckTator.HEALTH_BIT:
@@ -134,7 +129,17 @@ public class WorldContactListener implements ContactListener{
 				}
 				break;
 				
-				//--------------------CHANGE------------------------------
+				//TETSING IF THE DUCK HIT WATER
+			case DuckTator.DUCK_BIT | DuckTator.WATER_BIT:
+				if (fixA.getFilterData().categoryBits == DuckTator.DUCK_BIT){
+					((Morgan) fixA.getUserData()).inwater = true;
+				}
+				else {
+					((Morgan) fixB.getUserData()).inwater = true;
+				}
+				break;
+				//--------------------/CHANGE------------------------------
+				
 			//TESTING IF THE DUCK HIT A FEATHER
 			case DuckTator.DUCK_BIT | DuckTator.FEATHER_BIT:
 				if (fixA.getFilterData().categoryBits == DuckTator.FEATHER_BIT){
@@ -155,15 +160,6 @@ public class WorldContactListener implements ContactListener{
 				}
 				break;
 				
-			//if duck hit water
-			case DuckTator.DUCK_BIT | DuckTator.WATER_BIT:
-				if (fixA.getFilterData().categoryBits == DuckTator.DUCK_BIT){
-					((Morgan) fixA.getUserData()).inwater = true;
-				}
-				else {
-					((Morgan) fixB.getUserData()).inwater = true;
-				}
-				break;
 			//TESTING IF THE DUCK HIT A BOMB	
 			case DuckTator.DUCK_BIT | DuckTator.BOMB_BIT:
 				if (fixA.getFilterData().categoryBits == DuckTator.BOMB_BIT){
@@ -179,10 +175,9 @@ public class WorldContactListener implements ContactListener{
 			case DuckTator.DUCK_BIT | DuckTator.CAGE_BIT:
 				if (fixA.getFilterData().categoryBits == DuckTator.DUCK_BIT){				
 					}
-				else {	
-				}
+				
 				//--------------------CHANGE------------------------------
-				//added new behavior
+				//Changed due to the addition of new levels
 				
 			    //level is completed, unlock next college in order
 				if (player.lvl==1){
@@ -206,15 +201,13 @@ public class WorldContactListener implements ContactListener{
 				if (player.lvl==7){
 					DuckTator.JAMES_UNLOCKED=true;
 				}
-				//if (player.lvl==8) win!
-				
-				
 				
 				Hud.addScore(5000);
 				game.score=Hud.getScore();
 				game.health=Hud.getHealth();
 				game.setScreen(new LevelCompleted(game,player.lvl));//new JamesCompleted(game));
-				//--------------------CHANGE------------------------------
+				//--------------------/CHANGE------------------------------
+				
 				break;				
 		}			
 	}

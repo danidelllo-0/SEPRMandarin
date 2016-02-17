@@ -1,6 +1,5 @@
 package tools;
 
-import java.io.Console;
 import java.util.Random;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
@@ -84,7 +83,7 @@ public class universal_b2WorldCreator {
 		}
 	}
 	//--------------------CHANGE------------------------------
-	// handling newly made health and shield powerups
+	// handling newly made health and shield power-ups
 	public void shield_layer(int layer, int tiled_layer){
 		//For all the objects in the map layer that contains the feather objects(passed in) it gets each 
 		//rectangular object that was placed in Tiled2D.
@@ -109,6 +108,7 @@ public class universal_b2WorldCreator {
 		}
 	}
 	//--------------------/CHANGE------------------------------
+	
 	public void feather_layer(int layer,int tiled_layer){
 		//For all the objects in the map layer that contains the feather objects(passed in) it gets each 
 		//rectangular object that was placed in Tiled2D.

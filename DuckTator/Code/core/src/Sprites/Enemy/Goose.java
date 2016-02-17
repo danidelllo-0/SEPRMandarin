@@ -33,8 +33,9 @@ public class Goose extends Enemy{
 		//review that!
 		super(game,world, x, y);
 		this.game = game;
+		
 		//--------------------CHANGE------------------------------
-		//ichanged so that sprite would match the college
+		//Changed so that sprite would match the college
 		
 		//pick correct texture for a goose depending on college
 		String tex_name = "";
@@ -46,13 +47,12 @@ public class Goose extends Enemy{
 		if (lvl_num==6) tex_name="alcuingoose_f";
 		if (lvl_num==7) tex_name="vanbrughgeese_f";
 		if (lvl_num==8) tex_name="goose_f";
-		//--------------------CHANGE------------------------------
-		
 		
 		//****See the Goose class/Morgan. The Goose's animation works in exactly the same way ****
-		
 		frames = new Array<TextureRegion>();
-		atlas = new TextureAtlas("NewGoose/"+tex_name+".pack");		
+		atlas = new TextureAtlas("NewGoose/"+tex_name+".pack");	
+		//--------------------/CHANGE------------------------------
+		
 		for (int i = 0; i<4; i++){
 			frames.add(new TextureRegion(atlas.findRegion("goosef"),i*157,0,130,104));
 		}
@@ -65,6 +65,7 @@ public class Goose extends Enemy{
 		
 	}
 	
+	@Override
 	public void update(float dt){
 		stateTimer += dt;
 		TextureRegion region;
@@ -134,6 +135,7 @@ public class Goose extends Enemy{
 		
 	}
 	
+	@Override
 	public void draw(Batch batch){
 		if (!destroyed || stateTimer < 1)
 			super.draw(batch);

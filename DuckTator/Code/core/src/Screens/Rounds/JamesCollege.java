@@ -16,8 +16,16 @@ import tools.WorldContactListener;
 public class JamesCollege extends Level implements Screen  {
 	
 	//Variables representing the layers in the Tiled2D map.
+	
+	//--------------------CHANGE------------------------------
+	//Added new variables for new layers: shield, hearts and water
 	private static final int SHIELD_T = 14;
 	private static final int SHIELD_LAYER = 13;
+	private static final int WATER_LAYER = 31;
+	private static final int HEARTS = 32;
+	private static final int HEARTS_T = 21;
+	//--------------------/CHANGE------------------------------
+	
 	private static final int BLOCKS_LAYER = 22;
 	private static final int BOUNDARIES_LAYER = 23;
 	private static final int GROUND_LAYER = 24;
@@ -27,10 +35,7 @@ public class JamesCollege extends Level implements Screen  {
 	private static final int BUILDINGS_LAYER = 28;
 	private static final int GEESE_LAYER = 29;
 	private static final int STOPPERS_LAYER = 30;
-	private static final int HEARTS = 32;
-	private static final int HEARTS_T = 21;
 	private static final int FEATHERS_T = 20;
-	private static final int WATER_LAYER = 31;
 	
 	//Variable for our game.
 	private DuckTator game;
@@ -45,7 +50,7 @@ public class JamesCollege extends Level implements Screen  {
 	 * When Morgan collides with a goose the hud will be coloured red. Then after 3 seconds has passed
 	 * the render method here will reset it to black.
 	 */
-	 Timer gtimer = new Timer();
+	Timer gtimer = new Timer();
 	float timeState=0f; 
 	
 	
@@ -59,6 +64,17 @@ public class JamesCollege extends Level implements Screen  {
 		/*We pass in the layer on the tiled2Dmap that we want to draw in the box2D world. Also the
 		*category bit (what we use to identify something on that layer) is passed in.
 		*/
+		
+		//--------------------CHANGE------------------------------
+		//Added new layers
+		//WATER_LAYER
+		b2_world_creator.rectangle_layer(WATER_LAYER, DuckTator.WATER_BIT);
+		//HEARTS LAYER
+		b2_world_creator.hearts_layer(HEARTS,HEARTS_T);
+		//SHIELD LAYER
+		b2_world_creator.shield_layer(SHIELD_LAYER,SHIELD_T);
+		//--------------------/CHANGE------------------------------
+		
 		//STOPPER LAYER - What geese will bounce off.
 		b2_world_creator.rectangle_layer(STOPPERS_LAYER, DuckTator.STOPPER_BIT);
 		//GROUND LAYER
@@ -69,8 +85,6 @@ public class JamesCollege extends Level implements Screen  {
 		b2_world_creator.rectangle_layer(BLOCKS_LAYER, DuckTator.BRICK_BIT);
 		//CAGE LAYER
 		b2_world_creator.rectangle_layer(CAGE_LAYER, DuckTator.CAGE_BIT);
-		//WATER_LAYER
-		b2_world_creator.rectangle_layer(WATER_LAYER, DuckTator.WATER_BIT);
 		//BOUNDARIES LAYER - So Morgan can't fall off the map
 		b2_world_creator.rectangle_layer(BOUNDARIES_LAYER, DuckTator.GROUND_BIT);
 		//BUILDING LAYER
@@ -80,12 +94,8 @@ public class JamesCollege extends Level implements Screen  {
 		*See the universal_b2WorldCreator for more detail.*/
 		//FEATHER LAYER
 		b2_world_creator.feather_layer(FEATHER_LAYER,FEATHERS_T);
-		//HEARTS LAYER
-		b2_world_creator.hearts_layer(HEARTS,HEARTS_T);
 		//GOOSE LAYER
 		b2_world_creator.goose_layer(GEESE_LAYER);
-		//SHIELD LAYER
-		b2_world_creator.shield_layer(SHIELD_LAYER,SHIELD_T);
 		//RANDOM BOMBS LAYER
 		b2_world_creator.random_bombs();
 		
@@ -101,8 +111,11 @@ public class JamesCollege extends Level implements Screen  {
 		//Calling the method to create the 'boss goose'
 		bossGoose();
 		
+		//--------------------CHANGE------------------------------
+		//Continues the score from the previous level onto this one and sets a new objective to be displayed in the HUD
 		hud.setScoreHealth(game.score);
 		hud.setTask("Liberate James!");
+		//--------------------/CHANGE------------------------------
 	}
 	
 	
@@ -287,7 +300,4 @@ public class JamesCollege extends Level implements Screen  {
 		hud.dispose();
 		
 	}
-
-	
-
 }

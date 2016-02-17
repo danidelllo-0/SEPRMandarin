@@ -2,7 +2,6 @@ package Screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -40,6 +39,9 @@ public class WorldMap implements Screen{
 	public WorldMap(DuckTator game){
 		this.game = game;
 		viewport = new FitViewport(DuckTator.V_WIDTH, DuckTator.V_HEIGHT);
+		
+		//--------------------CHANGE------------------------------
+		//Change required because of the addition of new levels
 		//Creating a texture for each of our rounds & the background.
 		background = new Texture("WorldMap/world_background.png");
 		alcuinTexture = new Texture("WorldMap/Alcuin.png");
@@ -61,6 +63,7 @@ public class WorldMap implements Screen{
 		derwentButton = new Image(derwentTexture);
 		halifaxButton = new Image(halifaxTexture);
 		jamesButton = new Image(jamesTexture);
+		//--------------------/CHANGE------------------------------
 		
 		//Creating a stage to draw our background and buttons onto
 		stage = new Stage(viewport);
@@ -83,6 +86,8 @@ public class WorldMap implements Screen{
 		//Initally we draw the background onto the stage. This will be drawn starting at 0,0
 		stage.addActor(backgroundStage);
 		
+		//--------------------CHANGE------------------------------
+		//Change made because of the addition of new levels
 		/*We add our button to the stage, initially it will be drawn into 0,0. We will have to re position it
 			to the correct place on the map. */
 		stage.addActor(vanbrughButton);
@@ -120,13 +125,13 @@ public class WorldMap implements Screen{
 		derwentButton.setSize(97, 124);
 		
 	}
+	//--------------------/CHANGE------------------------------
 	
 	private void initaliseButtons() {
 		//adds behaviors to buttons, mostly to launch a corresponding level
 	
 		//--------------------CHANGE------------------------------
-		//added links to actual college levels
-
+		//Change made because of new levels
 		constantineButton.addListener(new ClickListener(){
 			@Override
 			public void clicked(InputEvent event, float x, float y)
@@ -203,16 +208,17 @@ public class WorldMap implements Screen{
 			}
 			
 				});
-		//--------------------CHANGE------------------------------
+		//--------------------/CHANGE------------------------------
 		
 		
 	}
-	//--------------------CHANGE------------------------------
-	// added grayed out college signs
 
 	private void lockMap() {
 		/*Checks if the boolean for each round is false. If it does equal false then set the color
 			to grayed out version to show it's locked and clear the listener so it cannot be clicked on. */
+		
+		//--------------------CHANGE------------------------------
+		//Change made because of the addition of new levels and to replace the blacked out images with greyed out images 
 		if (DuckTator.ALCUIN_UNLOCKED == false){
 			alcuinTexture = new Texture("WorldMap/AlcuinGray.png");
 			alcuinButton = new Image(alcuinTexture);
@@ -269,7 +275,7 @@ public class WorldMap implements Screen{
 			vanbrughButton.clearListeners();
 		}
 	}
-	//--------------------CHANGE------------------------------
+	//--------------------/CHANGE------------------------------
 
 	@Override
 	public void show() {
@@ -316,7 +322,9 @@ public class WorldMap implements Screen{
 
 	@Override
 	public void dispose() {
-		// TODO Auto-generated method stub
+		
+		//--------------------CHANGE------------------------------
+		//Change made because of the addition of new levels
 		alcuinTexture.dispose();
 		constantineTexture.dispose();
 		goodrickeTexture.dispose();
@@ -326,7 +334,7 @@ public class WorldMap implements Screen{
 		halifaxTexture.dispose();
 		jamesTexture.dispose();
 		stage.dispose();
-		
+		//--------------------/CHANGE------------------------------
 	}
 
 }

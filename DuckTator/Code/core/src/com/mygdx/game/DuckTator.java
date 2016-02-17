@@ -7,8 +7,8 @@ import Screens.MenuScreen;
 
 //*******************************************************************
 //DuckTator
-//http://stackoverflow.com/questions/25635636/eclipse-exported-runnable-jar-not-showing-images
-//URL: https://moorhengames.wordpress.com/play-game/
+//URL: https://4d45b16264c555b3f8e66ac055f749f7a2451836-www.googledrive.com/host/0B4aXpJk4iCmSMVNXODg5bVVuYkU/Executables.zip
+//
 //*******************************************************************
 
 
@@ -40,11 +40,11 @@ public class DuckTator extends Game {
 	public static final short DUCK_BIT = 2;
 	public static final short BRICK_BIT = 4;
 	//--------------------CHANGE------------------------------
-	//added certain new bits
+	//added new bits due to the additional power-ups
 	public static final short HEALTH_BIT = 8;
-	public static final short FEATHER_BIT = 16;
 	public static final short SHIELD_BIT = 32;
 	//--------------------/CHANGE------------------------------
+	public static final short FEATHER_BIT = 16;
 	public static final short DESTROYED_BIT = 64;
 	public static final short ENEMY_BIT = 128;
 	public static final short ENEMY_HEAD = 256;
@@ -56,15 +56,18 @@ public class DuckTator extends Game {
 	public static final short WATER_BIT = 16384;
 	
 	//These booleans determine what levels are going to be unlocked on the world map.
-	public static boolean JAMES_UNLOCKED = false;
+	
+	//--------------------CHANGE------------------------------
+	//Changed the level names to the college names to fit with the new game map 
+	public static boolean JAMES_UNLOCKED = true;
 	public static boolean CONSTANTINE_UNLOCKED = true;
-	public static boolean ALCUIN_UNLOCKED = false;
-	public static boolean GOODRICKE_UNLOCKED = false;
-	public static boolean LANGWITH_UNLOCKED = false;
-	public static boolean VANBURGH_UNLOCKED = false;
-	public static boolean DERWENT_UNLOCKED = false;
-	public static boolean HALIFAX_UNLOCKED = false;
-
+	public static boolean ALCUIN_UNLOCKED = true;
+	public static boolean GOODRICKE_UNLOCKED = true;
+	public static boolean LANGWITH_UNLOCKED = true;
+	public static boolean VANBURGH_UNLOCKED = true;
+	public static boolean DERWENT_UNLOCKED = true;
+	public static boolean HALIFAX_UNLOCKED = true;
+	//--------------------/CHANGE------------------------------
 	
 	@Override
 	public void create () {
@@ -82,6 +85,7 @@ public class DuckTator extends Game {
 		super.render();
 	}
 	
+	@Override
 	public void dispose(){
 		getScreen().dispose();
 		

@@ -60,8 +60,12 @@ public abstract class Level {
 	//*************MARIO CLASS OBJECT***********
 	protected Morgan player;
 	
-	
+	//--------------------CHANGE------------------------------
+	//Added new parameters: x_pos, y_pos and lvl_num. This is required due to the addition of new levels
+	//As the starting point for each level is slightly different
 	public Level(DuckTator game, String mapString, int x_pos, int y_pos,int lvl_num){
+	//--------------------/CHANGE------------------------------
+		
 		//****SETTING UP CAMERA*****
 		gamecam = new OrthographicCamera();
 		

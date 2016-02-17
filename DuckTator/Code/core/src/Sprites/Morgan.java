@@ -15,7 +15,6 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Timer;
 import com.mygdx.game.DuckTator;
-import Scenes.Hud;
 import Screens.Rounds.AlcuinCollege;
 import Screens.Rounds.ConstantineCollege;
 import Screens.Rounds.DerwentCollege;
@@ -28,18 +27,29 @@ import Screens.Rounds.VanburghCollege;
 public class Morgan extends Sprite{
 	
 	//Enumeration for our ducks states.
+	
+	//--------------------CHANGE------------------------------
+	//Added new states for Hovering and Swimming which have been implemented into the game
 	public enum State {FALLING,JUMPING,STANDING,RUNNING,FLYING,HOVERING,SWIMMING};
+	//--------------------/CHANGE------------------------------
+	
 	//Creating our variables
 	public State currentState;
 	public State previousState;
 	private Animation duckRun;
 	private boolean runningRight;
-	//Additional variables for the flying timer
+	
+	//--------------------CHANGE------------------------------
+	//New variables that enhance the movement system of Morgan
+	//A flag that is set if the duck is allowed to fly. It is set to false when the duck has been flying
 	public static boolean allowedToFly = true;
+	//A flag that is set if the duck has been flying. Used for the flying lock system
 	public boolean hasBeenFlying = false;
-	public boolean hovering = false;
+	//A variable that keeps track of where the duck is before it starts flying in order to impose the flying distance restriction
 	public float xPositionBeforeJump = 0;
+	//A flag that is set if the duck collides with water. If it is true then a new swimming texture is implemented
 	public boolean inwater = false;
+	//--------------------/CHANGE------------------------------
 	
 	//This keeps track of how long we're in a state, e.g. how long we're in a running state.
 	private float stateTimer;
@@ -61,13 +71,15 @@ public class Morgan extends Sprite{
 	//Morgan standing
 	private TextureRegion duckStand;
 	
+	//--------------------CHANGE------------------------------
+	//Addition of texture variable for the new swimming state
 	//Morgan swimming
 	private TextureRegion duckSwim;
+	//--------------------/CHANGE------------------------------
 	
 	Timer gtimer = new Timer();
-	float timeState=0f;
-	//Additional variable for the flying timer
-	public static float timeStateFlyingLock=0f;
+	
+	public static float timeState=0f;
 	
 	public Morgan(World world, DuckTator game, TextureAtlas atlas,int x_pos,int y_pos ){
 		super(atlas.findRegion("ducky"));
@@ -102,11 +114,14 @@ public class Morgan extends Sprite{
 		setBounds(0,0,32/DuckTator.PPM,32/DuckTator.PPM);
 		setRegion(duckStand);
 		
+		//--------------------CHANGE------------------------------
+		//The new texture for swimming
 		//New TextureRegion object - setting it equal to the area of the spritesheet representing Morgan swimming.
 		duckSwim = new TextureRegion(getTexture(),500,0,70,66);
 		//How big we should draw Morgan.
 		setBounds(0,0,32/DuckTator.PPM,32/DuckTator.PPM);
 		setRegion(duckSwim);
+		//--------------------/CHANGE------------------------------
 	}
 	
 	public void update(float dt){
@@ -169,8 +184,12 @@ public class Morgan extends Sprite{
 			//Updating our boolean.
 			runningRight = true;
 		}
+		
+		//--------------------CHANGE------------------------------
+		//Needed for the implementation of swimming. Changes the duck texture if the duck is in water
 		if (inwater == true)
 			region = duckSwim;
+		//--------------------/CHANGE------------------------------
 		
 		/*Need to set the statetimer.
 		* Does our current state equal our previous state?
@@ -184,6 +203,10 @@ public class Morgan extends Sprite{
 	}
 	
 	public State getState(){
+		//--------------------CHANGE------------------------------
+		//Updated the states so that a more accurate state is returned when this method is called
+		//Added new states for swimming and hovering 
+		
 		//state is based on B2Body and keyboard input
 		//So we are just testing whether the duck's b2Body has a velocity upwards/downwards etc.
 		if(duck_b2Body.getLinearVelocity().y>0 && !(Gdx.input.isKeyPressed(Input.Keys.UP) || Gdx.input.isKeyPressed(Input.Keys.W)) /* || duck_b2Body.getLinearVelocity().y<0 && previousState == State.JUMPING */)
@@ -200,6 +223,7 @@ public class Morgan extends Sprite{
 			return 	State.SWIMMING;
 		else
 			return State.STANDING;
+		//--------------------/CHANGE------------------------------
 	}
 
 	private void defineMorgan(int x_pos,int y_pos) {
@@ -245,7 +269,9 @@ public class Morgan extends Sprite{
 		* to fly through the entire map.*/
 		
 		timeState+=Gdx.graphics.getDeltaTime();
-		timeStateFlyingLock+=Gdx.graphics.getDeltaTime();
+		
+		//--------------------CHANGE------------------------------
+		//Updated movement mechanics
 		
 		//Jumping. If the duck is on the ground and the space bar is pressed then apply linear impulse in y direction.
 		//Record the xPosition of the duck when it jumps - this is used for flying
@@ -261,11 +287,11 @@ public class Morgan extends Sprite{
 		if ((hasBeenFlying == true) && (getState() == State.RUNNING || getState() == State.STANDING)){
 				allowedToFly = false;
 				hasBeenFlying = false;
-				timeStateFlyingLock = 0f;
+				timeState = 0f;
 			}
 		
-		//timeStateFlyingLock varies the length of the flying block. If that time has passed then the duck is allowed to fly.
-		if ((allowedToFly == false) && (timeStateFlyingLock >= 2f)){
+		//timeState varies the length of the flying block. If that time has passed then the duck is allowed to fly.
+		if ((allowedToFly == false) && (timeState >= 2f)){
 			allowedToFly = true;
 			}
 			
@@ -273,7 +299,6 @@ public class Morgan extends Sprite{
 		//The duck can only fly up to a certain height, at a certain velocity and for a limited x distance.
 		if ((Gdx.input.isKeyPressed(Input.Keys.UP) || Gdx.input.isKeyPressed(Input.Keys.W)) && (getState() == State.JUMPING | getState() == State.FLYING) && (allowedToFly == true) && (duck_b2Body.getLinearVelocity().y<=2) && (duck_b2Body.getPosition().y<4) && (((duck_b2Body.getPosition().x) - xPositionBeforeJump) < 1.3)) {
 			duck_b2Body.applyLinearImpulse(new Vector2(0,1f), duck_b2Body.getWorldCenter(), true);
-			timeState = 0;
 			hasBeenFlying = true;
 			}
 		
@@ -300,13 +325,14 @@ public class Morgan extends Sprite{
 			duck_b2Body.applyLinearImpulse(new Vector2(-0.3f,0), duck_b2Body.getWorldCenter(), true);
 			//System.out.println("MOVING LEFT");
 		}
+		//--------------------/CHANGE------------------------------
 	}
 
 	public void dead_morgan(int level)
 	{	
 		//If Morgan is killed set the screen to the beginning of the same level.
 		//--------------------CHANGE------------------------------
-		//changed so that each level restarts at itself rather than default level
+		//Changed so that each level restarts at itself rather than default level
 		
 		if(level==1)
 			game.setScreen(new ConstantineCollege(game));
@@ -324,7 +350,7 @@ public class Morgan extends Sprite{
 			game.setScreen(new VanburghCollege(game));
 		if(level==8)
 			game.setScreen(new JamesCollege(game));
-		//--------------------CHANGE------------------------------
+		//--------------------/CHANGE------------------------------
 	}
 
 

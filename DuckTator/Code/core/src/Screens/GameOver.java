@@ -21,13 +21,10 @@ public class GameOver implements Screen {
 	private Texture retryTexture;
 	private Viewport viewport;
 	private Image retryButton,backgroundStage;
-	private DuckTator game;
 	private Stage stage;
 	private Morgan player;
 	
 	public GameOver(DuckTator game,Morgan player1){
-		//Setting the 'game' to the 'game' that is passed in.
-		this.game = game;
 		//Setting the 'player' to the 'player' that is passed in.
 		this.player = player1;
 		//Creating textures for our game

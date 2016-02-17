@@ -28,29 +28,35 @@ public class Hud implements Disposable{
 	public static int health_value;
 	//To keep track of the score
 	private static int score;
-	//--------------------CHANGE------------------------------
-	//protection timer
-	public static float protection;
-	//--------------------/CHANGE------------------------------
 	//Will count to a second - used for colouring the hud.
 	private float timeCount;
-	//string used in setting a new task to the GUI
-	private String task_string = " ";
-	//timer used to tell user when they can fly again
+	
+	//--------------------CHANGE------------------------------
+	//protection is a timer that keeps track of how long the invincibility power-up is enabled for
+	public static float protection;
+	//string stores the current objective for that is displayed on the HUD
+	private String task_string;
+	//Used to reduce the interval in which the flying timer should update when activated
 	private float flyingTimer;
+	//Stores the current score of the game when the Vanbrugh level starts used to calcualte the points objective 
 	private static int vanbrughInitialScore;
+	//A flag that is set when the Vanbrugh level starts to enable the different objective type
 	public static boolean vanbrughFlag;
+	//--------------------/CHANGE------------------------------
+	
 	//The wigits we will be placing onto our stage are 'Label's. So we need one for each of our key pieces
 	//of information.
 	//--------------------CHANGE------------------------------
-	public Label timeLabel; //time passed of game
-	static Label protectionLabel; //if the user has temporary protection
-	public Label worldLabel;
-	static Label task; //current objective
-	static Label flyingLabel; //time until can fly again
+	//Label to display the invincibility time on the HUD
+	static Label protectionLabel;
+	//Label to display the current objective on the HUD
+	static Label task;
+	//Label to display the whether flying is locked and if so how much time is left on the HUD
+	static Label flyingLabel;
 	//--------------------/CHANGE------------------------------
-	static Label healthLabel; //current health 
-	static Label scoreLabel;  //current score
+	public Label worldLabel;
+	static Label healthLabel;
+	static Label scoreLabel;  
 
 	
 	
@@ -60,8 +66,10 @@ public class Hud implements Disposable{
 		score = 0;
 		health_value = 10;
 		//--------------------CHANGE------------------------------
+		//Initialises new variables for the new HUD items
 		flyingTimer = 0.1f;
 		protection = 0;
+		task_string = " ";
 		//--------------------/CHANGE------------------------------
 		
 		//Setting our viewport.
@@ -79,20 +87,22 @@ public class Hud implements Disposable{
 		//Now we provide the text to be displayed in our table.
 		scoreLabel = new Label(String.format("SCORE: %06d", score),new Label.LabelStyle(new BitmapFont(),Color.WHITE));
 		healthLabel = new Label(String.format("HEALTH: %d", health_value),new Label.LabelStyle(new BitmapFont(),Color.WHITE));
+		
 		//--------------------CHANGE------------------------------
-		//added new labels
+		//Initialise the new labels for the HUD with the desired text and colour
 		task = new Label(String.format("OBJECTIVE: %s",task_string),new Label.LabelStyle(new BitmapFont(),Color.WHITE) );
 		flyingLabel = new Label(String.format("FLYING LOCK: %s",flyingTimer),new Label.LabelStyle(new BitmapFont(),Color.WHITE) );
 		protectionLabel = new Label(String.format("INVINCIBILITY: %s",protection/1000),new Label.LabelStyle(new BitmapFont(),Color.WHITE) );
-		
 		//--------------------/CHANGE------------------------------
+		
 		//Adding the labels to our table
 		//if we have multiple things that "expandX" they all have equal space. We just pad down from the top 5 pixels.
 		table.add(scoreLabel).expandX().pad(2);
 		table.add(healthLabel).expandX().pad(2);
-		table.add(task).expandX().pad(2);
+		
 		//--------------------CHANGE------------------------------
-		//added new labels
+		//New Labels that appear on the HUD
+		table.add(task).expandX().pad(2);
 		table.add(flyingLabel).expandX().pad(2);
 		table.add(protectionLabel).expandX().pad(2);
 		//--------------------/CHANGE------------------------------
@@ -107,9 +117,12 @@ public class Hud implements Disposable{
 		//dt is just approximately 1/60. So summing it up we can compute when a second has passed. 
 		timeCount += dt;
 		
+		//--------------------CHANGE------------------------------
+		//Added new statements that implement the new timers on the HUD
+		//Decreases the flying lock timer (if it is enabled) every 0.1 seconds and displays it in the HUD.
 		if (!Morgan.allowedToFly){
-			if (Morgan.timeStateFlyingLock >= flyingTimer){
-				flyingLabel.setText(String.format("FLYING LOCK: %s", String.format("%.1f", 2 - Morgan.timeStateFlyingLock)));
+			if (Morgan.timeState >= flyingTimer){
+				flyingLabel.setText(String.format("FLYING LOCK: %s", String.format("%.1f", 2 - Morgan.timeState)));
 				flyingLabel.setColor(Color.RED);
 				flyingTimer += 0.1f;
 			}
@@ -120,7 +133,7 @@ public class Hud implements Disposable{
 			flyingLabel.setColor(Color.GREEN);
 		}
 		
-		//The countdown timer for protection in intervals of 0.1 seconds
+		//Decreases the invincibility timer (if it is enabled) every 0.1 seconds and displays it in the HUD.
 		if (protection != 0){
 			if (timeCount >= 0.1){
 				protection -= 100;
@@ -132,6 +145,7 @@ public class Hud implements Disposable{
 			protectionLabel.setText(String.format("INVINCIBILITY: %s", 0));
 			protectionLabel.setColor(Color.RED);
 		}
+		//--------------------/CHANGE------------------------------
 		
 	}
 	
@@ -144,10 +158,6 @@ public class Hud implements Disposable{
 		}
 		
 	}
-	//--------------------CHANGE------------------------------
-	//added new functions accessible from outside to modify some variables
-	
-	
 	
 	//Public method we can access outside of the Hud class to increase Morgan's health.
 	public static void increaseHealth(){
@@ -157,23 +167,6 @@ public class Hud implements Disposable{
 		}
 		
 	}
-	
-	
-	//sets new task by passed string
-	public void setTask(String task_str){
-		task.setText(String.format("OBJECTIVE: %s",task_str));
-		if (vanbrughFlag == true)
-			task.setColor(Color.RED);
-	}
-	
-	//Access outside the class to set health back to 10.
-	public static void regenerateHealth(){
-		health_value = 10;
-		healthLabel.setText(String.format("HEALTH: %d", health_value));
-		
-	}
-		
-	//--------------------/CHANGE------------------------------
 	
 	//Access outside the class to increase the score by the value passed in.	
 	public static void addScore(int value){
@@ -186,7 +179,10 @@ public class Hud implements Disposable{
 		}
 	}
 	
+	//--------------------CHANGE------------------------------
+	//New levels have been added to the HUD items need to be updated when starting a new level
 	//updates health to 10 and score to passed value (used in initialising new level)
+	//When score is initialised it saves the initial score of that round used for the Vanbrugh points objective
 	public void setScoreHealth(int Svalue)
 	{
 		vanbrughInitialScore = Svalue;
@@ -195,6 +191,7 @@ public class Hud implements Disposable{
 		healthLabel.setText(String.format("HEALTH: %d", health_value));
 		scoreLabel.setText(String.format("SCORE: %06d", score));
 	}
+	//--------------------/CHANGE------------------------------
 	
 	//getter for score
 	public static int getScore()
@@ -207,13 +204,23 @@ public class Hud implements Disposable{
 		return health_value;
 	}
 	
-	//adds passed amount of time to the protection timer
+	//--------------------CHANGE------------------------------
+	//added new functions accessible from outside to modify some variables
+	//Sets the new objective by each level calling this function with the appropriate objective
+	public void setTask(String task_str){
+		task.setText(String.format("OBJECTIVE: %s",task_str));
+		if (vanbrughFlag == true)
+			task.setColor(Color.RED);
+	}
+	
+	//Adds a specified time to the invincibility power-up when a shield is collected
 	public static void addProtection(float n)
 	{
 		protection +=n;
 		protectionLabel.setText(String.format("INVINCIBILITY: %s", protection/1000));
 		protectionLabel.setColor(Color.GREEN);
 	}
+	//--------------------/CHANGE------------------------------
 	
 	@Override
 	public void dispose() {

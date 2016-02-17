@@ -4,20 +4,15 @@ package Screens.Rounds;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.CircleShape;
-import com.badlogic.gdx.physics.box2d.EdgeShape;
-import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.utils.Timer;
 import com.mygdx.game.DuckTator;
 import Sprites.Enemy.Enemy;
-import Sprites.Enemy.Goose;
 import tools.WorldContactListener;
 
 //--------------------CHANGE------------------------------
-//implemented this level
+//Implemented Alcuin level
+//--------------------/CHANGE------------------------------
 
-//--------------------CHANGE------------------------------
 public class AlcuinCollege extends Level implements Screen{
 
 	//private static final int BLOCKS_LAYER = 22;
